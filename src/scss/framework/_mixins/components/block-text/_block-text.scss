@@ -1,0 +1,20 @@
+@mixin make-bt-a {
+  padding-bottom: $measure * 3;
+  @media all and ($viewport-type: $tabletp) {
+    padding-bottom: $measure * 3;
+  }
+}
+
+@mixin make-bt-b {
+  padding-bottom: $measure * 8;
+  @media all and ($viewport-type: $tabletp) {
+    padding-bottom: $measure * 3;
+  }
+}
+
+@mixin make-bt-c {
+  padding-bottom: $measure * 3;
+  @media all and ($viewport-type: $tabletp) {
+    padding-bottom: $measure * 1;
+  }
+}

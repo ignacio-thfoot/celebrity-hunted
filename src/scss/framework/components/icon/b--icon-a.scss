@@ -1,0 +1,12 @@
+.b--icon-a{
+    @include make-icon-a(
+        $border-color: b
+    );
+    cursor: pointer;    
+    &__media{
+        @include make-icon-a-media($icon-color: b);
+    }
+    &:hover,&:focus{
+        @include make-icon-a-media-interaction($icon-color: b);
+    }
+}

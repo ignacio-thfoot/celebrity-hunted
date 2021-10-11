@@ -1,0 +1,40 @@
+.b--collapse-b {
+    border-bottom: 1px solid map-get($color-options, a);
+    position: relative;
+    overflow: hidden;
+    &__btn{
+        width: 100%;
+        opacity: 1;
+        cursor: pointer;
+        pointer-events: all;
+        max-height: 99em;
+        display: flex;
+        align-items: center;
+        &__content{
+            width: 100%;
+            padding: $measure*2 0;
+            transition: all $time-a ease-in-out;
+        }
+        &:hover &, &:focus &{
+            &__content{
+                padding: $measure*4 0;
+            }
+        }
+        &--is-hidden{
+            opacity: 0;
+            max-height: 0;
+            transition: opacity $time-a ease-in-out, max-height $time-a ease-in-out;
+        }
+    }
+    &__content{
+        max-height: 0px;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height $time-b cubic-bezier(0, 1, 0, 1);
+        &--is-active{
+            max-height: 99em;
+            opacity: 1;
+            transition: max-height $time-a ease-in-out, opacity $time-a ease-in-out $time-a;
+        }
+    }
+}

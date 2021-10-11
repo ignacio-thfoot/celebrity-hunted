@@ -1,0 +1,41 @@
+.b--dropdown-menu-a {
+  // display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: map-get($color-options, b);
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 $measure * 3;
+  visibility: hidden;
+  transition: max-height $time-a ease-in-out $time-a,
+    padding $time-a ease-in-out $time-a,
+    visibility $time-a ease-in-out $time-a * 2;
+  @media all and ($viewport-type: $tabletl) {
+    position: relative;
+  }
+  &__list-item {
+    opacity: 0;
+    transition: opacity $time-a ease-in-out;
+    &__link {
+      @include make-font-e(300);
+      @include make-link-a($colortext: a);
+      &:hover {
+        @include make-link-a-interaction($colortext: c);
+      }
+    }
+  }
+  &--is-active {
+    visibility: visible;
+    max-height: 900px;
+    padding: $measure * 3;
+    transition: max-height $time-a ease-in-out, padding $time-a ease-in-out;
+  }
+  &--is-active & {
+    &__list-item {
+      opacity: 1;
+      transition: opacity $time-a ease-in-out $time-a;
+    }
+  }
+}

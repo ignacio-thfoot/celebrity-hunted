@@ -1,0 +1,87 @@
+.b--nav-a {
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  @media all and ($viewport-type: $tabletl) {
+    flex-direction: row-reverse;
+  }
+  &__list-group {
+    display: flex;
+    margin-right: $measure * 3;
+    @media all and ($viewport-type: $tabletl) {
+      opacity: 0;
+      margin-right: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: auto;
+      min-height: 100vh;
+      flex-direction: column;
+      padding-top: $measure * 16;
+      z-index: 0;
+      transition: width $time-a ease-in-out $time-a,
+        opacity $time-a ease-in-out $time-a;
+      background-color: map-get($color-options, a);
+    }
+    &__list-item {
+      position: relative;
+      margin-right: $measure * 3;
+      cursor: pointer;
+      &:last-child {
+        margin-right: 0;
+      }
+      @media all and ($viewport-type: $tabletl) {
+        margin-right: 0;
+        margin-bottom: $measure * 3;
+        opacity: 0;
+        transition: opacity $time-a ease-in-out;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      &.current-menu-parent & {
+        &__link {
+          @media all and ($viewport-type: $tabletl) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &::after {
+              content: "\EA01";
+              display: inline-block;
+              font-family: "symbol";
+              font-style: normal;
+              font-weight: normal;
+              line-height: 1;
+              font-size: 14px;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              font-size: 2em;
+            }
+          }
+        }
+      }
+      &__link {
+        @include make-font-e(300);
+        @include make-link-a($colortext: a);
+        &:hover {
+          @include make-link-a-interaction($colortext: c);
+        }
+      }
+    }
+    // when b--burger-a--is-active --> b--nav-a__list-group--is-active
+    &--is-active {
+      opacity: 1;
+      pointer-events: all;
+      width: 100%;
+      transition: width $time-a ease-in-out;
+    }
+    &--is-active & {
+      &__list-item {
+        opacity: 1;
+        transition: opacity $time-a ease-in-out $time-a;
+      }
+    }
+  }
+}

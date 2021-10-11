@@ -6,7 +6,6 @@
 ?>
     <body>
         <div class="img-container">
-                <img src="img/celebrity-hunted.png">
+                <img src="public/celebrity-chase.png">
         </div>
-
-        <?php include("footer.php") ?>
+    <?php include("footer.php") ?>

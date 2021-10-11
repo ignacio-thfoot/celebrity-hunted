@@ -1,0 +1,63 @@
+@mixin wp-block-table() {
+  .wp-block-table {
+    padding-top: $measure;
+    margin-bottom: $measure * 5 !important;
+    table,
+    table.wp-block-table {
+      width: 100%;
+      text-align: left;
+      margin-bottom: $measure * 2;
+      // margin: 32px 0px;
+      padding: 0px;
+      border: $border-radius-a solid rgba(0, 0, 0, 0.12);
+      border-spacing: 0;
+      border-radius: $border-radius-a;
+    }
+    table p,
+    table form,
+    table ul,
+    table li {
+      margin: 4px 0px;
+      padding: 0px;
+    }
+    table thead,
+    table tfoot,
+    table.wp-block-table thead,
+    table.wp-block-table tfoot {
+      border: $border-radius-a solid #dddddd;
+      border: $border-radius-a solid rgba(0, 0, 0, 0.12);
+    }
+    table tbody tr:nth-child(odd) {
+      background: map-get($color-options, b);
+    }
+    table th,
+    table.wp-block-table th {
+      @include make-font-e(300);
+      text-transform: uppercase;
+      margin: 0px;
+      padding: $measure;
+      border-top: $border-radius-a solid #dddddd;
+      border-top: $border-radius-a solid rgba(0, 0, 0, 0.12);
+      box-sizing: border-box;
+    }
+    table td,
+    table.wp-block-table td {
+      padding: $measure;
+      margin: 0px;
+      border-top: $border-radius-a solid #dddddd;
+      border-top: $border-radius-a solid rgba(0, 0, 0, 0.12);
+      box-sizing: border-box;
+    }
+    table.wp-block-table.is-style-stripes {
+      border-collapse: collapse;
+    }
+    table.wp-block-table.is-style-stripes td {
+      border: $border-radius-a solid #dddddd;
+      border: $border-radius-a solid rgba(0, 0, 0, 0.12);
+    }
+    figcaption {
+      @include make-font-f(300);
+      color: map-get($color-options, a);
+    }
+  }
+}

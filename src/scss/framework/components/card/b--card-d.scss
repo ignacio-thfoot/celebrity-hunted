@@ -1,0 +1,26 @@
+.b--card-d {
+  height: auto;
+  @include make-col(4);
+  margin-bottom: $measure * 4;
+  &__bd {
+    min-height: 210px;
+    height: 100%;
+    display: block;
+    text-decoration: none;
+    padding: $measure * 4;
+    background-color: rgba(map-get($color-options, c), 0.67);
+    transition: background-color $time-a ease-in-out;
+    &__title {
+      margin-bottom: $measure * 2;
+      @include make-font-d(300);
+      color: map-get($color-options, a);
+    }
+    &__content {
+      @include make-font-e(300);
+      color: map-get($color-options, a);
+    }
+    &:hover {
+      background-color: rgba(map-get($color-options, c), 0.37);
+    }
+  }
+}

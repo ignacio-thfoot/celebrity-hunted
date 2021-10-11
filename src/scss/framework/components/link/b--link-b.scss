@@ -1,0 +1,7 @@
+ 
+.b--link-b{
+    @include make-link-b($colortext: b);
+    &:hover,&:focus{
+        @include make-link-b-interaction();
+    }
+}

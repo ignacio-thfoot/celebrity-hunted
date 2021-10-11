@@ -1,0 +1,33 @@
+.b--card-x {
+  display: block;
+  text-decoration: none;
+  padding: $measure * 4;
+  margin-bottom: $measure * 4;
+  background-color: map-get($color-options, d);
+  border: 1px solid map-get($color-options, a);
+  transition: background-color $time-a ease-in-out;
+  &__title {
+    margin-bottom: $measure * 2;
+    @include make-font-d(300);
+    color: map-get($color-options, a);
+    // child modifier, included in the new DS version
+    &--second {
+      color: map-get($color-options, c);
+    }
+  }
+  &__subtitle {
+    @include make-font-e(300);
+    color: map-get($color-options, a);
+  }
+  &:hover {
+    background-color: rgba(map-get($color-options, d), 0.67);
+  }
+  &--second {
+    // usual modifier for a global change of the element
+    background: map-get($color-options, e);
+    border: 1px solid map-get($color-options, c);
+    &:hover {
+      background-color: rgba(map-get($color-options, e), 0.17);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.b--hlist-a{
+    &__list-item{
+        @include make-hli-a();
+    }
+}

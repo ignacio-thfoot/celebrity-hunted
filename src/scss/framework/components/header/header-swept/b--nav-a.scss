@@ -1,0 +1,55 @@
+.b--nav-a {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  z-index: 100;
+  &__list-group {
+    display: flex;
+    margin-right: $measure * 3;
+    opacity: 0;
+    margin-right: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    transition: width $time-a ease-in-out $time-a,
+      opacity $time-a ease-in-out $time-a * 2;
+    background-color: map-get($color-options, a);
+    &__list-item {
+      margin-right: 0;
+      margin-bottom: $measure * 3;
+      opacity: 0;
+      transition: opacity $time-a ease-in-out;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &__link {
+        @include make-font-e(300);
+        @include make-link-a($colortext: b);
+        &:hover {
+          @include make-link-a-interaction($colortext: c);
+        }
+      }
+    }
+    // when b--burger-b--is-active --> b--nav-b__list-group--is-active
+    &--is-active {
+      opacity: 1;
+      pointer-events: all;
+      width: 100%;
+      transition: width $time-a ease-in-out;
+    }
+    &--is-active & {
+      &__list-item {
+        opacity: 1;
+        transition: opacity $time-a ease-in-out $time-a;
+      }
+    }
+  }
+}

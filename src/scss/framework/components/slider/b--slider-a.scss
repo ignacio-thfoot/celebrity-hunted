@@ -1,0 +1,68 @@
+.b--slider-a{
+    position: relative;
+    height: fit-content;
+    padding: 0 $measure*7;
+    &__content{
+        margin-bottom: $measure*2;
+        &__item{
+            position: relative;
+            margin-bottom: $measure*5;
+            height: auto;
+        }
+    }
+    &__controls{
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__arrow{
+            @include make-link-a($colortext: a);
+            &__icon{
+                path {
+                    fill: map-get($color-options, b);
+                }
+            }
+            &:hover{
+                @include make-link-a-interaction($colortext: b);
+            }
+        }
+    }
+    &__progress{
+        position: absolute;
+        top: $measure*4;
+        right: $measure*11;
+        font-size: 1.5rem;
+    }
+    .tns-nav{
+        text-align: center;
+        width: 100%;
+        margin-bottom: $measure*4;
+        z-index: 1000;
+        button{
+            width: $measure*2;
+            height: $measure*2;
+            margin-right: $measure*3;
+            border-radius: 50%;
+            &::after{
+                content: "";
+                display: block;
+                width: $measure*2;
+                height: $measure*2;
+                border-radius: 50%;
+                background-color: map-get($color-options, a);
+                margin: auto;
+                transition: all .3s ease-in-out;
+            }
+            &.tns-nav-active::after, &:hover::after, &:focus::after{
+                width: $measure*2;
+                height: $measure*2;
+                background-color: map-get($color-options, b);
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.b--card-e {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-position: center center;
+  background-size: cover;
+  margin: 0 0 $measure * 6 0;
+  transition: all $time-a ease-in-out;
+  &__bd {
+    position: relative;
+    background-color: rgba(map-get($color-options, a), 0.5);
+    padding: $measure * 4;
+    z-index: 1;
+    &__title {
+      color: map-get($color-options, f);
+      @include make-font-d(300);
+      margin-bottom: $measure;
+    }
+    &__content {
+      color: map-get($color-options, f);
+      @include make-font-e(300);
+    }
+  }
+}

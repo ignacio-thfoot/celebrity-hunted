@@ -1,0 +1,32 @@
+.b--form-select-a{
+    position:relative;
+    &__item{
+        @include make-generic-input(
+            $colortext: a,
+            $colorbg: i, 
+            $colorborder: b,
+            $padding: $measure*1.5 $measure*5 $measure*1.5 $measure*2,
+            $fontSize:1rem );
+        
+        &:focus {
+            @include make-generic-input-interaction($colortext: d);
+        }
+    }
+    &__artwork{
+        width: 1em;
+        height: 1em;
+        position: absolute;
+        top: 50%;
+        right:0;
+        transform: translate(-16px,-50%);
+        cursor: pointer;
+        path{
+            fill: map-get($color-options, d);
+        } 
+    }
+    &--error{
+        select{border:1px solid map-get($color-options, c)}
+        & ~ .b--form-error-a{display:block!important} 
+    }
+    
+}

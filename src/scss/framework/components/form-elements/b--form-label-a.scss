@@ -1,0 +1,3 @@
+.b--form-label-a{
+    @include make-label-a($colorlabel: d);
+}

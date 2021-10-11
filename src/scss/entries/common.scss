@@ -1,0 +1,148 @@
+/* VARS & MIXINS */
+@import "./../framework/_vars/vars";
+@import "./../framework/_mixins/mixins";
+
+/* FOUNDATION */
+/* color | background | aspect ratio | grid*/
+@import "./../framework/foundation/foundation";
+
+/* UTILITIES */
+@import "./../framework/utilities/utilities";
+
+/* CORE COMPONENTS START */
+
+// lazy
+@import "./../framework/components/lazy/b-lazy.scss";
+
+// header-swept
+@import "./../framework/components/header/header-swept/b--brand-a.scss";
+@import "./../framework/components/header/header-swept/b--burger-a.scss";
+@import "./../framework/components/header/header-swept/b--header-a.scss";
+@import "./../framework/components/header/header-swept/b--nav-a.scss";
+
+// footer
+@import "./../framework/components/footer/b--footer-a.scss";
+@import "./../framework/components/nav/b--nav-b.scss";
+
+// block rotate - start
+@import "./../framework/components/rotate/b--rotate-a.scss";
+// block rotate - end
+
+// block section - start
+@import "./../framework/components/section/b--section-a"; //approved
+@import "./../framework/components/section/b--section-b"; //approved
+@import "./../framework/components/section/b--section-c"; //approved
+// block section - end
+
+// block text - start
+@import "./../framework/components/block-text/b--bt-a"; //approved
+@import "./../framework/components/block-text/b--bt-a"; //approved
+@import "./../framework/components/block-text/b--bt-c"; //approved
+// block text - end
+
+// block list - start
+@import "./../framework/components/list-horizontal/b--hlist-a"; //approved
+@import "./../framework/components/list-horizontal/b--hlist-b"; //approved
+@import "./../framework/components/list-horizontal/b--hlist-c"; //approved
+@import "./../framework/components/list-horizontal/b--hlist-d"; //approved
+@import "./../framework/components/list-vertical/b--vlist-a"; //approved
+// block list - end
+
+// block link - start
+@import "./../framework/components/link/b--link-a"; //approved
+@import "./../framework/components/link/b--link-b"; //approved
+// block link - end
+
+// block content start
+@import "./../framework/components/content/b--content-a"; //approved
+// block content - end
+
+/* CORE COMPONENTS END */
+
+/* PAGE COMPONENTS START */
+
+// block icon - start
+@import "./../framework/components/icon/b--icon-a"; //approved
+// block icon - start
+
+// block pill - start
+@import "./../framework/components/pill/b--pill-a"; //approved
+// block pill - end
+
+// block accordion - start
+@import "./../framework/components/accordion/b--accordion-a";
+// block accordion - end
+
+//block tab - start
+@import "./../framework/components/tab/b--tabs-a";
+//block tab - end
+
+//block modal - start
+@import "./../framework/components/modal/b--modal-a";
+//block modal - end
+
+//block preloader - start
+@import "./../framework/components/preloader/b--preloader-a"; //approved
+//block preloader - end
+
+//block hero - start
+@import "./../framework/components/hero/b--hero-a"; //approved
+//block hero - end
+
+//block spinner - star
+@import "./../framework/components/spinner/b--spinner-a";
+//block spinner -ok end
+
+//block card -  start
+@import "./../framework/components/card/b--card-a";
+@import "./../framework/components/card/b--card-b";
+@import "./../framework/components/card/b--card-c";
+@import "./../framework/components/card/b--card-d";
+@import "./../framework/components/card/b--card-e";
+@import "./../framework/components/card/b--card-f";
+@import "./../framework/components/card/b--card-x.scss";
+
+/* form start */
+@import "./../framework/components/form-elements/b--form-checkbox-a.scss";
+@import "./../framework/components/form-elements/b--form-error-a.scss";
+@import "./../framework/components/form-elements/b--form-group-a.scss";
+@import "./../framework/components/form-elements/b--form-input-a.scss";
+@import "./../framework/components/form-elements/b--form-input-icon-a.scss";
+@import "./../framework/components/form-elements/b--form-label-a.scss";
+@import "./../framework/components/form-elements/b--form-radial-a.scss";
+@import "./../framework/components/form-elements/b--form-select-a.scss";
+@import "./../framework/components/form-elements/b--form-textarea-a.scss";
+@import "./../framework/components/form-elements/b--form-upload-a.scss";
+@import "./../framework/components/form-elements/b--form-cf7-checkbox-a.scss";
+@import "./../framework/components/form-elements/b--form-cf7-radial-a.scss";
+/* form end */
+
+/* hubspot form start */
+@import "./../framework/components/form-elements/b--form-hubspot-a.scss";
+/* hubspot form end */
+
+//scrollbar - start
+@import "./../framework/components/scrollbar/b--scrollbar-a.scss";
+//scrollbar - end
+
+//message - start
+@import "./../framework/components/message/b--message-a.scss";
+//message - end
+
+//list item - start
+@import "./../framework/components/list-horizontal/b--hlist-a.scss";
+@import "./../framework/components/list-vertical/b--vlist-a.scss";
+//list item - end
+
+//pill - start
+@import "./../framework/components/pill/b--pill-a.scss";
+//list item - end
+
+//section - start
+@import "./../framework/components/section/b--section-a.scss";
+//section - end
+
+//link - start
+@import "./../framework/components/link/b--link-a.scss";
+//link - end
+

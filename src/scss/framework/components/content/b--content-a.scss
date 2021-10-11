@@ -1,0 +1,58 @@
+@import './../../_mixins/components/content/b--content-utilities.scss';
+@import './../../_mixins/components/content/b--content-block-embed';
+@import './../../_mixins/components/content/b--content-heading.scss'; // Headings from h2 to h4.
+@import './../../_mixins/components/content/b--content-paragraph.scss';
+@import './../../_mixins/components/content/b--content-list.scss';
+@import './../../_mixins/components/content/b--content-links.scss';
+@import './../../_mixins/components/content/b--content-block-quote.scss';
+@import './../../_mixins/components/content/b--content-block-image.scss';
+@import './../../_mixins/components/content/b--content-block-gallery.scss';
+@import './../../_mixins/components/content/b--content-images.scss';
+
+@import './../../_mixins/components/content/b--content-hubspot-cta.scss';
+@import './../../_mixins/components/content/b--content-block-table.scss';
+@import './../../_mixins/components/content/b--content-block-intro.scss';
+@import './../../_mixins/components/content/b--content-block-separator.scss';
+
+
+
+.b--content-a{
+    @include wp-utilities ();
+    @include headings ();
+    @include headings-color ( $_color-a: $color-a );
+    @include paragraphs ();
+    @include paragraphs-color ( $_color-a: $color-a );
+    @include lists ();
+    @include lists-color ( $_color-a: $color-a );
+    @include links();
+    @include links-color($_color-a: $color-a);
+    @include wp-block-quote();
+    @include wp-block-quote-color($_color-a: $color-a);
+    @include wp-block-image();
+    @include wp-block-image-color($_color-a: $color-a);
+    @include images();
+    @include wp-block-gallery();
+    @include wp-block-table();
+    @include wp-block-separator();
+    @include wp-block-separator-color($_color-a: $color-a);
+
+    @include block-cta-hubspot();
+    @include wp-block-intro();
+    @include wp-block-intro-color($_color-a: $color-a);
+    &--second{
+        @include headings-color ( $_color-a: $color-b );
+        @include paragraphs-color ( $_color-a: $color-b );
+        @include lists-color ( $_color-a: $color-b );
+        @include links-color($_color-a: $color-b);
+        @include wp-block-quote-color($_color-a: $color-b);
+        @include wp-block-image-color($_color-a: $color-b);
+        @include wp-block-separator-color($_color-a: $color-b);
+        @include wp-block-intro-color($_color-a: $color-b);
+    }
+    *:last-child{
+        margin-bottom: 0px;
+        pre{
+            margin-bottom: $measure*3!important;
+        }
+    }
+}

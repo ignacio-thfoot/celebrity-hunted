@@ -1,0 +1,52 @@
+.b--form-cf7-checkbox-a {
+  position: relative;
+  &__item {
+    display: block;
+    .wpcf7-list-item {
+      display: block;
+      margin: 0;
+      position: relative;
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: $measure * 1.75;
+        width: $measure * 1.75;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        &:checked ~ .wpcf7-list-item-label {
+          &::after {
+            background: map-get($color-options, b);
+          }
+        }
+      }
+      .wpcf7-list-item-label {
+        padding-left: $measure * 2.75;
+        display: block;
+        color: map-get($color-options, d);
+        position: relative;
+        @include make-font-f(300);
+        &::before {
+          content: "";
+          height: $measure * 1.75;
+          width: $measure * 1.75;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border: 1px solid rgba(map-get($color-options, b), 0.5);
+        }
+        &::after {
+          content: "";
+          width: $measure;
+          height: $measure;
+          position: absolute;
+          left: $measure * 1.75/2;
+          top: $measure * 1.75/2;
+          transform: translate(-50%, -50%);
+          transition: all $time-a ease-in-out;
+        }
+      }
+    }
+  }
+}

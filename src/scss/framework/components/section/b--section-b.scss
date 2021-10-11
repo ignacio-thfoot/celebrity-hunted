@@ -1,0 +1,9 @@
+
+.b--section-b{
+    padding-top: $measure*20;
+    padding-bottom: $measure*11;
+    @media all and ($viewport-type: $tabletp){
+        padding-top: $measure*16;
+        padding-bottom: $measure*11
+    }
+}

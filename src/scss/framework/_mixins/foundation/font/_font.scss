@@ -1,0 +1,71 @@
+@mixin make-font-a($weight) {
+  font-family: $type-a;
+  font-weight: $weight;
+  letter-spacing: 3.62px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  /* font size should be last element if possible, so 
+    when we changed it on mobile it's easier to see.*/
+  font-size: 4.375rem;
+  @media all and ($viewport-type: $tabletl) {
+    font-size: 3.125rem;
+    letter-spacing: 2.89px;
+  }
+  @media all and ($viewport-type: $mobile) {
+    font-size: 2.125rem;
+    letter-spacing: 1.96px;
+  }
+}
+@mixin make-font-b($weight) {
+  font-family: $type-a;
+  font-weight: $weight;
+  letter-spacing: 2.94px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  font-size: 3.125rem;
+  @media all and ($viewport-type: $tabletl) {
+    font-size: 2.25rem;
+    letter-spacing: 2.02px;
+  }
+  @media all and ($viewport-type: $mobile) {
+    font-size: 1.75rem;
+    letter-spacing: 1.77px;
+  }
+}
+@mixin make-font-c($weight) {
+  font-family: $type-b;
+  font-weight: $weight;
+  letter-spacing: 0.27px;
+  line-height: 1.41;
+  font-size: 1.375rem;
+  @media all and ($viewport-type: $tabletp) {
+    font-size: 1.25rem;
+    letter-spacing: 0.74px;
+    line-height: 1.14;
+  }
+}
+@mixin make-font-d($weight) {
+  font-family: $type-a;
+  font-weight: $weight;
+  line-height: 1.27;
+  letter-spacing: 1.15px;
+  font-size: 1.375rem;
+  text-transform: uppercase;
+  /*this font does not have responsive option */
+}
+@mixin make-font-e($weight) {
+  font-family: $type-b;
+  font-weight: $weight;
+  line-height: 1.35;
+  letter-spacing: 0.26px;
+  font-size: 1rem;
+  /*this font does not have responsive option */
+}
+@mixin make-font-f($weight) {
+  font-family: $type-b;
+  font-weight: $weight;
+  line-height: 1.33;
+  letter-spacing: 0.28px;
+  font-size: 0.75rem;
+  /*this font does not have responsive option */
+}

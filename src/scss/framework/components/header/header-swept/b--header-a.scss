@@ -1,0 +1,18 @@
+.b--header-a{
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: map-get($color-options, a);
+    padding: $measure*2 $measure*12;
+    @media all and ($viewport-type: $tabletl){
+        padding: $measure*2 $measure*4;
+    }
+    &__content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+}

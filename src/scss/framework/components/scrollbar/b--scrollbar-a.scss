@@ -1,0 +1,3 @@
+.b--scrollbar-a {
+    @include make-scrollbar ($color: a, $colorbg: b, $width: 6px, $paddingright: 24px, $maxheight: 500px);
+}

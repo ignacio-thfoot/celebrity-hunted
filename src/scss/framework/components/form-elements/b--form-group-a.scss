@@ -1,0 +1,17 @@
+.b--form-group-a{
+    @include make-form-group-a();
+    &__loader{ 
+        position: absolute; 
+        top: 50%;
+        right: calc(-#{$measure}*5 - 32px);
+        transform: translateY(-50%);
+        margin-bottom: 80px!important;
+        @media all and ($viewport-type: $tabletp) {
+            position: relative;
+            top: auto;
+            right: auto;
+            transform: none;
+            margin: 16px 0;
+        }
+    }
+}

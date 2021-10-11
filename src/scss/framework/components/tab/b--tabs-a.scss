@@ -1,0 +1,29 @@
+.b--tabs-a{
+    &__hd{
+        &__list-item{
+            display: inline-block;
+            &__link{
+                display: block;
+                @include make-btn-a($colortext: a, $colorbg: b);
+                &:hover,&:focus{
+                    @include make-btn-interaction($colorhover: d);
+                }
+                &--is-active{
+                    background:map-get($color-options, d);
+                }
+            }
+        }
+    }
+    &__bd{
+        padding-top: $measure*2;
+        &__item{
+            overflow: hidden;
+            max-height: 0px;
+            // transition: all $time-a ease-in-out;
+            &--is-active{
+                max-height: 99rem;
+                opacity: 1;; 
+            }
+       }
+    }
+}

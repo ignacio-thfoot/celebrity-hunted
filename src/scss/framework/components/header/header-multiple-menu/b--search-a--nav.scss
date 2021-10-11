@@ -1,0 +1,95 @@
+
+/* ============================== search in NAVBAR */
+.b--search-a--nav{
+  position: relative;
+  display: block;
+  width: 100%;
+  background-color: $color-b;
+  opacity: 0;
+  height: 0vh;
+  top: 25px;
+  z-index: -1000;
+  transition: opacity $time-b $time-a ease-out, height $time-b $time-c ease-out;
+  @media all and ($viewport-type: $tabletl){
+    top: 20px;
+  }
+  .b--input--search__icon:before{
+    color: $color-a;
+  }
+  &__bd{
+    display: none;
+    overflow: hidden;
+    height: 53vh;
+    @media all and ($viewport-type: $tabletl){
+      height: 100vh;
+    }
+    &__results{
+      overflow-y: auto;
+      height: 100%;
+      max-height: 43vh;
+      padding-right: 50px;
+      margin-top: 56px;
+      @media all and ($viewport-type: $tabletl){
+        margin-top: 32px;
+      }
+      /* width */
+      &::-webkit-scrollbar {
+        width: 6px;
+        right: 10px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        box-shadow: none;
+        background: $color-a;
+        border-radius: 4px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: $color-b;
+        border-radius: 4px;
+      }
+      &__item{
+        padding: 24px 0px;
+        border-bottom: 1px solid $color-b;
+        @media all and ($viewport-type: $tabletp){
+          padding: 16px 0px;
+        }
+        &__link{
+          color: $color-a;
+          text-decoration: none!important;
+          transition: color $time-a ease-in-out;
+          &:hover, &:focus{
+            color: $color-c;
+          }
+        }
+      }
+    }
+  }
+  &__img-wrapper{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 41.66667%;
+    @media all and ($viewport-type: $tabletp){
+      display: none;
+    }
+  }
+  &--is-active{
+    position: relative;
+    opacity: 1;
+    height: 100vh;
+    z-index: 1000;
+    transition: opacity $time-b $time-a ease-out, height $time-a ease-out;
+    padding-top: 80px;
+    @media all and ($viewport-type: $tabletl){
+      padding-top: 40px;
+    }
+  }
+  &--is-active &{
+    &__bd{
+      display: block;
+    }
+  }
+}

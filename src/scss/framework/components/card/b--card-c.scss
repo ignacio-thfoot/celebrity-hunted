@@ -1,0 +1,52 @@
+.b--card-c {
+  @include make-row();
+  margin-right: 0rem;
+  margin-left: 0rem;
+  padding: $measure * 5 0;
+  background-color: map-get($color-options, a);
+  @media all and ($viewport-type: $mobile) {
+    padding: $measure * 3 0;
+    margin-bottom: $measure * 4;
+  }
+  &__item-left {
+    @include make-col(6);
+    @media all and ($viewport-type: $mobile) {
+      @include make-col(12);
+      margin-bottom: $measure * 3;
+      padding: 0px;
+    }
+    &__media-wrapper {
+      display: block;
+      &__media {
+        width: 100%;
+      }
+    }
+  }
+  &__item-right {
+    @include make-col(6);
+    color: map-get($color-options, d);
+    @media all and ($viewport-type: $mobile) {
+      @include make-col(12);
+      padding: 0px;
+    }
+    &__title {
+      @include make-font-d(300);
+      margin-bottom: $measure * 3;
+    }
+    &__date {
+      @include make-font-e(300);
+      margin-bottom: $measure * 3;
+    }
+    &__content {
+      @include make-font-e(300);
+      margin-bottom: $measure * 2;
+    }
+    &__link {
+      @include make-link-a($colortext: d);
+      &:hover,
+      &:focus {
+        @include make-link-a-interaction($colortext: c);
+      }
+    }
+  }
+}

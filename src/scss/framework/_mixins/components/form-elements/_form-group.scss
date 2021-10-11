@@ -1,0 +1,10 @@
+@mixin make-form-group-a{
+    margin-bottom: $measure*2;
+    position: relative;
+}
+
+@mixin make-form-group-b{
+    margin-bottom: $measure*2;
+    padding-top: $measure*2;
+    position: relative;
+}

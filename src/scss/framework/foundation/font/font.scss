@@ -1,0 +1,25 @@
+/* Font library */
+
+.f--font-a {
+  @include make-font-a(300);
+}
+
+.f--font-b {
+  @include make-font-b(300);
+}
+
+.f--font-c {
+  @include make-font-c(300);
+}
+
+.f--font-d {
+  @include make-font-d(300);
+}
+
+.f--font-e {
+  @include make-font-e(300);
+}
+
+.f--font-f {
+  @include make-font-f(300);
+}

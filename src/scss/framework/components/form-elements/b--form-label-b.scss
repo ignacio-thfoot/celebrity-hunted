@@ -1,0 +1,17 @@
+.b--form-label-b{
+    @include make-label-b(
+    $colorlabel: d,
+    $top: $measure*1.5,
+    $left: $measure*2
+    );
+}
+
+.b--form-input-b__item:focus ~ .b--form-label-b,
+.b--form-input-b__item:not(:placeholder-shown) ~ .b--form-label-b,
+.b--form-input-icon-b__item:focus ~ .b--form-label-b,
+.b--form-input-icon-b__item:not(:placeholder-shown) ~ .b--form-label-b,
+.b--form-textarea-b__item:focus ~ .b--form-label-b,
+.b--form-textarea-b__item:not(:placeholder-shown) ~ .b--form-label-b{
+    top: -$measure;
+    font-size: .65rem;
+}

@@ -1,0 +1,53 @@
+.b--form-checkbox-a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &__title {
+    padding-left: $measure;
+    display: block;
+    color: map-get($color-options, d);
+    // pointer-events: none;
+    @include make-font-f(300);
+  }
+  &__item {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: $measure * 1.75;
+    width: $measure * 1.75;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    &:checked ~ .b--form-checkbox-a__artwork {
+      &:after {
+        background: map-get($color-options, b);
+      }
+    }
+  }
+  &__artwork {
+    display: inline-block;
+    height: $measure * 1.75;
+    width: $measure * 1.75;
+    position: relative;
+    border: 1px solid rgba(map-get($color-options, b), 0.5);
+    &:after {
+      transition: all $time-a ease-in-out;
+      content: "";
+      width: $measure;
+      height: $measure;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &--error {
+    .b--form-checkbox-a__artwork {
+      border: 1px solid map-get($color-options, c);
+    }
+    & ~ .b--form-error-a {
+      display: block !important;
+    }
+  }
+}

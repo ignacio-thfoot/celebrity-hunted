@@ -1,0 +1,17 @@
+@mixin links(){
+    a {
+        text-underline-position: auto;
+        text-decoration:underline;
+        opacity: 1;
+        transition: opacity $time-a ease-in-out;
+        &:hover, &:focus{
+            opacity: 0.7;
+        }
+    }
+}
+
+@mixin links-color($_color-a){
+    a {
+        color:$_color-a;
+    }
+}

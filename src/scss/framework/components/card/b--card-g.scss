@@ -1,0 +1,12 @@
+.b--card-g {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__title {
+    @include make-font-d(300);
+  }
+  &__date {
+    @include make-font-e(300);
+    color: map-get($color-options, b);
+  }
+}
