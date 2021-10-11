@@ -9,7 +9,7 @@
 ?>
     <section class="b--section-a">
         <div class="f--container">
-            <div class="text-center f--col-4 f--offset-4 f--col-tabletl-6 f--offset-tabletl-3 f--col-tabletp-8 f--offset-tabletp-2 f--col-mobile-12 f--offset-mobile-0">
+            <div class="f--col-4 f--offset-4 f--col-tabletl-6 f--offset-tabletl-3 f--col-tabletp-8 f--offset-tabletp-2 f--col-mobile-12 f--offset-mobile-0">
                 <form action="" method="post" name="login_form">
                     <div class="b--form-group-a f--p-16">
                         <label for="text_user" class="b--form-label-a">User:</label>
@@ -23,7 +23,7 @@
                             <input type="password" id="text_pwd" name="text_pwd" class="b--form-input-a__item">
                         </div>
                     </div>
-                    <div class="b--form-group-a f--p-32 f--pt-0">
+                    <div class="b--form-group-a f--p-32 text-center">
                         <a href="javascript:document.login_form.submit()" class="b--link-a">ENTER</a>
                     </div>
                 </form>

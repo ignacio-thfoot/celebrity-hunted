@@ -6,7 +6,6 @@
     //]]></script>
     <?php else: ?>
         <script src="js/frontend/app_common.js" type="text/javascript"></script>
-        <script src="js/frontend/lt_common.js" type="text/javascript"></script>
     <?php endif; ?>
 </body>
 </html>
