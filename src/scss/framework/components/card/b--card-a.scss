@@ -1,43 +1,73 @@
 .b--card-a {
   display: block;
+  position: relative;
+  height: 300px;
   text-decoration: none;
-  padding: $measure * 8;
+  padding: $measure * 8 $measure*10;
   margin-bottom: $measure * 4;
-  background-color: map-get($color-options, d);
+  background-color: map-get($color-options, a);
   transition: background-color $time-a ease-in-out;
-  &__media-wrapper {
-    margin-bottom: $measure * 2;
-    @include make-ar-a(56.25%);
-    &__media {
-      @include make-ar-a-item__img();
-    }
+  clip-path: polygon(
+      0% 30%,     /* top left */
+      10% 0%,     /* top left */
+      100% 0%,    /* top right */
+      100% 0%,   /* top right */
+      100% 70%,  /* bottom right */
+      90% 100%,  /* bottom right */
+      100% 100%,   /* bottom left */
+      0 100%      /* bottom left */
+    );
+  @media all and ($viewport-type: $tabletl) {
+    padding: $measure*4 $measure*5;
   }
   &__bd {
+    padding: 0 $measure*5;
+    position:absolute;
+    transform: translate(-50%, -50%); 
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    line-height: 28px;
+    
     &__title {
-      margin-bottom: $measure * 2;
-      @include make-font-d(300);
-      color: map-get($color-options, a);
+      color: map-get($color-options, f);
+      margin-bottom: $measure*4;
     }
     &__content {
-      @include make-font-e(300);
-      color: map-get($color-options, a);
+      color: map-get($color-options, f);
+      margin-bottom: $measure*4;
     }
-  }
-  &:hover {
-    background-color: rgba(map-get($color-options, d), 0.67);
-  }
-  &--second {
-    background: map-get($color-options, e);
-    &:hover {
-      background-color: rgba(map-get($color-options, e), 0.67);
-    }
-  }
-  &--second & {
-    &__bd {
-      &__title {
-        font-weight: bold;
-        color: map-get($color-options, d);
+    &__btn {
+      position:relative;
+      @include make-link-a($colortext: f);
+      @include make-font-e(500);
+      text-decoration: underline;
+      padding: $measure*2;
+      background: #000;
+      letter-spacing: 7px;
+      width: 400px;
+      &__icon {
+        position: absolute;
+        left: 360px;
       }
     }
+  }
+}
+
+.card-shadow-wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%); 
+  left: 50%;
+  top: 50%;
+  width: 50%;
+  filter: drop-shadow(2px 2px 2px rgba(map-get($color-options, a), 0.9));
+  @media all and ($viewport-type: $tabletl) {
+    width: 60%;
+  }
+  @media all and ($viewport-type: $mobile) {
+    width: 80%;
   }
 }

@@ -81,6 +81,7 @@
     "blazy": "^1.8.2",
     "bootstrap": "^4.4.1",
     "core-js": "^3.8.1",
+    "jquery": "^3.6.0",
     "polyfill-nodelist-foreach": "^1.1.2",
     "tiny-slider": "^2.9.2",
     "vue": "^2.6.11",
