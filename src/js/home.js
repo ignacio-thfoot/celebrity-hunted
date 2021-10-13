@@ -1,22 +1,9 @@
 //CSS
 import './../scss/entries/home.scss';
 
-// polifill
-import './polifill/Polyfill';
-
-//Vue
-import Vue from 'vue'; //inits Vue
-
-import HomeVue from './vue/Home.vue'; //html for the Search functionality
-
-import Collapse from './../js/ds/Collapse';
-import CollapseB from './../js/ds/CollapseB';
-import Accordion from './../js/ds/Accordion';
-import Tab from './../js/ds/Tab';
 import Modal from './../js/ds/Modal';
-import Slider from './../js/ds/Slider';
 import Blazy from 'blazy';
-// import Navbar from './utilities/navbar';
+import axios from 'axios';
 
 class Home {
     constructor(){
@@ -24,56 +11,94 @@ class Home {
     }
 
     init(){
-        new Collapse();
-        new CollapseB();
-        new Accordion();
-        new Tab();
         new Modal();
         new Blazy({ 
             selector: '.b--lazy-a',
             successClass: 'b--lazy-a--fade-in',
         });
 
-        /**
-         * Initializes all sliders with b--slider-a__content class
-            * returns an array of sliders
-            * each slider availabe by its id
-            * For example if the slider id , id="test", 
-            * this.sliders.test has all these functionalities available
-            * this.slider.test.version()
-            * this.slider.test.getInfo()
-            * this.slider.test.goTo()
-            * this.slider.test.play()
-            * this.slider.test.paue()
-            * this.slider.test.refresh()
-            * this.slider.test.destroy()
-            * this.slider.test.rebuild()
-        */
-        this.sliders = new Slider({
-            sliderClass : '.b--slider-a__content',
-            itemsMobile : 1,
-            slideByMobile : 1,
-            lazyload : true,
-            controls : true,
-            controlsContainer : '.b--slider-a__controls',
-            nav : true,
-            itemsTabletp : 1,
-            slideByTabletp : 1,
-            itemsTabletl : 1,
-            slideByTabletl : 1,
-            itemsDesktop : 1,
-            slideByDesktop : 1,
-            gutter : 0,
-            autoplay : true,
-            progresItem :'.js--progress-item'
-        }); 
+        document.addEventListener("loaded", (e) => {
+            setTimeout(() => {
+                let preloader = document.querySelector(".b--preloader-a");
+                preloader.classList.remove("b--preloader-a--is-active");
 
-        new Vue({
-            el: '#home',
-            render: h => h(HomeVue),
+                this.events();
+
+            }, 50);            
         });
-    }   
+        
+        window.selectedTeams = [];
+        window.email = '';
+    }
 
+    events() {
+        let team_buttons = document.querySelectorAll(".team_buttons");
+
+        team_buttons.forEach((team) => {
+            team.addEventListener("click", (e) => {
+                this.selectTeam(team);
+            });
+        });
+
+        let team_hotspots = document.querySelectorAll(".team_hotspots");
+        team_hotspots.forEach((hotspot) => {
+            hotspot.addEventListener("click", (e) => {
+                console.log(hotspot.id);
+            });
+        });
+
+    }
+
+    selectTeam(team) {
+        var result = window.selectedTeams.filter(obj => {
+            return obj.team === team.id
+        });
+
+        console.log(result);
+
+        if(result.length == 0) {
+            window.currentTeam = team.id;
+            var d = new Date();
+            var n = d.getMilliseconds();
+            window.selectedTeams.push({"team" : team.id, "start" : n, "stop":''});
+            document.querySelector("#" + team.id).classList.add("is--active");
+        } else {
+            alert("YOU HAVE ALREADY CHOSEN THIS TEAM");
+        }
+    }
+
+    findHotSpot() {
+
+    }
+
+    createParticipant(email, type) {
+        axios.post('//localhost:8000/api/participants',{
+            'email':email,
+            'type': type
+        })
+        .then((res) => {
+            console.log("RESPONSE", res);
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        });
+    }
+
+    testApi() {
+        
+
+        axios.post('//localhost:8000/api/scores',{
+            'teamName':'team-1',
+            'timePassed' : Math.floor(Math.random() * (90 - 60) + 60)
+        })
+        .then((res) => {
+            console.log("RESPONSE", res);
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        });
+    }
 }
+
 export default Home;
 new Home();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParticipantsTable extends Migration
+class AddTypeToParticipantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateParticipantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('participants', function (Blueprint $table) {
-            $table->id();
-            $table->string('email');
-            $table->string('type');
-            $table->timestamps();
+        Schema::table('participants', function (Blueprint $table) {
+            //
         });
     }
 
@@ -28,6 +25,8 @@ class CreateParticipantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('participants');
+        Schema::table('participants', function (Blueprint $table) {
+            //
+        });
     }
 }

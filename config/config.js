@@ -6,7 +6,8 @@ module.exports = {
     public_paths: {
         virtual: 'http://localhost:9000/',
         local: wordpress_folder + '/js/frontend/',
-        //stage: '//webpackdev.wpengine.com/'+ 'wp-content/themes/' + theme_name + '/theme/js/frontend/', // Define it later
+        api_local: 'http://localhost:8000/api',
+        stage: '//webpackdev.wpengine.com/'+ 'wp-content/themes/' + theme_name + '/theme/js/frontend/', // Define it later
         // production: 'production/placeholder' // Define it later
     }
 }
