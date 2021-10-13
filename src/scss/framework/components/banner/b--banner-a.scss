@@ -1,0 +1,7 @@
+.b--banner-a {
+    background: map-get($color-options, a);
+    padding: $measure*1.5 0;
+    &__content {
+        text-align: center;
+    }
+}

@@ -14,16 +14,6 @@
 // lazy
 @import "./../framework/components/lazy/b-lazy.scss";
 
-// header-swept
-@import "./../framework/components/header/header-swept/b--brand-a.scss";
-@import "./../framework/components/header/header-swept/b--burger-a.scss";
-@import "./../framework/components/header/header-swept/b--header-a.scss";
-@import "./../framework/components/header/header-swept/b--nav-a.scss";
-
-// footer
-@import "./../framework/components/footer/b--footer-a.scss";
-@import "./../framework/components/nav/b--nav-b.scss";
-
 // block rotate - start
 @import "./../framework/components/rotate/b--rotate-a.scss";
 // block rotate - end
@@ -40,14 +30,6 @@
 @import "./../framework/components/block-text/b--bt-c"; //approved
 // block text - end
 
-// block list - start
-@import "./../framework/components/list-horizontal/b--hlist-a"; //approved
-@import "./../framework/components/list-horizontal/b--hlist-b"; //approved
-@import "./../framework/components/list-horizontal/b--hlist-c"; //approved
-@import "./../framework/components/list-horizontal/b--hlist-d"; //approved
-@import "./../framework/components/list-vertical/b--vlist-a"; //approved
-// block list - end
-
 // block link - start
 @import "./../framework/components/link/b--link-a"; //approved
 @import "./../framework/components/link/b--link-b"; //approved
@@ -61,21 +43,6 @@
 
 /* PAGE COMPONENTS START */
 
-// block icon - start
-@import "./../framework/components/icon/b--icon-a"; //approved
-// block icon - start
-
-// block pill - start
-@import "./../framework/components/pill/b--pill-a"; //approved
-// block pill - end
-
-// block accordion - start
-@import "./../framework/components/accordion/b--accordion-a";
-// block accordion - end
-
-//block tab - start
-@import "./../framework/components/tab/b--tabs-a";
-//block tab - end
 
 //block modal - start
 @import "./../framework/components/modal/b--modal-a";
@@ -146,3 +113,5 @@
 @import "./../framework/components/link/b--link-a.scss";
 //link - end
 
+// banner
+@import "./../framework/components/banner/b--banner-a.scss";

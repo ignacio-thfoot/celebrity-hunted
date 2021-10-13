@@ -6,6 +6,10 @@
     //]]></script>
     <?php else: ?>
         <script src="js/frontend/app_common.js" type="text/javascript"></script>
+        
     <?php endif; ?>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6165c13002388eed"></script>
+
 </body>
 </html>

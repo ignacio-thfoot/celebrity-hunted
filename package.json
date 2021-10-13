@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "@andresclua/jsutil": "^1.0.4",
+    "axios": "^0.23.0",
     "blazy": "^1.8.2",
     "bootstrap": "^4.4.1",
     "core-js": "^3.8.1",

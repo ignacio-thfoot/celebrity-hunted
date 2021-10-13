@@ -21,11 +21,11 @@
     @include headings ();
     @include headings-color ( $_color-a: $color-a );
     @include paragraphs ();
-    @include paragraphs-color ( $_color-a: $color-a );
+    @include paragraphs-color ( $_color-a: $color-f );
     @include lists ();
     @include lists-color ( $_color-a: $color-a );
     @include links();
-    @include links-color($_color-a: $color-a);
+    @include links-color($_color-a: $color-f);
     @include wp-block-quote();
     @include wp-block-quote-color($_color-a: $color-a);
     @include wp-block-image();

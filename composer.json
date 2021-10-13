@@ -1,7 +1,8 @@
 {
     "name": "nacho/celebrity-hunted",
     "require": {
-        "laravel/laravel": "^8.6"
+        "laravel/laravel": "^8.6",
+        "laravel/passport": "^10.1"
     },
     "authors": [
         {

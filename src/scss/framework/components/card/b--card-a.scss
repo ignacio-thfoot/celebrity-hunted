@@ -1,12 +1,17 @@
 .b--card-a {
   display: block;
-  position: relative;
+  position: absolute;
+  transform: translate(-50%, -50%); 
+  left: 50%;
+  top: 50%;
+  width: 50%;
   height: 300px;
   text-decoration: none;
   padding: $measure * 8 $measure*10;
   margin-bottom: $measure * 4;
   background-color: map-get($color-options, a);
   transition: background-color $time-a ease-in-out;
+  width: 60%;
   clip-path: polygon(
       0% 30%,     /* top left */
       10% 0%,     /* top left */
@@ -43,7 +48,6 @@
     &__btn {
       position:relative;
       @include make-link-a($colortext: f);
-      @include make-font-e(500);
       text-decoration: underline;
       padding: $measure*2;
       background: #000;
