@@ -118,18 +118,6 @@ module.exports = env => {
         externals: {
             jquery: 'jQuery'
         },
-        optimization: {
-            splitChunks: {
-                cacheGroups: {
-                    js: {
-                        test: /\.js$/,
-                        name: "lt_common",
-                        chunks: "all",
-                        minChunks: 2,
-                    }
-                }
-            }
-        },
         devServer: {
             port: 9000,
             hot: true,

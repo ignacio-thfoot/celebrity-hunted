@@ -5,7 +5,6 @@
         header("location:login.php");     
     endif;
 ?>
-    <body>
         <div class="b--banner-a" style="position: relative; top: auto;">
             <div class="f--container">
                 <div class="f--row">

@@ -1,0 +1,13 @@
+{
+    "max_teams" : 4,
+    "text" : {
+        "rgpd" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, obcaecati odio eos tempore inventore sapiente animi, quisquam numquam itaque perspiciatis aliquid, vel nam dolore atque aspernatur delectus iste. Tempora, obcaecati?",
+        "instructions": "Retrouve sur l'image au moins une team et tente de remporter une watch partie avec un des membres du casting.",
+        "button_start": "commencer la chasse",
+        "win_title" : "Felicitations !",
+        "win_text" : "Si tu souhaites participer au tirage au sort pour remporter ta watch partie",
+        "cookies_text" : "Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant à naviguer sur ce site, vous acceptez nos cookies.",
+        "cookies_accept" : "Accepter",
+        "cookies_refuse": "Refuser"
+    }
+}

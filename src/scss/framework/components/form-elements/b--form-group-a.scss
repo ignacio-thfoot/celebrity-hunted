@@ -1,5 +1,7 @@
 .b--form-group-a{
     @include make-form-group-a();
+    margin: 0px 80px;
+    position: relative;
     &__loader{ 
         position: absolute; 
         top: 50%;

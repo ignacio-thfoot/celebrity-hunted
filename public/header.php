@@ -27,3 +27,5 @@
     <?php endif; ?>
     <script src="js/pano.js"></script>
 </head>
+
+<body>

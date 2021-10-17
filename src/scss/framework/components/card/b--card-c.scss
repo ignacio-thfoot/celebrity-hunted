@@ -1,52 +1,94 @@
 .b--card-c {
-  @include make-row();
-  margin-right: 0rem;
-  margin-left: 0rem;
-  padding: $measure * 5 0;
-  background-color: map-get($color-options, a);
-  @media all and ($viewport-type: $mobile) {
-    padding: $measure * 3 0;
-    margin-bottom: $measure * 4;
+  display: block;
+  position: absolute;
+  transform: translate(-50%, -50%); 
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  text-decoration: none;
+  color: map-get($color-options, f);
+  width: 60%;
+  height: 401px;
+  margin: 0 0 $measure * 6 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $time-a ease-in-out;
+  @media all and ($viewport-type: $laptop) {
+    width: 75%;
   }
-  &__item-left {
-    @include make-col(6);
-    @media all and ($viewport-type: $mobile) {
-      @include make-col(12);
-      margin-bottom: $measure * 3;
-      padding: 0px;
+  @media all and ($viewport-type: $tabletp) {
+    width: 90%;
+  }
+  &__back-items {
+    @include make-layer-absolute();
+    transform: scale(1);
+    transition: all $time-a ease-in-out;
+    z-index: 0;
+    &__media {
+      min-width: 100%;
+      min-height: 100%;
     }
-    &__media-wrapper {
-      display: block;
-      &__media {
-        width: 100%;
+  }
+  &__front-items {
+    position: relative;
+    margin-top: $measure*8;
+    padding: 0 $measure*25;
+    z-index: 1;
+    @media all and ($viewport-type: $laptop) {
+      padding: 0 $measure * 20;
+    }
+    @media all and ($viewport-type: $tabletl) {
+      padding: 0 $measure * 15;
+    }
+    &__bd {
+      margin-bottom: $measure;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 7px;
+      &__title {
+        color: map-get($color-options, f);
+        margin-bottom: $measure*2;
+        text-decoration: underline;
+      }
+      &__content {
+        color: map-get($color-options, f);
+        font-size: 1.5rem;
+        margin-bottom: $measure*4;
+        @media all and ($viewport-type: $tabletp) {
+          font-size: 1.2rem;
+        }
+      }
+      &__input {
+        position:relative;
+        text-decoration: underline;
+        text-transform: uppercase;
+        padding: $measure*2;
+        background: #000;
+        letter-spacing: 7px;
+        color: map-get($color-options, f);
+        width: 80%;
+        &::placeholder {
+          text-align: center;
+          text-decoration: underline;
+          text-transform: uppercase;
+        }
+        &__icon {
+          width: 1em;
+          height: 1em;
+          position: absolute;
+          top: 50%;
+          right:0;
+          transform: translate(-80px,-50%);
+          cursor: pointer;
+          path{
+            fill: map-get($color-options, f);
+          }
+        }
       }
     }
   }
-  &__item-right {
-    @include make-col(6);
-    color: map-get($color-options, d);
-    @media all and ($viewport-type: $mobile) {
-      @include make-col(12);
-      padding: 0px;
-    }
-    &__title {
-      @include make-font-d(300);
-      margin-bottom: $measure * 3;
-    }
-    &__date {
-      @include make-font-e(300);
-      margin-bottom: $measure * 3;
-    }
-    &__content {
-      @include make-font-e(300);
-      margin-bottom: $measure * 2;
-    }
-    &__link {
-      @include make-link-a($colortext: d);
-      &:hover,
-      &:focus {
-        @include make-link-a-interaction($colortext: c);
-      }
-    }
+  &--is-visible {
+    opacity: 1;
+    pointer-events: all;
   }
 }

@@ -26,7 +26,8 @@ Route::post('participants', 'ParticipantController@store');
 Route::post('participants', function(Request $request) {
     $data = $request->all();
     return Participant::create([
-        'email' => $data['email']
+        'email' => $data['email'],
+        'type' => $data['type']
     ]);
 });
 
