@@ -6,11 +6,11 @@
     background-repeat: no-repeat;
     margin: auto;
     position: fixed;
-    top: $measure*3;
+    top: 0;
     width: 80%;
     border-radius: $border-radius-a;
     box-shadow: $shadow-a;
-    padding: $measure*4 $measure*5;
+    padding: $measure*2 $measure*5;
     left: 0; right:0;
     z-index: 100;
     clip-path: polygon(0 0, 100% 0, 100% 20%, 100% 69%, 95% 100%, 5% 100%, 0 69%, 0% 20%);
@@ -22,9 +22,9 @@
     // }
     &__bd {
         @include make-font-b(300);
-        font-size: .7em;
+        font-size: .6em;
         color: map-get($color-options, f);
-        margin-bottom: $measure*4;
+        margin-bottom: $measure*2;
         @media all and ($viewport-type: $tabletp){
             margin-bottom: $measure*2;
         }

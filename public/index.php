@@ -49,11 +49,23 @@
             </div>
         </div>
 
-        <!-- BANNER -->
-
-        <div class="b--banner-a b--content-a">
-            <p class="b--banner-a__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam nulla vitae quas dolores quo mollitia repudiandae quos laboriosam deserunt.</p>
+        <div class="b--card-d">
+            <div class="b--card-d__back-items">
+                <img class="b--card-d__back-items__media" src="img/card-bg-desktop.png" alt="">
+            </div>
+            <div class="b--card-d__front-items">
+                <div class="b--card-d__front-items__bd">
+                    <h3 class="b--card-d__front-items__bd__title" data-text="thanks_title"></h3>
+                    <p class="b--card-d__front-items__bd__content" data-text="thanks_text"></p>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <!-- BANNER -->
+
+    <div class="b--banner-a b--content-a">
+        <p class="b--banner-a__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam nulla vitae quas dolores quo mollitia repudiandae quos laboriosam deserunt.</p>
     </div>
 
     <!-- PRELOADER -->
@@ -67,22 +79,22 @@
 
     <!-- COOKIES -->
     <div class="b--cookies-a">
-			<div class="f--row">
-				<a href="#" class="b--cookies-a__media-wrapper js--click-closeCookie" aria-label="close cookies">
-					<i class="b--cookies-a__media-wrapper__icon b--btn-close symbol symbol-close"></i>
-				</a>
-				<div class="f--col-12 text-center">
-					<p class="b--cookies-a__bd" data-text="cookies_text">Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En Continuant à naviguer notre site, vous acceptez nos cookies.</p>
-				</div>
+        <div class="f--row">
+            <a href="#" class="b--cookies-a__media-wrapper js--click-closeCookie" aria-label="close cookies">
+                <i class="b--cookies-a__media-wrapper__icon b--btn-close symbol symbol-close"></i>
+            </a>
+            <div class="f--col-12 text-center">
+                <p class="b--cookies-a__bd" data-text="cookies_text"></p>
             </div>
-            <div class="f--row f--mb-32">
-                <div class="f--col-6 text-right">
-					<a href="#" class="b--cookies-a__btn js--click-setCookie" data-text="cookies_accept"></a>
-				</div>
-                <div class="f--col-6 text-left">
-					<a href="#" class="b--cookies-a__btn js--click-refuseCookie" data-text="cookies_refuse"></a>
-				</div>
-			</div>
+        </div>
+        <div class="f--row f--mb-32">
+            <div class="f--col-6 text-right">
+                <a href="#" class="b--cookies-a__btn js--click-setCookie" data-text="cookies_accept"></a>
+            </div>
+            <div class="f--col-6 text-left">
+                <a href="#" class="b--cookies-a__btn js--click-refuseCookie" data-text="cookies_refuse"></a>
+            </div>
+        </div>
 	</div>
 
     <!-- ROTATE -->

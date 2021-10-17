@@ -14,8 +14,6 @@ class Home {
     }
 
     init(){
-        this.createParticipant('osos@osos.com','jeux');
-        this.createScore("team1", 44);
         new Modal();
         new Blazy({ 
             selector: '.b--lazy-a',
@@ -23,6 +21,8 @@ class Home {
         });
         
         this.loadTextData();
+        
+        this.cookiesClickEvent();
 
         document.addEventListener("loaded", (e) => {
             setTimeout(() => {
@@ -33,6 +33,12 @@ class Home {
         
         window.selectedTeams = [];
         window.email = '';
+    }
+
+    cookiesClickEvent() {
+        document.querySelector(".js--click-setCookie").addEventListener("click", (e) => {
+            document.querySelector(".b--cookies-a").style.display = 'none';
+        });
     }
 
     loadTextData() {
@@ -48,6 +54,14 @@ class Home {
     hidePreloader() {
         let preloader = document.querySelector(".b--preloader-a");
         preloader.classList.remove("b--preloader-a--is-active");
+    }
+
+    showShareModal() {
+        document.querySelector(".b--card-d").classList.add("b--card-d--is-visible");
+    }
+
+    hideShareModal() {
+        document.querySelector(".b--card-d").classList.remove("b--card-d--is-visible");
     }
 
     events() {
@@ -85,18 +99,14 @@ class Home {
             window.addEventListener('orientationchange', this.checkOrientationChange.bind(this));
         }
 
-        //cookies
-
-        document.querySelector(".js--click-setCookie").addEventListener("click", (e) => {
-            document.querySelector(".b--cookies-a").style.display = 'none';
-        })
-
     }
 
     registerEmail() {
         var email = document.querySelector(".b--card-c__front-items__bd__input").value;
         if (this.validateEmail(email)) {
             this.createParticipant(email, 'jeux');
+        } else {
+            alert("E-Mail pas correct.");
         }
     }
 

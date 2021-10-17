@@ -60,15 +60,6 @@
 @import "./../framework/components/spinner/b--spinner-a";
 //block spinner -ok end
 
-//block card -  start
-@import "./../framework/components/card/b--card-a";
-@import "./../framework/components/card/b--card-b";
-@import "./../framework/components/card/b--card-c";
-@import "./../framework/components/card/b--card-d";
-@import "./../framework/components/card/b--card-e";
-@import "./../framework/components/card/b--card-f";
-@import "./../framework/components/card/b--card-x.scss";
-
 /* form start */
 @import "./../framework/components/form-elements/b--form-checkbox-a.scss";
 @import "./../framework/components/form-elements/b--form-error-a.scss";
@@ -119,3 +110,11 @@
 
 //cookies
 @import "./../framework/components/cookies/b--cookies-a.scss";
+
+// cards
+@import "./../framework/components/card/b--card-a";
+@import "./../framework/components/card/b--card-b";
+@import "./../framework/components/card/b--card-c";
+@import "./../framework/components/card/b--card-d";
+@import "./../framework/components/card/b--card-e";
+@import "./../framework/components/card/b--card-f";

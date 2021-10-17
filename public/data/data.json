@@ -8,6 +8,8 @@
         "win_text" : "Si tu souhaites participer au tirage au sort pour remporter ta watch partie",
         "cookies_text" : "Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant à naviguer sur ce site, vous acceptez nos cookies.",
         "cookies_accept" : "Accepter",
-        "cookies_refuse": "Refuser"
+        "cookies_refuse": "Refuser",
+        "thanks_title" : "Merci !",
+        "thanks_text" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis cupiditate sequi molestias corporis, commodi vero! Officia saepe id magni accusamus vero ipsa quasi ipsum nobis, eveniet, esse reiciendis facere non."
     }
 }
