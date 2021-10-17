@@ -58,7 +58,14 @@
                     <h3 class="b--card-d__front-items__bd__title" data-text="thanks_title"></h3>
                     <p class="b--card-d__front-items__bd__content" data-text="thanks_text"></p>
                 </div>
+                <div class="b--card-d__front-items__ft">
+                    <img src="img/FB.png" class="b--card-d__front-items__ft__icon">
+                    <img src="img/TWITTER.png" class="b--card-d__front-items__ft__icon">
+                </div>
             </div>
+            <a href="#"  class="b--card-d__media-wrapper">
+                <img class="b--card-d__media-wrapper__icon" src="img/BOUTON_CROIX.png">
+            </a>
         </div>
     </div>
 

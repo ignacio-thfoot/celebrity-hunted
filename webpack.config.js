@@ -53,7 +53,7 @@ module.exports = env => {
         cssLoader  = [MiniCssExtractPlugin.loader, 'css-loader','postcss-loader']
         sassLoader = [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'];
         imageDestination = './../../img/';
-        imageBasePath = '../../public/img/';
+        imageBasePath = '../../img/';
         fontDestination = './../../css/fonts/';
         fontBasePath = './fonts/';
         filename_output = '[name].js';

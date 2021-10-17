@@ -32,13 +32,16 @@
   &__front-items {
     position: relative;
     margin-top: $measure*8;
-    padding: 0 $measure*25;
+    padding: 0 $measure*20;
     z-index: 1;
     @media all and ($viewport-type: $laptop) {
-      padding: 0 $measure * 20;
+      padding: 0 $measure * 15;
     }
     @media all and ($viewport-type: $tabletl) {
-      padding: 0 $measure * 15;
+      padding: 0 $measure * 10;
+    }
+    @media all and ($viewport-type: $tabletl) {
+      padding: 0 $measure * 2;
     }
     &__bd {
       margin-bottom: $measure;

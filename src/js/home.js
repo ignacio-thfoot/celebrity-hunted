@@ -56,6 +56,14 @@ class Home {
         preloader.classList.remove("b--preloader-a--is-active");
     }
 
+    showSignupForm() {
+        document.querySelector(".b--card-c").classList.add("b--card-c--is-visible");
+    }
+
+    hideSignupForm() {
+        document.querySelector(".b--card-c").classList.remove("b--card-c--is-visible");
+    }
+
     showShareModal() {
         document.querySelector(".b--card-d").classList.add("b--card-d--is-visible");
     }
@@ -80,6 +88,10 @@ class Home {
         document.querySelector(".b--card-c__front-items__bd__input__icon").addEventListener("click", () => {
             this.registerEmail();
         });
+
+        document.querySelector(".b--card-d__media-wrapper__icon").addEventListener("click", () => {
+            document.querySelector(".b--card-d").classList.remove("b--card-d--is-visible");
+        })
 
         //rotate
         window.mobilecheck = () => {
@@ -129,7 +141,7 @@ class Home {
 
     teamClickHandler(e){
         this.selectTeam(e.srcElement);
-        document.querySelector(".b--card-c").classList.remove("b--card-c--is-visible");
+        this.hideSignupForm();
         console.log(e.srcElement.id);
     }
 
@@ -165,15 +177,11 @@ class Home {
                 team.classList.add("is--active");
                 let time = Math.round((result[0].stop - result[0].start) / 1000);
                 this.createScore(team.id, time);
-                this.modalTeamFound();
+                this.showSignupForm();
             } else {
                 //Team already found
             }
         }
-    }
-
-    modalTeamFound() {
-        document.querySelector(".b--card-c").classList.add("b--card-c--is-visible");
     }
 
     showPrettyTime(totalSeconds) {
@@ -194,6 +202,8 @@ class Home {
         })
         .then((res) => {
             console.log("RESPONSE", res);
+            this.hideSignupForm();
+            this.showShareModal();
         })
         .catch((err) => {
             console.log("ERROR", err);

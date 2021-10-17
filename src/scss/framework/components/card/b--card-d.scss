@@ -32,13 +32,13 @@
   &__front-items {
     position: relative;
     margin-top: $measure*8;
-    padding: 0 $measure*25;
+    padding: 0 $measure*10;
     z-index: 1;
     @media all and ($viewport-type: $laptop) {
-      padding: 0 $measure * 20;
+      padding: 0 $measure * 8;
     }
     @media all and ($viewport-type: $tabletl) {
-      padding: 0 $measure * 15;
+      padding: 0 $measure * 6;
     }
     &__bd {
       margin-bottom: $measure;
@@ -47,6 +47,7 @@
       letter-spacing: 7px;
       &__title {
         color: map-get($color-options, f);
+        font-size: 1em;
         margin-bottom: $measure*2;
         text-decoration: underline;
       }
@@ -58,33 +59,24 @@
           font-size: 1.2rem;
         }
       }
-      &__input {
-        position:relative;
-        text-decoration: underline;
-        text-transform: uppercase;
-        padding: $measure*2;
-        background: #000;
-        letter-spacing: 7px;
-        color: map-get($color-options, f);
-        width: 80%;
-        &::placeholder {
-          text-align: center;
-          text-decoration: underline;
-          text-transform: uppercase;
-        }
-        &__icon {
-          width: 1em;
-          height: 1em;
-          position: absolute;
-          top: 50%;
-          right:0;
-          transform: translate(-80px,-50%);
-          cursor: pointer;
-          path{
-            fill: map-get($color-options, f);
-          }
-        }
+    }
+    &__ft {
+      text-align: center;
+      &__icon {
+        padding: $measure*4;
+        width: 128px;
+        height: 128px;
       }
+    }
+  }
+  &__media-wrapper {
+    &__icon {
+        position: absolute;
+        font-size: 1.5rem;
+        top: 32px;
+        right: 32px;
+        text-align: right;
+        color: map-get($color-options, a);
     }
   }
   &--is-visible {
