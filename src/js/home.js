@@ -6,7 +6,6 @@ import Blazy from 'blazy';
 import axios from 'axios';
 import data from './../data/data.json';
 
-
 class Home {
     constructor(){
         this.init();
@@ -26,6 +25,7 @@ class Home {
 
         document.addEventListener("loaded", (e) => {
             setTimeout(() => {
+                this.hideKrpanoButtons();
                 this.hidePreloader();
                 this.events();
             }, 50);            
@@ -33,6 +33,7 @@ class Home {
         
         window.selectedTeams = [];
         window.email = '';
+
     }
 
     cookiesClickEvent() {
@@ -42,13 +43,11 @@ class Home {
     }
 
     loadTextData() {
-
         var textElements = document.querySelectorAll("[data-text]");
 
         textElements.forEach((el) => {
             el.innerHTML = data.text[el.getAttribute("data-text")];
         });
-        
     }
 
     hidePreloader() {
@@ -56,7 +55,16 @@ class Home {
         preloader.classList.remove("b--preloader-a--is-active");
     }
 
-    showSignupForm() {
+    showSignupForm(team) {
+        var result = window.selectedTeams.filter(obj => {
+            return obj.team === team;
+        });
+        
+        let totalSeconds = result[0].totalSeconds;
+        let content = document.querySelector(".b--card-c__front-items__bd__content");
+        content.innerHTML = content.innerHTML.replace("{team_name}", data.teams[team])
+        .replace("{time}", this.showPrettyTime(totalSeconds))
+        .replace("{average}", this.showPrettyTime(result[0].teamAverage));
         document.querySelector(".b--card-c").classList.add("b--card-c--is-visible");
     }
 
@@ -75,9 +83,12 @@ class Home {
     events() {
         document.querySelector(".b--card-b__front-items__bd__btn").addEventListener("click", () =>  {
             document.querySelector(".b--card-b").classList.toggle("b--card-b--is-hidden");
+            this.showKrpanoButtons();
+            this.startTimer();
         });
 
-        document.querySelectorAll(".team_buttons").forEach((team) => {
+        //team pics buttons
+        document.querySelectorAll("div[id$='_button']").forEach((team) => {
             team.addEventListener("click", this.teamClickHandler.bind(this));
         });
 
@@ -88,6 +99,10 @@ class Home {
         document.querySelector(".b--card-c__front-items__bd__input__icon").addEventListener("click", () => {
             this.registerEmail();
         });
+
+        document.querySelector(".b--card-c__media-wrapper").addEventListener("click", () => {
+            document.querySelector(".b--card-c").classList.remove("b--card-c--is-visible");
+        })
 
         document.querySelector(".b--card-d__media-wrapper__icon").addEventListener("click", () => {
             document.querySelector(".b--card-d").classList.remove("b--card-d--is-visible");
@@ -100,10 +115,6 @@ class Home {
             return check;
         };
     
-        /**
-         * If on mobile, checks if webpage is loader vertically or horizontally, shows rotate alert
-         * accordingly and registers rotation event 
-         */
         if(window.mobilecheck() == true){
             if(screen.orientation.angle == 90){
                 this.rotate.classList.add("b--rotate-a--is-visible");
@@ -111,6 +122,11 @@ class Home {
             window.addEventListener('orientationchange', this.checkOrientationChange.bind(this));
         }
 
+    }
+
+    startTimer() {
+        let d = performance.now();
+        window.startTime = d;
     }
 
     registerEmail() {
@@ -127,9 +143,6 @@ class Home {
         return re.test(String(email).toLowerCase());
     }
 
-    /**
-    * If mobile is rotated, shows rotate alert accordingly
-    */
     checkOrientationChange(){
         let screenOrientation = screen.orientation.angle;
         if(screenOrientation == 0){
@@ -140,9 +153,7 @@ class Home {
     }
 
     teamClickHandler(e){
-        this.selectTeam(e.srcElement);
         this.hideSignupForm();
-        console.log(e.srcElement.id);
     }
 
     hotspotClickHandler(e){
@@ -150,51 +161,57 @@ class Home {
         console.log(e.srcElement.id);
     }
 
-    selectTeam(team) {
-        var result = window.selectedTeams.filter(obj => {
-            return obj.team === team.id
-        });
-        if(result.length == 0) {
-            window.currentTeam = team.id;
-            let d = performance.now();
-            window.selectedTeams.push({"team" : team.id, "start" : d, "stop": 0});
-        }
+    hideKrpanoButtons() {
+        $("#team_container, #button_trailer, #direction_buttons, #zoom_buttons, #fullscreen, #about").fadeTo("fast", 0);
+    }
+
+    showKrpanoButtons() {
+        $("#team_container, #button_trailer, #direction_buttons, #zoom_buttons, #fullscreen, #about").fadeTo("fast", 1);
     }
 
     findHotSpot(hotspot) {
+
         var result = window.selectedTeams.filter(obj => {
-            return obj.team + "_hotspot" === hotspot.id;
+            return obj.team === hotspot.id;
         });
 
         if(result.length == 0) {
-            //team not yet selected
+            var stopTime = performance.now();
+            let team_button = document.getElementById(hotspot.id + "_button");
+            team_button.classList.add("is--active");
+            var time = Math.round((stopTime - window.startTime) / 1000);
+            
+            window.selectedTeams.push({
+                "team" : hotspot.id,
+                "startTime" : window.startTime,
+                "stopTime" : stopTime,
+                "totalSeconds" : time
+            });
+
+            this.createScore(hotspot.id, time);
         } else {
-            if(result[0].stop == 0) {
-                let d = performance.now();
-                result[0].stop = d;
-                console.log(result[0]);
-                let team = document.getElementById(result[0].team);
-                team.classList.add("is--active");
-                let time = Math.round((result[0].stop - result[0].start) / 1000);
-                this.createScore(team.id, time);
-                this.showSignupForm();
-            } else {
-                //Team already found
-            }
+            this.showSignupForm(hotspot.id);
         }
     }
 
     showPrettyTime(totalSeconds) {
+        console.log("totalseconds", totalSeconds);
         var hours = Math.floor(totalSeconds / 3600);
         totalSeconds %= 3600;
         var minutes = Math.floor(totalSeconds / 60);
         var seconds = totalSeconds % 60;
-        return minutes + ' minutes, ' + seconds + ' seconds.';
+        if(totalSeconds > 59) {
+            return minutes + ':' + seconds + 'MN';
+        } else {
+            return seconds + 'S';
+        }
+
+        
     }
 
     createParticipant(email, type) {
         //http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
-        //http://locahost:8000/
+        //http://127.0.0.1:8000/
         let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
         axios.post(host + 'api/participants',{
             'email': email,
@@ -212,14 +229,22 @@ class Home {
 
     createScore(team, timePassed) {
         //http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
-        //http://locahost:8000/
-        let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
+        //http://127.0.0.1:8000/
+        let host = 'http://127.0.0.1:8000/';
         axios.post(host + 'api/scores',{
             'teamName':team,
             'timePassed' : timePassed,
         })
         .then((res) => {
             console.log("RESPONSE", res);
+
+            var result = window.selectedTeams.filter(obj => {
+                return obj.team === res.data.teamName;
+            });
+
+            result[0].teamAverage = res.data.avg;
+
+            this.showSignupForm(res.data.teamName);
         })
         .catch((err) => {
             console.log("ERROR", err);

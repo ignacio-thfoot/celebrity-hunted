@@ -31,7 +31,7 @@
   }
   &__front-items {
     position: relative;
-    padding: $measure * 8 $measure * 25;
+    padding: $measure * 5 $measure * 25;
     z-index: 1;
     @media all and ($viewport-type: $laptop) {
       padding: $measure * 8 $measure * 20;
@@ -46,11 +46,17 @@
       letter-spacing: 7px;
       &__title {
         color: map-get($color-options, f);
-        margin-bottom: $measure;
+        font-size: 2rem;
+        text-decoration: underline;
+        margin-bottom: $measure*6;
+        text-transform: uppercase;
+        letter-spacing: 7px;
+        display: inline-block;
+        text-underline-offset: .3em;
       }
       &__content {
         color: map-get($color-options, f);
-        font-size: 1.5rem;
+        letter-spacing: 7px;
         margin-bottom: $measure*2;
         @media all and ($viewport-type: $tabletp) {
           font-size: 1.2rem;
@@ -67,15 +73,18 @@
       }
     }
     &__ft {
-      &__text {
-        @include make-font-e(300);
-        color: map-get($color-options, f);
-        &__link {
-          color: map-get($color-options, e);
-          &:hover {
-            text-decoration: none;
-          }
-        }
+      width: 100%;
+      text-align: center;
+      &__btn {
+        color: map-get($color-options ,f);
+        font-size: .7rem;
+        font-weight: bold;
+        padding: $measure $measure*4;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        background: map-get($color-options, a);
+        text-decoration: none;
       }
     }
   }

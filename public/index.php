@@ -16,21 +16,24 @@
             }
         </script>
 
+        <!-- WELCOME -->
         <div class="b--card-b">
             <div class="b--card-b__back-items">
                 <img class="b--card-b__back-items__media" src="img/card-bg-desktop.png" alt="">
             </div>
             <div class="b--card-b__front-items">
                 <div class="b--card-b__front-items__bd">
-                    <p class="b--card-b__front-items__bd__content" data-text="instructions"></p>
+                    <h3 class="b--card-b__front-items__bd__title" data-text="welcome_title"></h3>
+                    <p class="b--card-b__front-items__bd__content" data-text="welcome_text"></p>
                     <button class="b--card-b__front-items__bd__btn" data-text="button_start" style="background: url('img/b--card-a__bd__btn__bg.png');background-position: center;background-size: contain; background-repeat:no-repeat"></button>
                 </div>
                 <div class="b--card-b__front-items__ft">
-                    
+                    <a href="#" class="b--card-b__front-items__ft__btn" data-text="welcome_more"></a>
                 </div>
             </div>
         </div>
 
+        <!-- INSCRIPTION -->
         <div class="b--card-c">
             <div class="b--card-c__back-items">
                 <img class="b--card-c__back-items__media" src="img/card-bg-desktop.png" alt="">
@@ -46,9 +49,20 @@
                         <image id="Objet_dynamique_vectoriel" data-name="Objet dynamique vectoriel" width="13" height="21" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAVCAYAAACdbmSKAAAAUklEQVQ4jWMAgf///zP///9/I4hmIAZANVz/DwHXidL4//9/jf///7/+jwBEa9Qd1YgDDIjGiP+oYCOGIor8NqqBSA2k5yeyci6SRuLKCAYGBgBQg6eBKPu2uAAAAABJRU5ErkJggg=="/>
                     </svg>
                 </div>
+                <div class="b--card-c__front-items__ft">
+                    <div class="b--form-checkbox-a">
+                        <input type="checkbox" class="b--form-checkbox-a__item" id="checkbox2">
+                        <span class="b--form-checkbox-a__artwork"></span>
+                        <label for="checkbox2">J'accepte <a href="#" class="b--card-c__front-items__ft__btn">les conditions du jeu concours</a></label>
+                    </div>
+                </div>
             </div>
+            <a href="#"  class="b--card-c__media-wrapper">
+                <img class="b--card-c__media-wrapper__icon" src="img/BOUTON_CROIX.png">
+            </a>
         </div>
 
+        <!-- POST INSCRIPTION -->
         <div class="b--card-d">
             <div class="b--card-d__back-items">
                 <img class="b--card-d__back-items__media" src="img/card-bg-desktop.png" alt="">

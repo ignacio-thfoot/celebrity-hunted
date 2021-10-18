@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  justify-content: center;
   &__title {
     padding-left: $measure;
     display: block;
@@ -30,7 +31,8 @@
     height: $measure * 1.75;
     width: $measure * 1.75;
     position: relative;
-    border: 1px solid rgba(map-get($color-options, b), 0.5);
+    border: 1px solid rgba(map-get($color-options, f), 0.5);
+    margin-right: $measure;
     &:after {
       transition: all $time-a ease-in-out;
       content: "";

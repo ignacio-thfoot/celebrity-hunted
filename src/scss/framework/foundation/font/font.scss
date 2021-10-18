@@ -23,3 +23,14 @@
 .f--font-f {
   @include make-font-f(300);
 }
+
+
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('../fonts/amazon_ember/AmazonEmber_W_Rg.eot'),
+    url('../fonts/amazon_ember/AmazonEmber_W_Rg.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/amazon_ember/AmazonEmber_W_Rg.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

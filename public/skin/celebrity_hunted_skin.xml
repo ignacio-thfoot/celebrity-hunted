@@ -62,31 +62,31 @@ caller.sprite.id = caller.name;
 //GRID
 
 <events name="responsive" onresize="responsive()"/>
-<action name="responsive">
+<action name="responsive" devices="desktop|tablet">
 calc(scren_ratio,stagewidth / stageheight);
-if(scren_ratio LT 1.8652,
-	calc(layer[ui_container].scale, (stagewidth * 0.9) / 1716);
-	calc(team_layer_scale, (stagewidth * 0.9) / 1716);
+if(scren_ratio LT 1.777,
+	calc(layer[ui_container].scale, (stagewidth * 0.9) / 1920);
+	calc(team_layer_scale, (stagewidth * 0.9) / 1920);
 	,
-	calc(layer[ui_container].scale,(stageheight * 0.9) / 920);
-	calc(team_layer_scale,(stageheight * 0.9) / 920);
+	calc(layer[ui_container].scale,(stageheight * 0.9) / 1080);
+	calc(team_layer_scale,(stageheight * 0.9) / 1080);
 	);
 if(team_layer_scale LT 1, copy(layer[team_container].scale,team_layer_scale),set(layer[team_container].scale,1))
 </action>
-<layer name="ui_container" type="container" scalechildren="true" align="center" width="1716" height="920">
-<layer name="background_grid" url="assets/grid.png" enabled="false" align="center" width="100%" height="100%"/>
+<layer name="ui_container" type="container" scalechildren="true" align="center" width="1920" height="1080" devices="desktop|tablet">
+<layer name="background_grid" url="assets/grid.png" enabled="false" align="center" width="100%" height="100%" onloaded="set_css_id()"/>
 	
 //HEADER
 	
-<layer name="header" url="assets/header.svg" align="top" y="9%" enabled="false" width="501" height="prop"/>
+<layer name="header" url="assets/header.svg" align="top" y="9%" enabled="false" width="501" height="prop" onloaded="set_css_id()"/>
 	
 //TRAILER
 	
-<layer name="trailer" url="assets/watch_trailer.png" x="73" y="70" scale="0.5"/>
+<layer name="button_trailer" url="assets/watch_trailer.png" x="82" y="110" onloaded="set_css_id()"/>
 	
 //DIRECTION BUTTONS
 
-<layer name="direction_buttons" type="container" align="left" edge="center" x="73" width="200" height="200" enabled="true">
+<layer name="direction_buttons" type="container" align="left" edge="center" x="82" width="200" height="200" enabled="true" onloaded="set_css_id()">
 	<layer name="up" url="assets/up.svg" align="top" ondown="set(vlookat_moveforce,-1);" onup="set(vlookat_moveforce,0);" style="shadow" enabled="true"/> 
 	<layer name="right" url="assets/right.svg" align="right" ondown="set(hlookat_moveforce,+1);" onup="set(hlookat_moveforce,0);" style="shadow" scale="0.6"/>
 	<layer name="down" url="assets/down.svg" align="bottom" ondown="set(vlookat_moveforce,+1);" onup="set(vlookat_moveforce,0);" style="shadow"/>
@@ -95,52 +95,52 @@ if(team_layer_scale LT 1, copy(layer[team_container].scale,team_layer_scale),set
 
 //ZOOM BUTTONS
 	
-<layer name="zoom_buttons" type="container" align="right" edge="center" x="25" width="180" height="180" >
+<layer name="zoom_buttons" type="container" align="right" edge="center" x="25" width="180" height="180" onloaded="set_css_id()">
 	<layer name="zoomin" align="topleft" ondown="set(fov_moveforce,-1);" onup="set(fov_moveforce,0);" url="assets/zoomin.svg" style="shadow"/>
 	<layer name="zoomout" align="bottomleft" ondown="set(fov_moveforce,+1);" onup="set(fov_moveforce,0);" url="assets/zoomout.svg" style="shadow"/>
 </layer>
 	
 //FULLSCREEN
 	
-<layer name="fullscreen" url="assets/fullscreen.svg" align="bottomright" x="40" y="-17" style="shadow" scale="0.4" onclick="switch(fullscreen)"/>
+<layer name="fullscreen" url="assets/fullscreen.svg" align="bottomright" x="53" y="15" style="shadow" scale="0.4" onclick="switch(fullscreen)" onloaded="set_css_id()"/>
 
 //ABOUT
 	
-<layer name="about" url="assets/about.png" align="bottomleft" x="33" y="-33" />
+<layer name="about" url="assets/about.svg" align="bottomleft" x="55" y="15" onloaded="set_css_id()" scale="0.4"/>
 	
 //AMAZON LOGO
 	
-<layer name="amazon_logo" url="assets/amazon_logo.png" align="topright" x="73" y="70" enabled="false" keep="true"/>
+<layer name="amazon_logo" url="assets/amazon_logo.svg" align="top" y="20" scale="0.5" enabled="false" keep="true" onloaded="set_css_id()"/>
 	
 	
-<layer name="open_teams" url="assets/open_teams.png" align="bottom" y="12" onclick="show_teams()" width="130" height="prop"/>	
+<layer name="open_teams" url="assets/open_teams.png" align="bottom" y="-100%" onclick="show_teams()" onloaded="set_css_id()"/>	
 	
 </layer>	
 
 //TEAM
-<layer name="team_container" type="container" align="bottom" width="1104" height="205" maskchildren="true" scalechildren="true">
-<layer name="team_layer" url="assets/team_layer.png" align="bottom" y="-100%" capture="false" handcursor="false">
-<layer name="team1" url="assets/1.png" x="400" style="team_but" hlookat="24.50308343081961" vlookat="12.327815554935452" fov="36.88492544296103"/>
-<layer name="team2" url="assets/2.png" x="132" style="team_but" hlookat="108.58986484272637" vlookat="9.408166479943594" fov="41.05429814666533"/>	
-<layer name="team3" url="assets/3.png" x="-132" style="team_but" hlookat="200.77674068110528" vlookat="15.448023409105616" fov="44.25310418705089"/>	
-<layer name="team4" url="assets/4.png" x="-400" style="team_but" hlookat="286.4538022202354" vlookat="15.483138961733992" fov="44.25310418705089"/>	
+<layer name="team_container" type="container" align="bottom" width="1104" height="205" maskchildren="true" scalechildren="true" devices="desktop|tablet" onloaded="set_css_id()">
+<layer name="team_layer" url="assets/team_layer.png" align="bottom" y="0" capture="false" handcursor="false">
+<layer name="team1_button" url="assets/1.png" x="400" style="team_but" hlookat="24.50308343081961" vlookat="12.327815554935452" fov="36.88492544296103" onloaded="set_css_id()"/>
+<layer name="team2_button" url="assets/2.png" x="132" style="team_but" hlookat="108.58986484272637" vlookat="9.408166479943594" fov="41.05429814666533" onloaded="set_css_id()"/>	
+<layer name="team3_button" url="assets/3.png" x="-132" style="team_but" hlookat="200.77674068110528" vlookat="15.448023409105616" fov="44.25310418705089" onloaded="set_css_id()"/>	
+<layer name="team4_button" url="assets/4.png" x="-400" style="team_but" hlookat="286.4538022202354" vlookat="15.483138961733992" fov="44.25310418705089" onloaded="set_css_id()"/>	
 </layer>
-<layer name="close_teams" url="assets/close_teams.png" align="bottom" y="-100%" onclick="hide_teams()" width="55" height="prop"/>
+<layer name="close_teams" url="assets/close_teams.png" align="bottom" y="13" onclick="hide_teams()" width="70" height="prop"/>
 </layer>
 	
-<action name="show_teams">
+<action name="show_teams" devices="desktop|tablet">
 tween(layer[open_teams].y,-100%,2);
 tween(layer[team_layer].y,0);
 tween(layer[close_teams].y,13);
 </action>
 
-<action name="hide_teams">
-tween(layer[open_teams].y,12);
+<action name="hide_teams" devices="desktop|tablet">
+tween(layer[open_teams].y,40);
 tween(layer[team_layer].y,-100%);
 tween(layer[close_teams].y,-100%);
 </action>
 	
-<style name="team_but" onover="tween(scale,1.05,0.1)" onout="tween(scale,1.0,0.1)" align="center" onclick="hide_teams();zoom_on_team(get(name));" onloaded="set_css_id();set_css_class(team_buttons)"/>	
+<style name="team_but" onover="tween(scale,1.05,0.1)" onout="tween(scale,1.0,0.1)" align="center" onclick="hide_teams();zoom_on_team(get(name));" onloaded="set_css_id();set_css_class(team_buttons)" devices="desktop|tablet"/>	
 	
 <action name="zoom_on_team">
 copy(targetfov, layer[%1].fov);
@@ -177,6 +177,79 @@ var team = caller.name;
 alert(team);	
 ]]></action>
 	
-<hotspot name="team1_hotspot" url="assets/team1.png" ath="24.559855881494514" atv="17.87898111688669" scale="0.004899999999999278" style="team_hs"/>
-<!--<include url="%SWFPATH%/toolbox/toolbox.xml"/>	-->
+<hotspot name="team1" url="assets/team_png_800.png" ath="24.559855881494514" atv="17.87898111688669" scale="0.0014999999999993233" style="team_hs"/>
+<hotspot name="team2" url="assets/team_png_800.png" ath="-159.35586805827927" atv="24.262421279067148" scale="0.0016499999999993757" style="team_hs"/>
+<hotspot name="team3" url="assets/team_png_800.png" ath="-72.37976436345696" atv="20.565631889138537" scale="0.0014499999999985811" style="team_hs"/>
+<hotspot name="team4" url="assets/team_png_800.png" ath="108.97466247896625" atv="11.790814246774348" scale="0.001299999999999279" style="team_hs"/>
+	
+//MOBILE DESIGN//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<action name="responsive" devices="mobile">
+calc(scren_ratio,stagewidth / stageheight);
+if(scren_ratio GT 2.274,
+	calc(layer[ui_container].scale, (stagewidth * 0.95) / 894);
+	calc(team_layer_scale, (stagewidth * 0.95) / 894);
+	calc(layer[amazon_logo].scale, ((stagewidth * 0.95) / 894)*0.5);
+	,
+	calc(layer[ui_container].scale,(stageheight * 0.9) / 2033);
+	calc(team_layer_scale,(stageheight * 0.9) / 2033);
+	calc(layer[amazon_logo].scale,((stageheight * 0.9) / 2033)*0.5);
+	);
+if(team_layer_scale LT 1, copy(layer[team_container].scale,team_layer_scale),set(layer[team_container].scale,1))
+</action>
+	
+<layer name="ui_container" type="container" scalechildren="true" align="center" width="894" height="2033" devices="mobile">
+<layer name="background_grid" url="assets/grid_mobile.png" enabled="false" align="center" width="100%" height="100%" onloaded="set_css_id()"/>
+	
+//HEADER
+	
+<layer name="header" url="assets/header.svg" align="top" y="3" enabled="false" width="750" height="prop" onloaded="set_css_id()"/>
+	
+//TRAILER
+	
+<layer name="button_trailer" url="assets/watch_trailer_mobile.png" align="top" y="140" onloaded="set_css_id()"/>
+	
+	
+//FULLSCREEN
+	
+<layer name="fullscreen" url="assets/fullscreen.svg" align="bottomright" x="-5" y="25" style="shadow" scale="0.5" onclick="switch(fullscreen)" onloaded="set_css_id()"/>
+
+//ABOUT
+	
+<layer name="about" url="assets/about.svg" align="bottomleft" x="-5" y="25" onloaded="set_css_id()" scale="0.5"/>
+	
+
+	
+	
+<layer name="open_teams" url="assets/open_teams.png" align="bottom" y="-100%" onclick="show_teams()" width="130" height="prop" onloaded="set_css_id()"/>	
+	
+</layer>
+	
+//TEAM
+<layer name="team_container" type="container" align="bottom" width="903" height="1501" maskchildren="true" scalechildren="true" devices="mobile" onloaded="set_css_id()">
+<layer name="team_layer" url="assets/team_layer_mobile.png" align="bottom" y="-23" capture="true" handcursor="false" width="100%" height="100%">
+<layer name="close_teams" url="assets/close_teams_mobile.png" align="top" y="100" onclick="hide_teams()" />
+<layer name="team1_button" url="assets/1_mobile.png" y="400" style="team_but" hlookat="24.50308343081961" vlookat="12.327815554935452" fov="36.88492544296103" onloaded="set_css_id()"/>
+<layer name="team2_button" url="assets/2_mobile.png" y="132" style="team_but" hlookat="108.58986484272637" vlookat="9.408166479943594" fov="41.05429814666533" onloaded="set_css_id()"/>	
+<layer name="team3_button" url="assets/3_mobile.png" y="-132" style="team_but" hlookat="200.77674068110528" vlookat="15.448023409105616" fov="44.25310418705089" onloaded="set_css_id()"/>	
+<layer name="team4_button" url="assets/4_mobile.png" y="-400" style="team_but" hlookat="286.4538022202354" vlookat="15.483138961733992" fov="44.25310418705089" onloaded="set_css_id()"/>	
+</layer>
+</layer>
+	
+<action name="show_teams" devices="mobile">
+tween(layer[open_teams].y,-100%);
+tween(layer[team_container].y,0,1);
+</action>
+
+<action name="hide_teams" devices="mobile">
+tween(layer[open_teams].y,55);
+tween(layer[team_container].y,-100%,1);
+</action>
+	
+<style name="team_but" onover="tween(scale,1.05,0.1)" onout="tween(scale,1.0,0.1)" align="center" onclick="hide_teams();zoom_on_team(get(name));" onloaded="set_css_id();set_css_class(team_buttons)" devices="mobile" width="60%" height="prop"/>
+	
+//AMAZON LOGO
+	
+<layer name="amazon_logo" url="assets/amazon_logo.svg" align="bottom" y="20" scale="0.5" enabled="false" keep="true" onloaded="set_css_id()" zorder="10" devices="mobile"/>
+<!--<include url="%SWFPATH%/toolbox/toolbox.xm-->
 </krpano>
