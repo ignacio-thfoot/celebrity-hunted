@@ -4,6 +4,8 @@ import Blazy from 'blazy';
 import axios from 'axios';
 import data from './../data/data.json';
 
+//ssh -i KeyPairAmazon.pem ec2-user@15.188.207.187
+
 
 class Home {
     constructor(){
@@ -273,9 +275,9 @@ class Home {
     }
 
     createParticipant(email, type) {
-        //http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
+        //https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
         //http://127.0.0.1:8000/
-        let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
+        let host = 'https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
         axios.post(host + 'api/participants',{
             'email': email,
             'type' : type
@@ -292,9 +294,9 @@ class Home {
     }
 
     createScore(team, timePassed) {
-        //http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
+        //https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
         //http://127.0.0.1:8000/
-        let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
+        let host = 'https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
         axios.post(host + 'api/scores',{
             'teamName':team,
             'timePassed' : timePassed,

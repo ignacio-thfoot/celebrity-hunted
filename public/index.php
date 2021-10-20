@@ -1,10 +1,4 @@
 <?php include("header.php"); ?>
-<?php
-    if(!isset($_SESSION['logged'])):
-        $_SESSION['refer'] = 'index.php';
-        header("location:login.php");     
-    endif;
-?>
     <div id="pano" style="width:100%;height:100%;position:relative; z-index: 1;">
         <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
         <script>
