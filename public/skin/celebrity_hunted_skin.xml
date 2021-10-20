@@ -121,9 +121,9 @@ if(team_layer_scale LT 1, copy(layer[team_container].scale,team_layer_scale),set
 <layer name="team_container" type="container" align="bottom" width="1104" height="205" maskchildren="true" scalechildren="true" devices="desktop|tablet" onloaded="set_css_id()">
 <layer name="team_layer" url="assets/team_layer.png" align="bottom" y="0" capture="false" handcursor="false">
 <layer name="team1_button" url="assets/1.png" x="400" style="team_but" hlookat="24.50308343081961" vlookat="12.327815554935452" fov="36.88492544296103" onloaded="set_css_id()"/>
-<layer name="team2_button" url="assets/2.png" x="132" style="team_but" hlookat="108.58986484272637" vlookat="9.408166479943594" fov="41.05429814666533" onloaded="set_css_id()"/>	
-<layer name="team3_button" url="assets/3.png" x="-132" style="team_but" hlookat="200.77674068110528" vlookat="15.448023409105616" fov="44.25310418705089" onloaded="set_css_id()"/>	
-<layer name="team4_button" url="assets/4.png" x="-400" style="team_but" hlookat="286.4538022202354" vlookat="15.483138961733992" fov="44.25310418705089" onloaded="set_css_id()"/>	
+<layer name="team2_button" url="assets/2.png" x="132" style="team_but" hlookat="200.77674068110528" vlookat="15.448023409105616" fov="44.25310418705089" onloaded="set_css_id()"/>	
+<layer name="team3_button" url="assets/3.png" x="-132" style="team_but"  hlookat="286.4538022202354" vlookat="15.483138961733992" fov="44.25310418705089" onloaded="set_css_id()"/>	
+<layer name="team4_button" url="assets/4.png" x="-400" style="team_but" hlookat="108.58986484272637" vlookat="9.408166479943594" fov="41.05429814666533" onloaded="set_css_id()"/>	
 </layer>
 <layer name="close_teams" url="assets/close_teams.png" align="bottom" y="13" onclick="hide_teams()" width="70" height="prop"/>
 </layer>
@@ -177,10 +177,10 @@ var team = caller.name;
 alert(team);	
 ]]></action>
 	
-<hotspot name="team1" url="assets/team_png_800.png" ath="24.559855881494514" atv="17.87898111688669" scale="0.0014999999999993233" style="team_hs"/>
-<hotspot name="team2" url="assets/team_png_800.png" ath="-159.35586805827927" atv="24.262421279067148" scale="0.0016499999999993757" style="team_hs"/>
-<hotspot name="team3" url="assets/team_png_800.png" ath="-72.37976436345696" atv="20.565631889138537" scale="0.0014499999999985811" style="team_hs"/>
-<hotspot name="team4" url="assets/team_png_800.png" ath="108.97466247896625" atv="11.790814246774348" scale="0.001299999999999279" style="team_hs"/>
+<hotspot name="team1" url="assets/team1.png" ath="24.666941395518847" atv="18.082694517861707" scale="0.0014499999999993234" style="team_hs" onclick="set(url,skin/assets/team1_found.png);"/>
+<hotspot name="team2" url="assets/team2.png" ath="-159.0932292317786" atv="24.211247352330172" scale="0.0016499999999993757" style="team_hs" onclick="set(url,skin/assets/team2_found.png);"/>
+<hotspot name="team3" url="assets/team3.png" ath="-72.24855787198612" atv="20.6153227244587" scale="0.0014499999999985811" style="team_hs" onclick="set(url,skin/assets/team3_found.png);"/>
+<hotspot name="team4" url="assets/team4.png" ath="109.32299721304219" atv="11.770407079739876" scale="0.001299999999999279"  style="team_hs" onclick="set(url,skin/assets/team4_found.png);"/>
 	
 //MOBILE DESIGN//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -230,12 +230,12 @@ if(team_layer_scale LT 1, copy(layer[team_container].scale,team_layer_scale),set
 <layer name="team_layer" url="assets/team_layer_mobile.png" align="bottom" y="-23" capture="true" handcursor="false" width="100%" height="100%">
 <layer name="close_teams" url="assets/close_teams_mobile.png" align="top" y="100" onclick="hide_teams()" />
 <layer name="team1_button" url="assets/1_mobile.png" y="400" style="team_but" hlookat="24.50308343081961" vlookat="12.327815554935452" fov="36.88492544296103" onloaded="set_css_id()"/>
-<layer name="team2_button" url="assets/2_mobile.png" y="132" style="team_but" hlookat="108.58986484272637" vlookat="9.408166479943594" fov="41.05429814666533" onloaded="set_css_id()"/>	
-<layer name="team3_button" url="assets/3_mobile.png" y="-132" style="team_but" hlookat="200.77674068110528" vlookat="15.448023409105616" fov="44.25310418705089" onloaded="set_css_id()"/>	
-<layer name="team4_button" url="assets/4_mobile.png" y="-400" style="team_but" hlookat="286.4538022202354" vlookat="15.483138961733992" fov="44.25310418705089" onloaded="set_css_id()"/>	
+<layer name="team2_button" url="assets/2_mobile.png" y="132" style="team_but" hlookat="200.77674068110528" vlookat="15.448023409105616" fov="44.25310418705089" onloaded="set_css_id()"/>	
+<layer name="team3_button" url="assets/3_mobile.png" y="-132" style="team_but" hlookat="286.4538022202354" vlookat="15.483138961733992" fov="44.25310418705089" onloaded="set_css_id()"/>	
+<layer name="team4_button" url="assets/4_mobile.png" y="-400" style="team_but" hlookat="108.58986484272637" vlookat="9.408166479943594" fov="41.05429814666533" onloaded="set_css_id()"/>	
 </layer>
 </layer>
-	
+		
 <action name="show_teams" devices="mobile">
 tween(layer[open_teams].y,-100%);
 tween(layer[team_container].y,0,1);
@@ -251,5 +251,5 @@ tween(layer[team_container].y,-100%,1);
 //AMAZON LOGO
 	
 <layer name="amazon_logo" url="assets/amazon_logo.svg" align="bottom" y="20" scale="0.5" enabled="false" keep="true" onloaded="set_css_id()" zorder="10" devices="mobile"/>
-<!--<include url="%SWFPATH%/toolbox/toolbox.xm-->
+<!--<include url="%SWFPATH%/toolbox/toolbox.xml"/>-->
 </krpano>

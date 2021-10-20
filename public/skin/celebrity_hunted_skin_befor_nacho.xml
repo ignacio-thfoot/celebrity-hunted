@@ -1,0 +1,165 @@
+﻿<krpano>
+//PROGRESS
+	
+<events name="loader" onviewloaded="js(loaded());set(events[loader].onviewloaded,null)"/>
+//CONTROL
+	
+<control usercontrol="all"
+         mode="drag"
+         dragrelative="true"
+         draginertia="0.1"
+         dragfriction="0.9"
+         drag_oldmode="false"
+         movetorelative="true"
+         movetoaccelerate="1.0"
+         movetospeed="10.0"
+         movetofriction="0.8"
+         movetoyfriction="1.0"
+         frictionstop="0.01"
+         invert="false"
+         keybaccelerate="0.09"
+         keybspeed="10.0"
+         keybfriction="0.9"
+         keybinvert="false"
+         keybfovchange="0.25"
+         mousefovchange="1.0"
+         fovspeed="3.0"
+         fovfriction="0.9"
+         zoomtocursor="true"
+         zoomoutcursor="true"
+         disablewheel="false"
+         touchzoom="true"
+         keycodesleft="37"
+         keycodesright="39"
+         keycodesup="38"
+         keycodesdown="40"
+         keycodesin=""
+         keycodesout=""
+         keydownrepeat="true"
+         bouncinglimits="true"
+         />
+
+//ADD CLASS
+	
+<action name="set_css_class" type="Javascript">
+caller.sprite.className = args[1];
+</action>
+
+<style name="shadow" onloaded="set_css_class(shadow)" scale="0.5" />
+
+//ADD ID
+	
+<action name="set_css_id" type="Javascript">
+caller.sprite.id = caller.name;
+</action>
+	
+//GRID
+
+<events name="responsive" onresize="responsive()"/>
+<action name="responsive">
+calc(scren_ratio,stagewidth / stageheight);
+if(scren_ratio LT 1.8652,
+	calc(layer[ui_container].scale, (stagewidth - 200) / 1716);
+	,
+	calc(layer[ui_container].scale,(stageheight - 180) / 920);
+	);
+</action>
+<layer name="ui_container" type="container" scalechildren="true" align="center" width="1716" height="920">
+<layer name="background_grid" url="assets/grid.png" enabled="false" align="center" width="100%" height="100%"/>
+	
+//HEADER
+	
+<layer name="header" url="assets/header.svg" align="top" y="7%" enabled="false"/>
+	
+//TRAILER
+	
+<layer name="trailer" url="assets/watch_trailer.svg" x="73" y="70"/>
+	
+//DIRECTION BUTTONS
+
+<layer name="direction_buttons" type="container" align="left" edge="center" x="73" width="200" height="200" enabled="true">
+	<layer name="up" url="assets/up.svg" align="top" ondown="set(vlookat_moveforce,-1);" onup="set(vlookat_moveforce,0);" style="shadow" enabled="true"/> 
+	<layer name="right" url="assets/right.svg" align="right" ondown="set(hlookat_moveforce,+1);" onup="set(hlookat_moveforce,0);" style="shadow" scale="0.6"/>
+	<layer name="down" url="assets/down.svg" align="bottom" ondown="set(vlookat_moveforce,+1);" onup="set(vlookat_moveforce,0);" style="shadow"/>
+	<layer name="left" url="assets/left.svg" align="left" ondown="set(hlookat_moveforce,-1);" onup="set(hlookat_moveforce,0);" style="shadow" scale="0.6"/>
+</layer>
+
+//ZOOM BUTTONS
+	
+<layer name="zoom_buttons" type="container" align="right" edge="center" x="25" width="180" height="180" >
+	<layer name="zoomin" align="topleft" ondown="set(fov_moveforce,-1);" onup="set(fov_moveforce,0);" url="assets/zoomin.svg" style="shadow"/>
+	<layer name="zoomout" align="bottomleft" ondown="set(fov_moveforce,+1);" onup="set(fov_moveforce,0);" url="assets/zoomout.svg" style="shadow"/>
+</layer>
+	
+//FULLSCREEN
+	
+<layer name="fullscreen" url="assets/fullscreen.svg" align="bottomright" x="40" y="-17" style="shadow" scale="0.4" onclick="switch(fullscreen)"/>
+
+//TEAM
+<layer name="team_container" type="container" align="bottom" width="1154" height="257" maskchildren="true">
+<layer name="team_layer" url="assets/team_layer.png" align="bottom" y="-100%" capture="false" handcursor="false">
+<layer name="team1" url="assets/1.png" x="400" style="team_but" hlookat="24.50308343081961" vlookat="12.327815554935452" fov="36.88492544296103"/>
+<layer name="team2" url="assets/2.png" x="132" style="team_but" hlookat="108.58986484272637" vlookat="9.408166479943594" fov="41.05429814666533"/>	
+<layer name="team3" url="assets/3.png" x="-132" style="team_but" hlookat="200.77674068110528" vlookat="15.448023409105616" fov="44.25310418705089"/>	
+<layer name="team4" url="assets/4.png" x="-400" style="team_but" hlookat="286.4538022202354" vlookat="15.483138961733992" fov="44.25310418705089"/>	
+</layer>
+<layer name="open_teams" url="assets/open_teams.png" align="bottom" y="12" onclick="show_teams()"/>
+<layer name="close_teams" url="assets/close_teams.png" align="bottom" y="-100%" onclick="hide_teams()"/>
+</layer>
+	
+</layer>	
+	
+<action name="show_teams">
+tween(layer[open_teams].y,-100%,2);
+tween(layer[team_layer].y,-7);
+tween(layer[close_teams].y,30);
+</action>
+
+<action name="hide_teams">
+tween(layer[open_teams].y,12);
+tween(layer[team_layer].y,-100%);
+tween(layer[close_teams].y,-100%);
+</action>
+	
+<style name="team_but" onover="tween(scale,1.05,0.1)" onout="tween(scale,1.0,0.1)" align="center" onclick="hide_teams();zoom_on_team(get(name));" onloaded="set_css_id();set_css_class(team_buttons)"/>	
+	
+<action name="zoom_on_team">
+copy(targetfov, layer[%1].fov);
+copy(currentfov, view.fov);
+		
+set(zoom_out_and_in, false);
+if(targetfov LT 100, set(zoom_out_and_in, true));
+if(currentfov GT 100, set(zoom_out_and_in, false));
+		
+if(zoom_out_and_in,
+	oninterrupt(break);
+	zoomto(100,smooth(90,90,90));
+	moveto(get(layer[%1].hlookat),get(layer[%1].vlookat),smooth(90,90,90));
+	zoomto(get(targetfov),smooth(90,90,90));
+	,
+	oninterrupt(break);
+	lookto(get(layer[%1].hlookat),get(layer[%1].vlookat),get(targetfov),smooth(90,90,90));
+);
+</action>
+
+<action name="print">
+txtadd(print,'hlookat="',get(view.hlookat),'" vlookat="',get(view.vlookat),'" fov="',get(view.fov),'"');
+trace(print);
+</action>
+<events onkeydown="if(keycode == 32,showlog();print());"/>
+//AMAZON LOGO
+	
+<layer name="amazon_logo" url="assets/bottom_logo.svg" align="bottom" y="10" enabled="false" keep="true" width="7%" height="prop"/>
+	
+//HOTSPOTS
+	
+<style name="team_hs" distorted="true" onclick="" onloaded="set_css_id();set_css_class(team_hotspots)" renderer="css3d" capture="false"/>
+	
+<action name="popup_team" type="JavaScript"><![CDATA[
+var team = caller.name;
+alert(team);	
+]]></action>
+	
+<hotspot name="team_1" url="assets/team1.png" ath="24.559855881494514" atv="17.87898111688669" scale="0.004899999999999278" style="team_hs"/>
+<!--<include url="%SWFPATH%/toolbox/toolbox.xml"/>	-->
+</krpano>

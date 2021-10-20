@@ -43,11 +43,6 @@
 
 /* PAGE COMPONENTS START */
 
-
-//block modal - start
-@import "./../framework/components/modal/b--modal-a";
-//block modal - end
-
 //block preloader - start
 @import "./../framework/components/preloader/b--preloader-a"; //approved
 //block preloader - end
@@ -118,3 +113,6 @@
 @import "./../framework/components/card/b--card-d";
 @import "./../framework/components/card/b--card-e";
 @import "./../framework/components/card/b--card-f";
+
+// video
+@import "./../framework/components/video/b--video-a.scss";

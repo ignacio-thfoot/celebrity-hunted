@@ -10,14 +10,15 @@
   width: 60%;
   height: 401px;
   margin: 0 0 $measure * 6 0;
-  opacity: 1;
-  pointer-events: all;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity $time-a ease-in-out;
   @media all and ($viewport-type: $laptop) {
     width: 75%;
   }
   @media all and ($viewport-type: $tabletp) {
-    width: 90%;
+    width: 100vw;
+    height: 100vh;
   }
   &__back-items {
     @include make-layer-absolute();
@@ -27,6 +28,9 @@
     &__media {
       min-width: 100%;
       min-height: 100%;
+      @media all and ($viewport-type: $tabletp) {
+        display:none;
+      }
     }
   }
   &__front-items {
@@ -38,6 +42,9 @@
     }
     @media all and ($viewport-type: $tabletl) {
       padding: $measure * 8 $measure * 15;
+    }
+    @media all and ($viewport-type: $tabletp) {
+      padding: $measure * 5 $measure * 5;
     }
     &__bd {
       margin-bottom: $measure * 4;
@@ -53,6 +60,9 @@
         letter-spacing: 7px;
         display: inline-block;
         text-underline-offset: .3em;
+        @media all and ($viewport-type: $tabletp) {
+          font-style: 1.5rem;
+        }
       }
       &__content {
         color: map-get($color-options, f);
@@ -88,8 +98,8 @@
       }
     }
   }
-  &--is-hidden {
-    opacity: 0;
-    pointer-events: none;
+  &--is-visible {
+    opacity: 1;
+    pointer-events: all;
   }
 }

@@ -1,10 +1,9 @@
 //CSS
 import './../scss/entries/home.scss';
-
-import Modal from './../js/ds/Modal';
 import Blazy from 'blazy';
 import axios from 'axios';
 import data from './../data/data.json';
+
 
 class Home {
     constructor(){
@@ -13,33 +12,41 @@ class Home {
     }
 
     init(){
-        new Modal();
         new Blazy({ 
             selector: '.b--lazy-a',
             successClass: 'b--lazy-a--fade-in',
         });
         
         this.loadTextData();
-        
-        this.cookiesClickEvent();
 
         document.addEventListener("loaded", (e) => {
             setTimeout(() => {
                 this.hideKrpanoButtons();
                 this.hidePreloader();
                 this.events();
-            }, 50);            
+            }, 5);            
         });
         
         window.selectedTeams = [];
         window.email = '';
+        window.emailExists = [];
+
+        this.preloadImages([
+            'skin/assets/team1_found.png',
+            'skin/assets/team2_found.png',
+            'skin/assets/team3_found.png',
+            'skin/assets/team4_found.png'
+        ]);
 
     }
 
-    cookiesClickEvent() {
-        document.querySelector(".js--click-setCookie").addEventListener("click", (e) => {
-            document.querySelector(".b--cookies-a").style.display = 'none';
-        });
+    preloadImages (images) {
+        try {
+            images.forEach((image) => {
+                var _img = new Image();
+                _img.src = image;
+            });
+        } catch (e) { }
     }
 
     loadTextData() {
@@ -61,52 +68,98 @@ class Home {
         });
         
         let totalSeconds = result[0].totalSeconds;
-        let content = document.querySelector(".b--card-c__front-items__bd__content");
+        let content = document.querySelector("#modal-inscription .b--card-c__front-items__bd__content");
         content.innerHTML = content.innerHTML.replace("{team_name}", data.teams[team])
         .replace("{time}", this.showPrettyTime(totalSeconds))
         .replace("{average}", this.showPrettyTime(result[0].teamAverage));
-        document.querySelector(".b--card-c").classList.add("b--card-c--is-visible");
+        
+        this.openModal('modal-inscription');
+        this.closeModal('modal-inscription');
+    }
+
+    showAlreadySignedForm(team) {
+        var result = window.selectedTeams.filter(obj => {
+            return obj.team === team;
+        });
+        
+        let totalSeconds = result[0].totalSeconds;
+        let content = document.querySelector("#modal-inscription-2 .b--card-c__front-items__bd__content");
+        content.innerHTML = content.innerHTML.replace("{team_name}", data.teams[team])
+        .replace("{time}", this.showPrettyTime(totalSeconds))
+        .replace("{average}", this.showPrettyTime(result[0].teamAverage));
+        
+        this.openModal('modal-inscription-2');
+        this.closeModal('modal-inscription-2');
     }
 
     hideSignupForm() {
-        document.querySelector(".b--card-c").classList.remove("b--card-c--is-visible");
+        document.querySelector("#modal-inscription .close-modal").click();
     }
 
     showShareModal() {
-        document.querySelector(".b--card-d").classList.add("b--card-d--is-visible");
+        this.openModal("modal-share");
+        this.closeModal("modal-share");
     }
 
     hideShareModal() {
-        document.querySelector(".b--card-d").classList.remove("b--card-d--is-visible");
+        document.querySelector("#modal-share").classList.remove("b--card-c--is-visible");
+    }
+
+    goFullscreen(){
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        }
     }
 
     events() {
-        document.querySelector(".b--card-b__front-items__bd__btn").addEventListener("click", () =>  {
-            document.querySelector(".b--card-b").classList.toggle("b--card-b--is-hidden");
+        //home start button
+        document.querySelector("#modal-home .b--card-c__front-items__bd__btn").addEventListener("click", () =>  {
+            this.goFullscreen();
+            document.querySelector("#modal-home").classList.remove("b--card-c--is-visible");
             this.showKrpanoButtons();
             this.startTimer();
         });
 
-        //team pics buttons
-        document.querySelectorAll("div[id$='_button']").forEach((team) => {
-            team.addEventListener("click", this.teamClickHandler.bind(this));
-        });
-
+        //team pics
         document.querySelectorAll(".team_hotspots").forEach((hotspot) => {
             hotspot.addEventListener("click", this.hotspotClickHandler.bind(this));
         });
 
-        document.querySelector(".b--card-c__front-items__bd__input__icon").addEventListener("click", () => {
+        //inscription
+        document.querySelector("#modal-inscription .b--card-c__media-wrapper__icon").addEventListener("click", () => {
+            document.querySelector(".b--card-c").classList.remove("b--card-c--is-visible");
+            this.startTimer();
+        });
+        document.querySelector("#modal-inscription .b--card-c__front-items__bd__input__icon").addEventListener("click", () => {
             this.registerEmail();
         });
+        document.querySelector("#modal-inscription .b--card-c__media-wrapper__icon").addEventListener("click", () => {
+            document.querySelector("#modal-inscription").classList.remove("b--card-c--is-visible");
+        });
 
-        document.querySelector(".b--card-c__media-wrapper").addEventListener("click", () => {
-            document.querySelector(".b--card-c").classList.remove("b--card-c--is-visible");
-        })
+        //trailer
+        document.querySelector("#button_trailer").addEventListener("click", () => {
+            this.openModal("modal-trailer");
+            this.closeModal("modal-trailer");
+        });
+        
 
-        document.querySelector(".b--card-d__media-wrapper__icon").addEventListener("click", () => {
-            document.querySelector(".b--card-d").classList.remove("b--card-d--is-visible");
-        })
+        //about - help
+        document.querySelector("#about").addEventListener("click", (e) => {
+            e.preventDefault();
+            this.showHelpModal();
+        });
+        document.querySelector("[data-text='welcome_more']").addEventListener("click", (e) => {
+            e.preventDefault();
+            this.showHelpModal();
+        });
 
         //rotate
         window.mobilecheck = () => {
@@ -115,13 +168,23 @@ class Home {
             return check;
         };
     
+        //check rotate
         if(window.mobilecheck() == true){
             if(screen.orientation.angle == 90){
                 this.rotate.classList.add("b--rotate-a--is-visible");
             }
             window.addEventListener('orientationchange', this.checkOrientationChange.bind(this));
         }
+    }
 
+    showErrorModal() {
+        this.openModal('modal-error');
+        this.closeModal('modal-error');
+    }
+
+    showHelpModal() {
+        this.openModal('modal-help');
+        this.closeModal('modal-help');
     }
 
     startTimer() {
@@ -130,9 +193,14 @@ class Home {
     }
 
     registerEmail() {
-        var email = document.querySelector(".b--card-c__front-items__bd__input").value;
+        var email = document.querySelector("#modal-inscription .b--card-c__front-items__bd__input").value;
         if (this.validateEmail(email)) {
-            this.createParticipant(email, 'jeux');
+            this.emailExists(email);
+            if(window.emailExists.length == 0) {
+                this.createParticipant(email, 'game');
+            } else {
+                this.showErrorModal();
+            }
         } else {
             alert("E-Mail pas correct.");
         }
@@ -152,13 +220,8 @@ class Home {
         }
     }
 
-    teamClickHandler(e){
-        this.hideSignupForm();
-    }
-
     hotspotClickHandler(e){
         this.findHotSpot(e.srcElement);
-        console.log(e.srcElement.id);
     }
 
     hideKrpanoButtons() {
@@ -190,12 +253,12 @@ class Home {
 
             this.createScore(hotspot.id, time);
         } else {
-            this.showSignupForm(hotspot.id);
+            this.showAlreadySignedForm(hotspot.id);
         }
     }
 
     showPrettyTime(totalSeconds) {
-        console.log("totalseconds", totalSeconds);
+        
         var hours = Math.floor(totalSeconds / 3600);
         totalSeconds %= 3600;
         var minutes = Math.floor(totalSeconds / 60);
@@ -215,12 +278,13 @@ class Home {
         let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
         axios.post(host + 'api/participants',{
             'email': email,
-            'type': type
+            'type' : type
         })
         .then((res) => {
-            console.log("RESPONSE", res);
+            // console.log("RESPONSE", res);
             this.hideSignupForm();
             this.showShareModal();
+            window.email = email;
         })
         .catch((err) => {
             console.log("ERROR", err);
@@ -230,13 +294,13 @@ class Home {
     createScore(team, timePassed) {
         //http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
         //http://127.0.0.1:8000/
-        let host = 'http://127.0.0.1:8000/';
+        let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
         axios.post(host + 'api/scores',{
             'teamName':team,
             'timePassed' : timePassed,
         })
         .then((res) => {
-            console.log("RESPONSE", res);
+            // console.log("RESPONSE", res);
 
             var result = window.selectedTeams.filter(obj => {
                 return obj.team === res.data.teamName;
@@ -250,6 +314,168 @@ class Home {
             console.log("ERROR", err);
         });
     }
+
+    emailExists(email) {
+        //participants/{email}
+        //http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
+        //http://127.0.0.1:8000/
+        let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
+        axios.get(host + 'api/participants/' + email)
+        .then((res) => {
+            console.log("RESPONSE", res);
+            window.emailExists = res.data;
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        });
+    }
+    
+    // MODAL
+
+    /*
+    * targetID
+    * targetClass
+    * objectTrigger
+    */
+    openModal(id){
+        //apply class to body
+        let payload = {
+            'targetID' : '#' + id,
+            'objectClass' : 'b--card-c',
+            'backdropClass' : 'b--modal-backdrop-a',
+            'targetClass' : 'b--card-c--is-visible'
+        }
+        this.toggleClass(document.querySelector(payload.targetID),payload.targetClass);
+
+        //create Backdrop div with class
+        var div = document.createElement('div');
+        div.className = payload.backdropClass;
+        document.body.appendChild(div);
+    }
+    // Closes Modal
+    closeModal(id){
+        // close modal on X
+        //apply class to body
+        let payload = {
+            'targetID' : '#' + id,
+            'objectClass' : 'b--card-c',
+            'backdropClass' : 'b--modal-backdrop-a',
+            'targetClass' : 'b--card-c--is-visible'
+        }
+        var closeBtn = document.querySelectorAll('.close-modal');
+        closeBtn.forEach(element => {
+            element.addEventListener('click', event => {
+                event.preventDefault(); 
+                this.removeClass(document.querySelector(payload.targetID),payload.targetClass);
+                this.removeBackdrop(payload);
+                this.loadTextData();
+                this.startTimer();
+            });
+        });
+
+        // close modal on Bakcdrop Click
+        var backdrop = document.querySelectorAll("." + payload.backdropClass);
+        backdrop.forEach(element => {
+            element.addEventListener('click', event => {
+                event.preventDefault(); 
+                this.removeClass(document.querySelector(payload.targetID),payload.targetClass);
+                this.removeBackdrop(payload);
+                this.loadTextData();
+                this.startTimer();
+            });
+        });
+    }
+
+//toggleClass
+    //ToggleClass('class')
+    toggleClass(sel, c1, c2) {
+        this._toggleClassElements(this._getElements(sel), c1, c2);
+    };
+    _toggleClassElements(elements, c1, c2) {
+        var i, l = elements.length;
+        for (i = 0; i < l; i++) {    
+            this._toggleClassElement(elements[i], c1, c2);
+        }
+    };
+    _toggleClassElement (element, c1, c2) {
+        var t1, t2, t1Arr, t2Arr, j, arr, allPresent;
+        t1 = (c1 || "");
+        t2 = (c2 || "");
+        t1Arr = t1.split(" ");
+        t2Arr = t2.split(" ");
+        arr = element.className.split(" ");
+        if (t2Arr.length == 0) {
+          allPresent = true;
+          for (j = 0; j < t1Arr.length; j++) {
+            if (arr.indexOf(t1Arr[j]) == -1) {allPresent = false;}
+          }
+          if (allPresent) {
+            this._removeClassElement(element, t1);
+          } else {
+            this._addClassElement(element, t1);
+          }
+        } else {
+          allPresent = true;
+          for (j = 0; j < t1Arr.length; j++) {
+            if (arr.indexOf(t1Arr[j]) == -1) {allPresent = false;}
+          }
+          if (allPresent) {
+            this._removeClassElement(element, t1);
+            this._addClassElement(element, t2);          
+          } else {
+            this._removeClassElement(element, t2);        
+            this._addClassElement(element, t1);
+          }
+        }
+    };
+
+    // removes backdrop HTML
+    removeBackdrop (payload){
+        if(document.querySelector('.' + payload.backdropClass)){
+            var div = document.querySelector('.' + payload.backdropClass);
+            div.parentNode.removeChild(div);
+        }
+    }
+
+    //removeClass(selector,'class')
+    removeClass(sel, name) {
+        this._removeClassElements(this._getElements(sel), name);
+    };
+    _removeClassElements(elements, name) {
+        var i, l = elements.length, arr1, arr2, j;
+        for (i = 0; i < l; i++) {
+          this._removeClassElement(elements[i], name);
+        }
+    };
+    _removeClassElement  (element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+          }
+        }
+        element.className = arr1.join(" ");
+    };
+
+    _getElements(id) {
+        if (typeof id == "object") {
+          return [id];
+        } else {
+          return document.querySelectorAll(id);
+        }
+    };
+
+    _addClassElement (element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+    };
+
 }
 
 export default Home;

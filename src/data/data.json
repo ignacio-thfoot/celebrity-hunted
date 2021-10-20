@@ -2,16 +2,23 @@
     "max_teams" : 4,
     "text" : {
         "welcome_title" : "Bienvenue",
-        "welcome_text": "Retrouve sur l'image au moins une team et tente de remporter une watch partie avec un des membres du casting.",
+        "welcome_text": "RETROUVE SUR L’IMAGE AU MOINS UNE TEAM ET TENTE DE REMPORTER UN BON D’ACHAT D’UNE VALEUR DE 1000€ SUR AMAZON.",
         "button_start": "commencer la traque",
+        "button_start_disclaimer" : "(en lançant le jeu le site passera automatiquement en plein écran)",
         "win_title" : "Félicitations",
         "win_text" : "Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />Si tu souhaites participer au tirage au sort et tenter  de gagner en bon d'achat de 1000€ sur amazon",
+        "already_signed_text" : "Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />CHAQUE JOUEUR NE PEUT S’INSCRIRE QU’UNE AU JEU CONCOURS ET VOUS VOUS ÊTES DÉJÀ INSCRIT.<br/><br/>DONC PATIENCE, LE TIRAGE AU SORT AURA LIEU TRÈS BIENTÖT !",
         "cookies_text" : "Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant à naviguer sur ce site, vous acceptez nos cookies.",
         "cookies_accept" : "Accepter",
         "cookies_refuse": "Refuser",
         "thanks_title" : "Merci!",
         "thanks_text" : "VOUS ÊTES BIEN INSCRIT AU JEU CONCOURS. AUGMENTEZ VOS CHANCES DE GAGNER EN PARTAGEANT CE JEU SUR TWITTER ET FACEBOOK.",
-        "welcome_more" : "en savoir plus"
+        "welcome_more" : "en savoir plus",
+        "help_title" : "le jeu concours",
+        "help_text" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda accusantium, asperiores beatae sit temporibus delectus consequatur reprehenderit, veritatis ut atque tenetur voluptatem sint vitae quis, eum itaque. Fuga, voluptas dolorum?<br/> <br /> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda accusantium, asperiores beatae sit temporibus delectus consequatur reprehenderit, veritatis ut atque tenetur voluptatem sint vitae quis, eum itaque. Fuga, voluptas dolorum?",
+        "policy_button_text" : "POLITIQUE DE CONFIDENTIALITÉ ET RÈGLEMENT DU JEU CONCOURS",
+        "error_title" : "DÉSOLÉ",
+        "error_text" : "CHAQUE JOUEUR NE PEUT S’INSCRIRE QU’UNE AU JEU CONCOURS ET VOUS VOUS ÊTES DÉJÀ INSCRIT.<br /><br />DONC PATIENCE, LE TIRAGE AU SORT AURA LIEU TRÈS BIENTÔT !"
     },
     "teams" : {
         "team4" : "Franck et Ramzy",

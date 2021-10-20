@@ -37,7 +37,7 @@ Route::get('participants', function() {
 
 //find first participant by email
 Route::get('participants/{email}', function($email) {
-    return Participant::where('email',$email)->firstOrFail();
+    return Participant::where('email',$email)->get();
 });
 
 //get all average times
@@ -62,11 +62,12 @@ Route::post('scores', 'ScoreController@store');
 Route::post('scores', function(Request $request) {
     
     $data = $request->all();
-    
-    Score::create([
-        'teamName' => $data['teamName'],
-        'timePassed' => $data['timePassed'],
-    ]);
+    if(intval($data['timePassed'] > 5)) { //longer than 5 seconds
+        Score::create([
+            'teamName' => $data['teamName'],
+            'timePassed' => $data['timePassed'],
+        ]);
+    }
     
     //return avg time for that team
     return array('teamName' => $data['teamName'], 'avg' => round(Score::where('teamName', $data['teamName'])->avg('timePassed'),0));

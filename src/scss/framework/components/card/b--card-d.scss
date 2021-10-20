@@ -47,17 +47,18 @@
       letter-spacing: 7px;
       &__title {
         color: map-get($color-options, f);
-        font-size: 1em;
-        margin-bottom: $measure*2;
+        font-size: 2rem;
         text-decoration: underline;
+        margin-bottom: $measure*6;
+        text-transform: uppercase;
+        letter-spacing: 7px;
+        display: inline-block;
+        text-underline-offset: .3em;
       }
       &__content {
         color: map-get($color-options, f);
-        font-size: 1.5rem;
-        margin-bottom: $measure*4;
-        @media all and ($viewport-type: $tabletp) {
-          font-size: 1.2rem;
-        }
+        letter-spacing: 7px;
+        margin-bottom: $measure*2;
       }
     }
     &__ft {

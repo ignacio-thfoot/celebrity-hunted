@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   background-color: map-get($color-options, a);
-  z-index: 99;
+  z-index: 10000;
   opacity: 0;
   pointer-events: none;
   transition: opacity $time-a ease-in-out;
@@ -33,9 +33,6 @@
     }
     @media all and ($viewport-type: $mobile){
       top: 20%;
-    }
-    &__media {
-      
     }
   }
   &__logo {
