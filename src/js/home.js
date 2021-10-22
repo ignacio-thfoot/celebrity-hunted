@@ -4,6 +4,7 @@ import Blazy from 'blazy';
 import axios from 'axios';
 import data from './../data/data.json';
 
+
 //ssh -i KeyPairAmazon.pem ec2-user@15.188.207.187
 
 
@@ -11,6 +12,7 @@ class Home {
     constructor(){
         this.init();
         this.rotate = document.querySelector('.b--rotate-a'); //rotate window
+        //rotate
     }
 
     init(){
@@ -24,8 +26,15 @@ class Home {
         document.addEventListener("loaded", (e) => {
             setTimeout(() => {
                 this.hideKrpanoButtons();
-                this.hidePreloader();
+
+                this.krpano = document.getElementById("krpanoSWFObject");
+
+                // this.simulateTeam("team1");
+                // this.showSignupForm("team1");
+
                 this.events();
+                this.showMobileHeader();
+                this.hidePreloader();                
             }, 5);            
         });
         
@@ -42,6 +51,42 @@ class Home {
 
     }
 
+    mobileCheck() {
+        const toMatch = [
+            /Android/i,
+            /webOS/i,
+            /iPhone/i,
+            /iPad/i,
+            /iPod/i,
+            /BlackBerry/i,
+            /Windows Phone/i
+        ];
+        
+        return toMatch.some((toMatchItem) => {
+            return navigator.userAgent.match(toMatchItem);
+        });
+    }
+
+    showMobileHeader() {
+        if(this.mobileCheck() == true) {
+            let header = document.querySelector(".b--card-c__front-items__hd__media");
+            header.style.top = window.header_y;
+            header.style.left = window.header_x;
+            header.style.width = window.header_width;
+            header.style.height = window.header_height;
+        }
+    }
+
+    simulateTeam() {
+        window.selectedTeams[0] = {
+            team: "team1",
+            start: 22222,
+            stop: 22222,
+            totalSeconds: 30,
+            teamAverage: 30
+        }
+    }
+
     preloadImages (images) {
         try {
             images.forEach((image) => {
@@ -50,6 +95,11 @@ class Home {
             });
         } catch (e) { }
     }
+
+    /*  
+    krpano.call("show_teams()");
+    krpano.call("hide_teams()");
+    */
 
     loadTextData() {
         var textElements = document.querySelectorAll("[data-text]");
@@ -62,6 +112,9 @@ class Home {
     hidePreloader() {
         let preloader = document.querySelector(".b--preloader-a");
         preloader.classList.remove("b--preloader-a--is-active");
+        const video = document.querySelector(".b--preloader-a video");
+        video.pause();
+        video.currentTime = 0;
     }
 
     showSignupForm(team) {
@@ -70,10 +123,11 @@ class Home {
         });
         
         let totalSeconds = result[0].totalSeconds;
+        let teamAverage = result[0].teamAverage;
         let content = document.querySelector("#modal-inscription .b--card-c__front-items__bd__content");
         content.innerHTML = content.innerHTML.replace("{team_name}", data.teams[team])
         .replace("{time}", this.showPrettyTime(totalSeconds))
-        .replace("{average}", this.showPrettyTime(result[0].teamAverage));
+        .replace("{average}", this.showPrettyTime(teamAverage));
         
         this.openModal('modal-inscription');
         this.closeModal('modal-inscription');
@@ -130,8 +184,8 @@ class Home {
         });
 
         //team pics
-        document.querySelectorAll(".team_hotspots").forEach((hotspot) => {
-            hotspot.addEventListener("click", this.hotspotClickHandler.bind(this));
+        ["team1", "team2", "team3", "team4"].forEach((e) => {
+            document.addEventListener(e, this.hotspotClickHandler.bind(this));
         });
 
         //inscription
@@ -147,9 +201,8 @@ class Home {
         });
 
         //trailer
-        document.querySelector("#button_trailer").addEventListener("click", () => {
-            this.openModal("modal-trailer");
-            this.closeModal("modal-trailer");
+        document.addEventListener("button_trailer", () => {
+            this.showTrailer();
         });
         
 
@@ -158,26 +211,27 @@ class Home {
             e.preventDefault();
             this.showHelpModal();
         });
-        document.querySelector("[data-text='welcome_more']").addEventListener("click", (e) => {
-            e.preventDefault();
-            this.showHelpModal();
+        document.querySelectorAll("[data-text='welcome_more']").forEach((button) => {
+            button.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.showHelpModal();
+            });
         });
 
-        //rotate
-        window.mobilecheck = () => {
-            var check = false;
-            ((a) => {if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
-            return check;
-        };
-    
         //check rotate
-        if(window.mobilecheck() == true){
+        if(this.mobileCheck() == true){
             if(screen.orientation.angle == 90){
                 this.rotate.classList.add("b--rotate-a--is-visible");
             }
             window.addEventListener('orientationchange', this.checkOrientationChange.bind(this));
         }
     }
+
+    showTrailer() {
+        this.openModal("modal-trailer");
+        this.closeModal("modal-trailer");
+    }
+    
 
     showErrorModal() {
         this.openModal('modal-error');
@@ -195,16 +249,33 @@ class Home {
     }
 
     registerEmail() {
-        var email = document.querySelector("#modal-inscription .b--card-c__front-items__bd__input").value;
-        if (this.validateEmail(email)) {
-            this.emailExists(email);
-            if(window.emailExists.length == 0) {
-                this.createParticipant(email, 'game');
+        var emailElement = document.querySelector("#modal-inscription .b--card-c__front-items__bd__input");
+        var checkboxElement = document.querySelector("#modal-inscription .b--card-c__front-items__ft__checkbox");
+        if (!this.validateEmail(emailElement.value)) {
+            emailElement.classList.add("error");
+            if (!checkboxElement.checked) {
+                checkboxElement.classList.add("error");
             } else {
-                this.showErrorModal();
+                checkboxElement.classList.remove("error");
+            }
+        }else if (!checkboxElement.checked) {
+            checkboxElement.classList.add("error");
+            if(this.validateEmail(emailElement.value)) {
+                emailElement.classList.remove("error");
             }
         } else {
-            alert("E-Mail pas correct.");
+            this.emailExists(emailElement.value).then((res) => {
+                if(res.data.length == 0) {
+                    
+                    this.createParticipant(emailElement.value, 'game');
+                    window.email = emailElement.value;
+                } else {
+                    this.hideSignupForm();
+                    this.showErrorModal();
+                }
+                emailElement.value = '';
+                checkboxElement.checked = false;          
+            });
         }
     }
 
@@ -223,7 +294,7 @@ class Home {
     }
 
     hotspotClickHandler(e){
-        this.findHotSpot(e.srcElement);
+        this.findHotSpot(e.type);
     }
 
     hideKrpanoButtons() {
@@ -235,58 +306,66 @@ class Home {
     }
 
     findHotSpot(hotspot) {
-
         var result = window.selectedTeams.filter(obj => {
-            return obj.team === hotspot.id;
+            return obj.team === hotspot;
         });
 
         if(result.length == 0) {
             var stopTime = performance.now();
-            let team_button = document.getElementById(hotspot.id + "_button");
-            team_button.classList.add("is--active");
             var time = Math.round((stopTime - window.startTime) / 1000);
             
             window.selectedTeams.push({
-                "team" : hotspot.id,
+                "team" : hotspot,
                 "startTime" : window.startTime,
                 "stopTime" : stopTime,
                 "totalSeconds" : time
             });
 
-            this.createScore(hotspot.id, time);
+            document.querySelector("#" + hotspot + "_button").classList.add("team-found");
+
+
+            this.createScore(hotspot, time);
+            
         } else {
-            this.showAlreadySignedForm(hotspot.id);
+            if(window.email == '') {
+                this.showSignupForm(hotspot);
+            } else {
+                this.showAlreadySignedForm(hotspot);
+            }
         }
     }
 
     showPrettyTime(totalSeconds) {
-        
         var hours = Math.floor(totalSeconds / 3600);
         totalSeconds %= 3600;
         var minutes = Math.floor(totalSeconds / 60);
         var seconds = totalSeconds % 60;
         if(totalSeconds > 59) {
-            return minutes + ':' + seconds + 'MN';
+            return minutes + ':' + seconds + ' min';
         } else {
-            return seconds + 'S';
+            return seconds + ' sec';
         }
-
         
     }
 
     createParticipant(email, type) {
         //https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
         //http://127.0.0.1:8000/
-        let host = 'https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
+        let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
         axios.post(host + 'api/participants',{
             'email': email,
             'type' : type
         })
         .then((res) => {
-            // console.log("RESPONSE", res);
             this.hideSignupForm();
+
             this.showShareModal();
+                        
             window.email = email;
+            var emailElement = document.querySelector("#modal-inscription .b--card-c__front-items__bd__input");
+            var checkboxElement = document.querySelector("#modal-inscription .b--card-c__front-items__ft__checkbox");
+            emailElement.value = '';
+            checkboxElement.checked = false;
         })
         .catch((err) => {
             console.log("ERROR", err);
@@ -296,7 +375,7 @@ class Home {
     createScore(team, timePassed) {
         //https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
         //http://127.0.0.1:8000/
-        let host = 'https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
+        let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
         axios.post(host + 'api/scores',{
             'teamName':team,
             'timePassed' : timePassed,
@@ -310,7 +389,12 @@ class Home {
 
             result[0].teamAverage = res.data.avg;
 
-            this.showSignupForm(res.data.teamName);
+            if(window.email == '') {
+                this.showSignupForm(res.data.teamName);
+            } else {
+                this.showAlreadySignedForm(res.data.teamName);
+            }
+
         })
         .catch((err) => {
             console.log("ERROR", err);
@@ -318,17 +402,16 @@ class Home {
     }
 
     emailExists(email) {
-        //participants/{email}
-        //http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
+        //https://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/
         //http://127.0.0.1:8000/
-        let host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
-        axios.get(host + 'api/participants/' + email)
+        var host = 'http://pmchapi-env.eba-i79zkcey.eu-west-3.elasticbeanstalk.com/index.php/';
+        var result;
+        return axios.get(host + 'api/participants/' + email)
         .then((res) => {
-            console.log("RESPONSE", res);
-            window.emailExists = res.data;
+            return res;
         })
         .catch((err) => {
-            console.log("ERROR", err);
+            console.log(err);
         });
     }
     
@@ -340,6 +423,7 @@ class Home {
     * objectTrigger
     */
     openModal(id){
+        this.krpano.call("hide_teams()");
         //apply class to body
         let payload = {
             'targetID' : '#' + id,
@@ -358,6 +442,7 @@ class Home {
     closeModal(id){
         // close modal on X
         //apply class to body
+        
         let payload = {
             'targetID' : '#' + id,
             'objectClass' : 'b--card-c',
@@ -368,10 +453,13 @@ class Home {
         closeBtn.forEach(element => {
             element.addEventListener('click', event => {
                 event.preventDefault(); 
+                this.krpano.call("show_teams()");
                 this.removeClass(document.querySelector(payload.targetID),payload.targetClass);
                 this.removeBackdrop(payload);
                 this.loadTextData();
                 this.startTimer();
+                //stop trailer video
+                $('.b--video-a__video iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
             });
         });
 
@@ -380,12 +468,16 @@ class Home {
         backdrop.forEach(element => {
             element.addEventListener('click', event => {
                 event.preventDefault(); 
+                this.krpano.call("show_teams()");
                 this.removeClass(document.querySelector(payload.targetID),payload.targetClass);
                 this.removeBackdrop(payload);
                 this.loadTextData();
                 this.startTimer();
+                //stop trailer video
+                $('.b--video-a__video iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
             });
         });
+
     }
 
 //toggleClass

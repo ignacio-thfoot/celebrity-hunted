@@ -1,25 +1,53 @@
 .b--card-c {
   position: fixed;
+  display: flex;
+  align-items: center;
   transform: translate(-50%, -50%); 
   left: 50%;
-  top: 60%;
+  top: 50%;
   overflow: hidden;
   text-decoration: none;
   color: map-get($color-options, f);
-  width: 60%;
-  height: 401px;
-  margin: 0 0 $measure * 6 0;
+  overflow: hidden;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
   z-index: 4000;
   transition: opacity $time-a ease-in-out;
+  background: url('./../../img/card-bg-desktop.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  min-height: 401px;
+  padding: 50px;
+  
+  clip-path: 
+    polygon(
+      0% 10%,     /* top left */
+      5% 0%,     /* top left */
+      100% 0%,    /* top right */
+      100% 5%,   /* top right */
+      100% 90%,  /* bottom right */
+      95% 100%,  /* bottom right */
+      5% 100%,   /* bottom left */
+      0 100%      /* bottom left */
+    );
+ 
+
   @media all and ($viewport-type: $laptop) {
     width: 75%;
   }
   @media all and ($viewport-type: $tabletp) {
     width: 100vw;
     height: 100vh;
+    background: url('./../../img/card-bg-mobile.png');
+    background-color: map-get($color-options, a);
+    background-size: cover;
+    background-position: center center;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    clip-path: none;
   }
   &__back-items {
     @include make-layer-absolute();
@@ -36,18 +64,30 @@
   }
   &__front-items {
     position: relative;
-    margin-top: $measure*6;
-    padding: 0 $measure*25;
+    padding: 0 $measure*8;
+    margin: auto;
     @media all and ($viewport-type: $laptop) {
       padding: 0 $measure * 15;
     }
     @media all and ($viewport-type: $tabletl) {
       padding: 0 $measure * 10;
     }
-    @media all and ($viewport-type: $tabletl) {
-      padding: 0 $measure * 2;
+    @media all and ($viewport-type: $tabletp) {
+      padding: 0 $measure * 10;
     }
-    
+    @media all and ($viewport-type: $mobile) {
+      padding: 0 $measure*3;
+    }
+    &__hd {
+      &__media {
+        display:none;
+        @media all and ($viewport-type: $tabletp) {
+          display: inline;
+          position: absolute;
+          
+        }
+      }
+    }
     &__bd {
       text-align: center;
       text-transform: uppercase;
@@ -57,35 +97,78 @@
         color: map-get($color-options, f);
         font-size: 2rem;
         text-decoration: underline;
-        margin-bottom: $measure*3;
         text-transform: uppercase;
         letter-spacing: 7px;
         display: inline-block;
         text-underline-offset: .3em;
+        @media all and ($viewport-type: $tabletp) {
+          margin-top: $measure*20;
+          font-size: 1.7rem;
+        }
+        @media all and ($viewport-type: $mobile) {
+          margin-top: $measure*10;
+          font-size: 1.2rem;
+        }
       }
       &__content {
         color: map-get($color-options, f);
         letter-spacing: 7px;
-        margin-bottom: $measure*2;
+        margin-top: $measure*4;
+        text-transform: initial;
+        @media all and ($viewport-type: $tabletp) {
+          margin-top: $measure*8;
+          font-size: 1rem;
+        }
+        @media all and ($viewport-type: $mobile) {
+          margin-top: $measure*5;
+          font-size: .7rem;
+          line-height: 25px;
+        }
       }
       &__contentLong {
+        margin-top: $measure*4;
         color: map-get($color-options, f);
         letter-spacing: 7px;
         height: 200px;
         overflow-y: auto;
+        text-transform: initial;
+        @media all and ($viewport-type: $tabletp) {
+          margin-top: $measure*8;
+          font-size: 1rem;
+        }
       }
       &__btn {
         margin-top: $measure*2;
-        padding: $measure*2;
+        padding: $measure*3;
         width: 261px;
         text-transform: uppercase;
         letter-spacing: 5px;
         line-height: 20px;
         color: map-get($color-options, f);
-        &__disclaimer {
-          margin-top: $measure;
+        @media all and ($viewport-type: $tabletp) {
+          margin-top: $measure*3;
+          letter-spacing: 4px;
+          width: 150px;
           font-size: .5rem;
-          padding: 0 $measure*20;
+          line-height: 15px;
+          padding: $measure;
+          
+        }
+        &__disclaimer {
+          margin-top: $measure*3;
+          color: map-get($color-options ,f);
+          font-size: .7rem;
+          font-weight: bold;
+          padding: $measure $measure*2;
+          border-radius: 20px;
+          text-transform: uppercase;
+          letter-spacing: 4px;
+          text-decoration: none;
+          @media all and ($viewport-type: $tabletp) {
+            margin-top: $measure*5;
+            font-size: .4rem;
+            padding: $measure $measure*2;
+          }
         }
       }
       &__input {
@@ -97,7 +180,15 @@
         background: #000;
         letter-spacing: 5px;
         color: map-get($color-options, f);
-        width: 80%;
+        width: 90%;
+        
+        @media all and ($viewport-type: $tabletp) {
+          padding:$measure*2;
+        }
+        @media all and ($viewport-type: $mobile) {
+          padding:$measure*1.5;
+          margin-top: $measure*4;
+        }
         &::placeholder {
           text-align: center;
           text-decoration: underline;
@@ -109,9 +200,17 @@
           height: 1em;
           position: absolute;
           top: 50%;
-          right:20px;
-          transform: translate(-80px,-50%);
+          right:0px;
+          transform: translate(-50px,-50%);
           cursor: pointer;
+          @media all and ($viewport-type: $tabletp) {
+            
+          }
+          @media all and ($viewport-type: $mobile) {
+            top: 67%;
+            right:45px;
+            transform: translate(-10px,-33%);
+          }
           path{
             fill: map-get($color-options, f);
           }
@@ -121,8 +220,11 @@
     &__ft {
       width: 100%;
       text-align: center;
-      margin-top: $measure*2;
-      &__btn {
+      margin-top: $measure*3;
+      @media all and ($viewport-type: $tabletp) {
+        margin-top: $measure*5;
+      }
+      &__btn, &__btnShort {
         color: map-get($color-options ,f);
         font-size: .7rem;
         font-weight: bold;
@@ -132,6 +234,21 @@
         letter-spacing: 4px;
         background: map-get($color-options, a);
         text-decoration: none;
+        
+        @media all and ($viewport-type: $tabletp) {
+          margin-top: $measure*5;
+          font-size: .4rem;
+          padding: $measure $measure*2;
+        }
+      }
+      &__label {
+        margin-left: $measure;
+        @media all and ($viewport-type: $mobile) {
+          font-size: 1rem;
+        }
+        @media all and ($viewport-type: $mobile) {
+          font-size: .7rem;
+        }
       }
       &__link {
         color: map-get($color-options ,f);
@@ -139,7 +256,7 @@
         text-underline-offset: .3em;
       }
       &__social {
-        padding: $measure*5;
+        padding: $measure*2 $measure*5;
       }
     }
   }
@@ -149,9 +266,13 @@
         position: absolute;
         font-size: 1.5rem;
         top: 32px;
-        right: 32px;
+        right: 16px;
         text-align: right;
         color: map-get($color-options, a);
+        @media all and ($viewport-type: $tabletp) {
+          top:8px;
+          right:8px;
+        }
     }
   }
   &--is-visible {
@@ -162,6 +283,9 @@
   
   &--second {
     height: 500px;
+    @media all and ($viewport-type: $tabletp) {
+      height: 100vh;
+    }
   }
   &--second &{
     &__back-items {
@@ -171,17 +295,43 @@
     }
     &__front-items {
       padding: 0 $measure*5;
+      @media all and ($viewport-type: $tabletp) {
+        padding: 0 $measure;
+      }
       &__bd {
         &__contentLong{
           padding: 0 $measure*10;
           height: 220px;
+          @media all and ($viewport-type: $tabletp) {
+            margin-top: $measure*4;
+            padding: 0 $measure*1;
+            font-size: 1rem;
+          }
+          @media all and ($viewport-type: $mobile) {
+            font-size: .7rem;
+          }
         }
       }
       &__ft {
         margin-top: $measure*6;
+        &__btn {
+          @media all and ($viewport-type: $tabletp) {
+            display:none;
+          }
+        }
+        &__btnShort {
+          display:none;
+          @media all and ($viewport-type: $tabletp) {
+            display:initial;
+          }
+        }
       }
     }
   }
+}
+
+.error {
+  outline: 1px solid red;
 }
 
 //backdrop-modal
@@ -205,4 +355,12 @@
   border-radius: 4px;
   background-color: #fff;
   box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+#header {
+  z-index: 4002!important;
+}
+
+.team-found {
+  filter: drop-shadow(0px 8px 8px #394ca5);
 }

@@ -11,6 +11,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta http-equiv="x-ua-compatible" content="IE=edge" />
 	<meta property=”og:image” content=”img/og-image.jpg” />
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<style>
 		html { height:100%; }
 		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }

@@ -26,13 +26,15 @@
   &__media-wrapper {
     position: absolute;
     top: 10%;
-    width: 100%;
     text-align: center;
+    &__media{
+      width: 100%;
+    }
     @media all and ($viewport-type: $tabletp){
-      top: 15%;
+      top: 30%;
     }
     @media all and ($viewport-type: $mobile){
-      top: 20%;
+      top: 30%;
     }
   }
   &__logo {

@@ -3,7 +3,7 @@
     if(isset($_POST['text_user'])):
         if($_POST['text_user'] == 'admin' && $_POST['text_pwd'] == 'N@8hqbRy4g5@e5Xj'):
             $_SESSION['logged'] = TRUE;
-            header("location:" . $_SESSION['refer']);
+            header("location: index.php");
         endif;
     endif;
 ?>
