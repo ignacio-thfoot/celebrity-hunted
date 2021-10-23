@@ -1,16 +1,17 @@
 .b--video-a {
-  // height: 500px;
-  top: 50%;
-  text-align: center;
-  @media all and ($viewport-type: $tabletp) {
-    height: 100vh;
-    top: 50%;
-  } 
-  &__back-items {
-    &__media {
-      height: 500px;
-    }
-  }
+  // // height: 500px;
+  // top: 50%;
+  // text-align: center;
+  // @media all and ($viewport-type: $tabletp) {
+  //   height: 100vh;
+  //   top: 50%;
+  // } 
+  // &__back-items {
+  //   &__media {
+  //     height: 500px;
+  //   }
+  // }
+  
   &__front-items {
     position: relative;
     padding: 0;

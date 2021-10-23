@@ -9,9 +9,9 @@
         <script src="js/frontend/home.js" type="text/javascript"></script>
     <?php endif; ?>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <!--
+    
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6165c13002388eed"></script>
-    -->
+   
     <script async defer src="https://api.celebrity-hunted.fr/latest.js"></script>
     <noscript><img src="https://api.celebrity-hunted.fr/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
 </body>

@@ -2,6 +2,16 @@
     //@include make-form-group-a();
     margin-top: $measure*3;
     position: relative;
+    padding: 0 $measure*3;
+    @media all and ($viewport-type: $laptop) {
+        padding: 0 $measure;
+    }
+    @media all and ($viewport-type: $tabletl) {
+        padding: 0
+    }
+    @media all and ($viewport-type: $mobile) {
+        padding: 0;
+    }
     &__loader{ 
         position: absolute; 
         top: 50%;

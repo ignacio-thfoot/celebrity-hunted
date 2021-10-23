@@ -24,18 +24,18 @@ class Home {
         this.loadTextData();
 
         document.addEventListener("loaded", (e) => {
-            setTimeout(() => {
-                this.hideKrpanoButtons();
+            this.hideKrpanoButtons();
 
-                this.krpano = document.getElementById("krpanoSWFObject");
+            this.krpano = document.getElementById("krpanoSWFObject");
 
-                // this.simulateTeam("team1");
-                // this.showSignupForm("team1");
+            //this.showErrorModal();
+            // this.simulateTeam("team1");
+            // this.showSignupForm("team1");
 
-                this.events();
-                this.showMobileHeader();
-                this.hidePreloader();                
-            }, 5);            
+            this.events();
+            this.showMobileHeader();
+            this.hidePreloader(); 
+            this.playSound();
         });
         
         window.selectedTeams = [];
@@ -49,6 +49,16 @@ class Home {
             'skin/assets/team4_found.png'
         ]);
 
+    }
+
+    playSound() {
+        var myAudio = new Audio('img/loop.ogg'); 
+        myAudio.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        myAudio.play();
+        myAudio.volume = .1;
     }
 
     mobileCheck() {
@@ -161,26 +171,35 @@ class Home {
         document.querySelector("#modal-share").classList.remove("b--card-c--is-visible");
     }
 
-    goFullscreen(){
-        var elem = document.documentElement;
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-          elem.msRequestFullscreen();
-        } else if (elem.mozRequestFullScreen) {
-          elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) {
-          elem.webkitRequestFullscreen();
-        }
-    }
+    toggleFullscreen(event) {
+        var element = document.body;
+      
+          if (event instanceof HTMLElement) {
+              element = event;
+          }
+      
+          var isFullscreen = document.webkitIsFullScreen || document.mozFullScreen || false;
+      
+          element.requestFullScreen = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || function () { return false; };
+          document.cancelFullScreen = document.cancelFullScreen || document.webkitCancelFullScreen || document.mozCancelFullScreen || function () { return false; };
+      
+          let fullscreen_button = document.querySelector("#fullscreen");
+          fullscreen_button.classList.toggle("fullscreen-back");
+
+          isFullscreen ? document.cancelFullScreen() : element.requestFullScreen();
+      }
 
     events() {
         //home start button
-        document.querySelector("#modal-home .b--card-c__front-items__bd__btn").addEventListener("click", () =>  {
-            this.goFullscreen();
+        document.querySelector("#modal-home .b--card-c__front-items__bd__btn").addEventListener("click", (e) =>  {
+            this.toggleFullscreen(e);
             document.querySelector("#modal-home").classList.remove("b--card-c--is-visible");
             this.showKrpanoButtons();
             this.startTimer();
+        });
+
+        document.querySelector("#fullscreen").addEventListener("click", (e) => {
+            this.toggleFullscreen(e);
         });
 
         //team pics
@@ -207,10 +226,11 @@ class Home {
         
 
         //about - help
-        document.querySelector("#about").addEventListener("click", (e) => {
-            e.preventDefault();
+        document.addEventListener("about", (e) => {
+            console.log("yeeeeee");
             this.showHelpModal();
         });
+
         document.querySelectorAll("[data-text='welcome_more']").forEach((button) => {
             button.addEventListener("click", (e) => {
                 e.preventDefault();
