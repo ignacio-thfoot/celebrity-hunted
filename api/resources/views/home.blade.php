@@ -1,4 +1,3 @@
-<?php ob_start(); session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +36,7 @@
 <?php
     if(!isset($_SESSION['logged'])):
         $_SESSION['refer'] = 'index.php';
-        header("location:login.php");
+        header("location:/login");
     endif;
 ?>
     <div id="pano" style="width:100%;height:100%;position:relative; z-index: 1;">
@@ -88,9 +87,7 @@
     
         <!-- INSCRIPTION -->
         <div class="b--card-c" id="modal-inscription" role="dialog">
-            <!-- <div class="b--card-c__back-items">
-                <img class="b--card-c__back-items__media" src="img/card-bg-desktop.png" alt="">
-            </div> -->
+            <div class="b--card-c__hd"></div>
             <div class="b--card-c__front-items">
                 <div class="b--card-c__front-items__bd">
                     <h3 class="b--card-c__front-items__bd__title" data-text="win_title"></h3>
@@ -116,10 +113,12 @@
             <a href="#" class="b--card-c__media-wrapper">
                 <img class="b--card-c__media-wrapper__icon close-modal" src="img/BOUTON_CROIX.png" data-dismiss>
             </a>
+            <div class="b--card-c__ft"></div>
         </div>
 
         <!-- INSCRIPTION BIS -->
         <div class="b--card-c" id="modal-inscription-2" role="dialog">
+            <div class="b--card-c__hd"></div>
             <div class="b--card-c__front-items">
                 <div class="b--card-c__front-items__bd">
                     <h3 class="b--card-c__front-items__bd__title" data-text="win_title"></h3>
@@ -132,10 +131,12 @@
             <a href="#" class="b--card-c__media-wrapper">
                 <img class="b--card-c__media-wrapper__icon close-modal" src="img/BOUTON_CROIX.png" data-dismiss>
             </a>
+            <div class="b--card-c__ft"></div>
         </div>
 
         <!-- POST INSCRIPTION SHARE -->
         <div class="b--card-c" id="modal-share" role="dialog">
+            <div class="b--card-c__hd"></div>
             <div class="b--card-c__front-items">
                 <div class="b--card-c__front-items__bd">
                     <h3 class="b--card-c__front-items__bd__title" data-text="thanks_title"></h3>
@@ -149,10 +150,12 @@
             <a href="#" class="b--card-c__media-wrapper">
                 <img class="b--card-c__media-wrapper__icon close-modal" src="img/BOUTON_CROIX.png">
             </a>
+            <div class="b--card-c__ft"></div>
         </div>
 
         <!-- POST INSCRIPTION ERROR SHARE -->
         <div class="b--card-c" id="modal-error" role="dialog">
+            <div class="b--card-c__hd"></div>
             <div class="b--card-c__front-items">
                 <div class="b--card-c__front-items__bd">
                     <h3 class="b--card-c__front-items__bd__title" data-text="error_title"></h3>
@@ -168,10 +171,12 @@
             <a href="#" class="b--card-c__media-wrapper">
                 <img class="b--card-c__media-wrapper__icon close-modal" src="img/BOUTON_CROIX.png">
             </a>
+            <div class="b--card-c__ft"></div>
         </div>
 
         <!-- TRAILER -->
         <div class="b--card-c b--video-a" id="modal-trailer" role="dialog">
+            <div class="b--card-c__hd"></div>
             <div class="b--card-c__front-items b--video-a__front-items">
                 <div class="b--card-c__front-items__bd">
                     <h3 class="b--card-c__front-items__bd__title b--video-a__title" data-text="trailer_title"></h3>
@@ -186,11 +191,13 @@
             <a href="#"  class="b--video-a__media-wrapper">
                 <img class="b--card-c__media-wrapper__icon close-modal" src="img/BOUTON_CROIX.png">
             </a>
+            <div class="b--card-c__ft"></div>
         </div>
 
         <!-- HELP -->
 
         <div class="b--card-c b--card-c--second" id="modal-help" role="dialog">
+            <div class="b--card-c__hd"></div>
             <div class="b--card-c__front-items">
                 <div class="b--card-c__front-items__bd">
                     <h3 class="b--card-c__front-items__bd__title" data-text="help_title"></h3>
@@ -204,6 +211,7 @@
             <a href="#" class="b--card-c__media-wrapper">
                 <img class="b--card-c__media-wrapper__icon close-modal" src="img/BOUTON_CROIX.png" data-dismiss>
             </a>
+            <div class="b--card-c__ft"></div>
         </div>
 
     <!-- PRELOADER -->
