@@ -1,6 +1,0 @@
-.b--pill-a {
-    @include make-pill-a($colortext: b, $colorbg: a);
-    &:hover,&:focus {
-        @include make-pill-a-interaction($colorhover: a);
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "presets": [["@babel/env",{
-        "corejs":3.8,
-        "useBuiltIns": "entry",
-        "debug": true,
-        "targets": "> 0.25%, not dead"
-    }]]
-}

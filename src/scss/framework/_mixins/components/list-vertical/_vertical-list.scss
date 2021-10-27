@@ -1,5 +1,0 @@
-@mixin make-vli-a(){
-    &:not(:last-child){
-        margin-bottom: $measure*2;
-    }
-}
