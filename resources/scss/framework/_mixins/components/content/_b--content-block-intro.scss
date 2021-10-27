@@ -1,0 +1,18 @@
+@mixin wp-block-intro() {
+  .intro {
+    margin-bottom: $measure * 2;
+    h2 {
+      @include make-font-c(300);
+      text-transform: none;
+      padding-top: 0;
+    }
+  }
+}
+
+@mixin wp-block-intro-color($_color-a) {
+  .intro {
+    h2 {
+      color: $_color-a;
+    }
+  }
+}

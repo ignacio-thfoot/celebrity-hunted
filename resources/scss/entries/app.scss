@@ -1,0 +1,68 @@
+@use 'sass:math';
+
+/* VARS & MIXINS */
+@import "./../framework/_vars/vars";
+@import "./../framework/_mixins/mixins";
+
+/* FOUNDATION */
+/* color | background | aspect ratio | grid*/
+@import "./../framework/foundation/foundation";
+
+/* UTILITIES */
+@import "./../framework/utilities/utilities";
+
+/* CORE COMPONENTS START */
+
+// lazy kkk
+@import "./../framework/components/lazy/b-lazy.scss";
+
+@import "./../framework/components/collapse/b--collapse-a.scss";
+@import "./../framework/components/btn/b--btn-a.scss";
+@import "./../framework/components/list-horizontal/b--hlist-a.scss";
+@import "./../framework/components/list-vertical/b--vlist-a.scss";
+@import "./../framework/components/pill/b--pill-a.scss";
+@import "./../framework/components/section/b--section-a.scss";
+
+@import "./../framework/components/collapse/b--collapse-a.scss";
+@import "./../framework/components/collapse/b--collapse-b.scss";
+@import "./../framework/components/card/b--card-g.scss";
+@import "./../framework/components/card/b--card-a.scss";
+@import "./../framework/components/card/b--card-h.scss";
+@import "./../framework/components/btn/b--btn-a.scss";
+@import "./../framework/components/cta/b--cta-a.scss";
+
+@import "./../framework/components/link/b--link-a.scss";
+@import "./../framework/components/link/b--link-b.scss";
+
+// slider
+@import './../framework/components/slider/tiny-slider.scss';
+@import './../framework/components/slider/b--slider-a.scss';
+
+/* form start */
+@import "./../framework/components/form-elements/b--form-group-a.scss";
+@import "./../framework/components/form-elements/b--form-input-a.scss";
+@import "./../framework/components/form-elements/b--form-input-icon-a.scss";
+@import "./../framework/components/form-elements/b--form-select-a.scss";
+@import "./../framework/components/form-elements/b--form-textarea-a.scss";
+@import "./../framework/components/form-elements/b--form-label-a.scss";
+/* form end */
+
+/* sections */
+@import "./../framework/components/section/b--section-a.scss";
+@import "./../framework/components/section/b--section-b.scss";
+@import "./../framework/components/section/b--section-c.scss";
+
+// block list - start
+@import "./../framework/components/list-horizontal/b--hlist-a"; //approved
+@import "./../framework/components/list-vertical/b--vlist-a"; //approved
+// block list - end
+
+//block modal - start
+@import "./../framework/components/modal/b--modal-a";
+//block modal - end
+
+// suggestions
+@import './../framework/components/suggestions/b--suggestions-a.scss';
+
+// results
+@import './../framework/components/results/b--results-a.scss';

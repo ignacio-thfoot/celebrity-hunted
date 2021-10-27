@@ -1,0 +1,419 @@
+.b--card-d {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  text-decoration: none;
+  color: map-get($color-options, f);
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4000;
+  transition: opacity $time-a ease-in-out;
+  background: url('../../../../img/card-bg-desktop.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  min-height: 401px;
+  padding: 50px;
+  font-family: $type-a;
+  text-align: center;
+  
+  clip-path: 
+    polygon(
+      0% 10%,     /* top left */
+      5% 0%,     /* top left */
+      100% 0%,    /* top right */
+      100% 5%,   /* top right */
+      100% 90%,  /* bottom right */
+      95% 100%,  /* bottom right */
+      5% 100%,   /* bottom left */
+      0 100%      /* bottom left */
+    );
+ 
+
+  @media all and ($viewport-type: $laptop) {
+    // width: 75%;
+  }
+  @media all and ($viewport-type: $tabletp) {
+    width: 100vw;
+    height: 100%;
+    background: url('../../../../img/card-bg-mobile.png');
+    background-color: map-get($color-options, a);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    clip-path: none;
+    padding: 0 10px;
+    padding-top: $measure*24;
+    
+  }
+  @media all and ($viewport-type: $mobile) {
+    padding-top: $measure*12;
+  }
+  
+  &__hd, &__ft__logo {
+    display:none;
+    @media all and ($viewport-type: $tabletp) {
+      display: initial;
+    }
+  }
+  
+  &__title {
+    height: 20%;
+    width: 100%;
+    color: map-get($color-options, f);
+    font-size: 2rem;
+    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    display: inline-block;
+    text-underline-offset: .3em;
+    @media all and ($viewport-type: $tabletp) {
+      font-size: 2.5rem;
+    }
+    @media all and ($viewport-type: $mobile) {
+      font-size: 1.2rem;
+    }
+  }
+  
+  &__content {
+    height: 100%;
+    width: 100%;
+    color: map-get($color-options, f);
+    letter-spacing: 7px;
+    text-transform: initial;
+    margin-top: $measure*3;
+    @media all and ($viewport-type: $tabletp) {
+      font-size: 1.5rem;
+      padding: 0 $measure*2;
+      margin-top: 0;
+    }
+    @media all and ($viewport-type: $mobile) {
+      font-size: .7rem;
+      line-height: 20px;
+    }
+  }
+  
+  &__contentLong {
+    height: 100%;
+    width: 100%;
+    color: map-get($color-options, f);
+    letter-spacing: 7px;
+    height: 200px;
+    overflow-y: auto;
+    text-transform: initial;
+    @media all and ($viewport-type: $tabletp) {
+      margin-top: $measure*8;
+      font-size: 1rem;
+    }
+  }
+  
+  &__btn {
+    @include make-row();
+    @include make-col(12);
+    margin-top: $measure*2;
+    padding: $measure*3;
+    width: 261px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    line-height: 20px;
+    color: map-get($color-options, f);
+    font-family: $type-a;
+    @media all and ($viewport-type: $tabletp) {
+      margin-top: $measure*3;
+      letter-spacing: 4px;
+      width: 250px;
+      font-size: .8rem;
+      line-height: 19px;
+      padding: $measure*3;
+    }
+    @media all and ($viewport-type: $mobile) {
+      padding: $measure;
+      line-height: 15px;
+      width: 150px;
+      font-size: .5rem;
+    }
+    &__disclaimer {
+      margin-top: $measure*3;
+      color: map-get($color-options ,f);
+      font-size: .7rem;
+      font-weight: bold;
+      padding: $measure $measure*2;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-decoration: none;
+      @media all and ($viewport-type: $tabletp) {
+        margin-top: $measure*5;
+        font-size: .8rem;
+        padding: $measure $measure*2;
+      }
+      @media all and ($viewport-type: $mobile) {
+        padding:0;
+        font-size: .4rem;
+        margin-top: $measure*4;
+      }
+    }
+  }
+  
+  &__input {
+    position:relative;
+    text-decoration: underline;
+    text-underline-offset: .1em;
+    text-transform: uppercase;
+    padding: $measure*2;
+    background: #000;
+    letter-spacing: 5px;
+    color: map-get($color-options, f);
+    width: 90%;
+    
+    @media all and ($viewport-type: $tabletp) {
+      padding:$measure*2;
+    }
+    @media all and ($viewport-type: $mobile) {
+      padding:$measure;
+      width: 100%;
+    }
+    &::placeholder {
+      text-align: center;
+      text-decoration: underline;
+      text-transform: uppercase;
+      text-underline-offset: .1em;
+    }
+    &__icon {
+      width: 1em;
+      height: 1em;
+      position: absolute;
+      top: 50%;
+      right:0px;
+      transform: translate(-50px,-50%);
+      cursor: pointer;
+      @media all and ($viewport-type: $tabletp) {
+        
+      }
+      @media all and ($viewport-type: $mobile) {
+        top: 12px;
+        right:12px;
+        transform: translate(-10px,-33%);
+      }
+      path{
+        fill: map-get($color-options, f);
+      }
+    }
+  }  
+  &__ft {
+    width: 100%;
+    text-align: center;
+    @media all and ($viewport-type: $tabletp) {
+      margin-top: $measure*5;
+    }
+    @media all and ($viewport-type: $mobile) {
+      margin-top: $measure*2;
+    }
+    &__btn, &__btnShort {
+      color: map-get($color-options ,f);
+      font-size: .7rem;
+      font-weight: bold;
+      padding: $measure $measure*4;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      background: map-get($color-options, a);
+      text-decoration: none;
+      
+      @media all and ($viewport-type: $tabletp) {
+        margin-top: $measure*5;
+        font-size: .8rem;
+        padding: $measure $measure*2;
+      }
+      @media all and ($viewport-type: $mobile) {
+        font-size: .4rem;
+      }
+    }
+    &__checkbox {
+      // &::after {
+      //   position: relative;
+      //   display: block;
+      //   left: 0;
+      //   top: 0;
+      //   width: 100%;
+      //   height: 100%;
+      //   border-width: 1px;
+      //   border-style: solid;
+      //   border-color:#FFFF;
+      //   content: "";
+      //   background-color: rgb(83,83,86);
+      //   background-repeat: no-repeat;
+      //   background-position: center;
+
+      // }
+      // &:checked::after {
+      //   background-color: #FFF;
+      // }
+      @media all and ($viewport-type: $tabletp) {
+        width: 26px;
+        height: 26px;
+        margin-right: $measure*2;
+        // margin-top: 5rem;
+      }
+    }
+    &__label {
+      margin-left: $measure;
+      @media all and ($viewport-type: $tabletp) {
+        font-size: 1rem;
+      }
+      @media all and ($viewport-type: $mobile) {
+        font-size: .8rem;
+      }
+    }
+    &__link {
+      color: map-get($color-options ,f);
+      font-weight: bold;
+      text-underline-offset: .3em;
+    }
+    &__social {
+      padding: $measure*2 $measure*5;
+    }
+  }
+
+  &__media-wrapper {
+    z-index: 4444;
+    &__icon {
+        position: absolute;
+        font-size: 1.5rem;
+        top: 32px;
+        right: 16px;
+        text-align: right;
+        color: map-get($color-options, a);
+        @media all and ($viewport-type: $tabletp) {
+          top:16px;
+          right:16px;
+        }
+        @media all and ($viewport-type: $mobile) {
+          top:8px;
+          right:8px;
+        }
+    }
+  }
+  &--is-visible {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    visibility: visible !important;
+  }
+  
+  &--second {
+    height: 500px;
+    @media all and ($viewport-type: $tabletp) {
+      height: 100%;
+    }
+  }
+
+  &--second &{
+    &__back-items {
+      &__media {
+        height: 500px;
+      }
+    }
+    &__front-items {
+      padding: 0 $measure*5;
+      @media all and ($viewport-type: $tabletp) {
+        padding: 0 $measure*5;
+      }
+      @media all and ($viewport-type: $tabletp) {
+        padding: 0 $measure;
+      }
+      &__bd {
+        &__contentLong{
+          padding: 0 $measure*10;
+          height: 220px;
+          @media all and ($viewport-type: $tabletp) {
+            margin-top: $measure*8  ;
+            padding: 0 $measure*3;
+            font-size: 1rem;
+            height: 350px;
+          }
+          @media all and ($viewport-type: $mobile) {
+            margin-top: $measure*4;
+            padding: 0 $measure*1;
+            font-size: .7rem;
+            height: 250px;
+          }
+        }
+      }
+      &__ft {
+        margin-top: $measure*6;
+        &__btn {
+          @media all and ($viewport-type: $tabletp) {
+            display:none;
+          }
+        }
+        &__btnShort {
+          display:none;
+          @media all and ($viewport-type: $tabletp) {
+            display:initial;
+          }
+        }
+      }
+    }
+    &__media-wrapper {
+      &__icon {
+        top: 32px;
+        right: 16px;
+        @media all and ($viewport-type: $mobile) {
+          top: 16px;
+          right: 16px;
+        }
+      }
+    }
+  }
+}
+
+.error_border {
+  outline: 1px solid rgba(221,63,23,.6);
+}
+.error {
+  color: rgba(221,63,23,.6);
+  &::placeholder {
+    color: rgba(221,63,23,.6);
+  }
+}
+
+//backdrop-modal
+.b--modal-backdrop-a{
+  visibility: visible;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 3999;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.team-found {
+  filter: drop-shadow(0px 8px 8px #394ca5);
+}
+
+.fullscreen-back {
+  background-image: url('../../../../img/fullscreen-back.svg')!important;
+}

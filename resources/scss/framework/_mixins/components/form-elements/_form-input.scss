@@ -1,0 +1,72 @@
+@mixin make-generic-input(
+  $colortext,
+  $colorbg,
+  $colorborder,
+  $padding,
+  $fontSize
+) {
+  @include make-font-f(300);
+  padding: $padding;
+  border: 1px solid rgba(map-get($color-options, $colorborder), 0.2);
+  background: map-get($color-options, $colorbg);
+  width: 100%;
+  color: rgba(map-get($color-options, $colortext), 0.5);
+  border-radius: $border-radius-b;
+  transition: color $time-a ease-in-out;
+  &::placeholder {
+    transition: color $time-a ease-in-out;
+    @include make-font-f(300);
+    color: rgba(map-get($color-options, $colortext), 0.5);
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: map-get($color-options, $colortext);
+    -webkit-box-shadow: 0 0 0px 1000px map-get($color-options, $colorbg) inset;
+  }
+  @media all and ($viewport-type: $mobile) {
+    font-size: $fontSize;
+    &::placeholder {
+      font-size: $fontSize;
+    }
+  }
+}
+
+@mixin make-generic-input-interaction($colortext) {
+  color: map-get($color-options, $colortext);
+  &::placeholder {
+    color: rgba(map-get($color-options, $colortext),.5);
+  }
+}
+
+@mixin make-input-b(
+  $colortext,
+  $colorborder,
+  $padding,
+  $fontSize
+) {
+  @include make-font-f(300);
+  padding: $padding;
+  background: transparent;
+  width: 100%;
+  color: rgba(map-get($color-options, $colortext), 1) !important;
+  border-bottom: 2px solid rgba(map-get($color-options, $colorborder), .2);
+  transition: color $time-a ease-in-out;
+  &::placeholder {
+    color: transparent;
+  }
+  @media all and ($viewport-type: $mobile) {
+    font-size: $fontSize;
+    &::placeholder {
+      font-size: $fontSize;
+    }
+  }
+}
+
+@mixin make-input-b-focus-interaction($colorborder) {
+  border-bottom: 2px solid map-get($color-options, $colorborder);
+}
+
+@mixin make-input-b-placeholder-interaction($colorbg) {
+  background-color: map-get($color-options, $colorbg) !important;
+}

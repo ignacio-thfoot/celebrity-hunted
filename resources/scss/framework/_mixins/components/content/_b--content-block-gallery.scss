@@ -1,0 +1,25 @@
+@mixin wp-block-gallery() {
+  .wp-block-gallery {
+    margin: $measure * 5 0;
+    ul {
+      margin-bottom: 0;
+      list-style-type: none !important;
+      li {
+        padding: inherit;
+        &::before {
+          content: " ";
+          display: none !important;
+        }
+        &:last-child {
+          margin-bottom: $measure * 2;
+        }
+      }
+    }
+    .blocks-gallery-item__caption {
+      @include make-font-f(300);
+      text-align: center;
+      display: block;
+      width: 100%;
+    }
+  }
+}

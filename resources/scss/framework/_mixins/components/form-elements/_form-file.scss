@@ -1,0 +1,41 @@
+@mixin make-upload(
+  $colortext,
+  $colorbg,
+  $colorbtnbg,
+  $colorbtntext,
+  $colorborder,
+  $fontSize
+) {
+  cursor: pointer;
+  position: relative;
+  -webkit-padding-before: 0 !important;
+  -webkit-padding-after: 0 !important;
+  -webkit-padding-start: 0 !important;
+  border: 1px solid rgba(map-get($color-options, $colorborder), 0.2);
+  border-radius: $border-radius-b;
+  width: 100%;
+  height: 41px;
+  color: rgba(map-get($color-options, $colortext), 0.5);
+  padding: $measure;
+  background-color: map-get($color-options, $colorbg);
+  transition: color $time-a ease-in-out;
+  @include make-font-f(300);
+  &::-webkit-file-upload-button {
+    cursor: pointer;
+    height: 100%;
+    padding: math.div($measure, 2);
+    appearance: none;
+    border: none;
+    background-color: map-get($color-options, $colorbtnbg);
+    color: map-get($color-options, $colorbtntext);
+    @include make-font-f(300);
+    transition: background $time-a ease-in-out;
+  }
+  @media all and ($viewport-type: $mobile) {
+    font-size: $fontSize;
+  }
+}
+
+@mixin make-upload-interaction($colortext) {
+  color: map-get($color-options, $colortext);
+}

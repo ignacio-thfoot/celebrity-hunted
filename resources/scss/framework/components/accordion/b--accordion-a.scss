@@ -1,0 +1,41 @@
+.b--accordion-a {
+  border: 1px solid map-get($color-options, d);
+  &__hd {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: $measure;
+    background-color: rgba(map-get($color-options, e), 0.4);
+    cursor: pointer;
+    &__title {
+      @include make-font-e(300);
+      color: map-get($color-options, d);
+      text-decoration: none !important;
+    }
+  }
+  &__bd {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height $time-b cubic-bezier(0, 1, 0, 1);
+    &__content {
+      padding: $measure;
+    }
+  }
+  &--is-active & {
+    &__hd {
+      border-bottom: 1px solid map-get($color-options, d);
+      &__artwork {
+        &--first {
+          display: none;
+        }
+        &--second {
+          display: block;
+        }
+      }
+    }
+    &__bd {
+      max-height: 99em;
+      transition: max-height $time-c ease-in-out;
+    }
+  }
+}

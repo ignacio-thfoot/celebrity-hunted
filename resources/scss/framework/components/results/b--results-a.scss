@@ -1,0 +1,8 @@
+.b--results-a {
+    margin-top: $measure*4;
+    &__title {
+        @include make-font-c(800);
+        color: map-get($color-options, a);
+        margin-bottom:$measure;
+    }
+}

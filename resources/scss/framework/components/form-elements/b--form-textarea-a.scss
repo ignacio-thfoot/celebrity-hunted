@@ -1,0 +1,19 @@
+.b--form-textarea-a{
+    &__item{
+        @include make-generic-input(
+            $colortext: a,
+            $colorbg: i, 
+            $colorborder: b,
+            $padding: $measure*1.5 $measure*2,
+            $fontSize:1rem );
+        min-height: 6rem;
+        display: block;
+        &:focus,  &:not(:placeholder-shown){
+            @include make-generic-input-interaction($colortext: d);
+        }
+    }
+    &--error{
+        textarea{border:1px solid map-get($color-options, c);}
+        & ~ .b--form-error-a{display:block!important}
+    }
+}

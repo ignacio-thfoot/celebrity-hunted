@@ -1,0 +1,137 @@
+.b--form-hubspot-a {
+  .hbspt-form {
+    .hs-form {
+      fieldset {
+        width: 100%;
+        max-width: none;
+        .hs-form-field {
+          width: 100%;
+          @include make-form-group-a();
+          label {
+            @include make-label-a($colorlabel: d);
+            span {
+            }
+            span.hs-form-required {
+            }
+          }
+          .input {
+            position: relative;
+            margin-right: 0;
+            .hs-input {
+              @include make-generic-input(
+                $colortext: a,
+                $colorbg: i,
+                $colorborder: b,
+                $padding: $measure * 1.5 $measure * 2,
+                $fontSize: 1rem
+              );
+              &:focus,
+              &:not(:placeholder-shown) {
+                @include make-generic-input-interaction($colortext: d);
+              }
+              &.error {
+                input {
+                  border: 1px solid map-get($color-options, c) !important;
+                }
+                & ~ .b--form-error-a {
+                  display: block !important;
+                }
+              }
+            }
+            textarea.hs-input {
+              min-height: $measure * 15;
+              display: block;
+            }
+          }
+          .hs-error-msgs {
+            li {
+              label.hs-error-msg {
+                color: map-get($color-options, c);
+                margin-top: math.div($measure,2);
+                @include make-font-f(300);
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+        .hs-fieldtype-select {
+          .input {
+            // explorer
+            @media all and (-ms-high-contrast: none),
+              (-ms-high-contrast: active) {
+              /* Remove IE arrow */
+              select::-ms-expand {
+                display: none !important;
+              }
+            }
+            &::after {
+              content: "";
+              height: $measure;
+              width: $measure * 2;
+              position: absolute;
+              right: $measure * 2;
+              top: 50%;
+              transform: translateY(-50%);
+              //   background-image: url("./../../img/dropdown.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-position: center right;
+              pointer-events: none;
+            }
+            .hs-input {
+            }
+          }
+        }
+      }
+      .form-columns-2 {
+        .hs-form-field {
+          width: 50%;
+          @media all and ($viewport-type: $tabletp) {
+            width: 100%;
+          }
+          &:first-child {
+            padding-right: 1rem;
+            @media all and ($viewport-type: $tabletp) {
+              padding-right: 0;
+            }
+          }
+          &:last-child {
+            padding-left: 1rem;
+            @media all and ($viewport-type: $tabletp) {
+              padding-left: 0;
+            }
+          }
+        }
+      }
+      .hs_error_rollup {
+        .hs-error-msgs {
+          li {
+            label.hs-main-font-element {
+              color: map-get($color-options, c);
+              margin-bottom: math.div($measure,2);
+              @include make-font-f(300);
+              display: block;
+            }
+          }
+        }
+      }
+      .hs-recaptcha {
+        margin-bottom: $measure * 4;
+        @media all and ($viewport-type: $tabletp) {
+          margin-bottom: $measure * 3;
+        }
+      }
+      .hs-submit {
+        .actions {
+          .hs-button {
+            @include make-btn-a($colortext: a, $colorbg: b);
+            &:hover,
+            &:focus {
+              @include make-btn-interaction($colorhover: d);
+            }
+          }
+        }
+      }
+    }
+  }
+}

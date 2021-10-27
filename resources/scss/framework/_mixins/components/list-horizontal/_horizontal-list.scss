@@ -1,0 +1,27 @@
+@mixin make-hli-a(){
+    display: inline-block;
+    &:not(:last-child){
+        margin-right: $measure*6;
+    }
+}
+
+@mixin make-hli-b(){
+    display: inline-block;
+    &:not(:last-child){
+        margin-right: $measure*2;
+    }
+}
+
+@mixin make-hli-c(){
+    display: inline-block;
+    &:not(:last-child){
+        margin-right: $measure*3;
+    }
+}
+
+@mixin make-hli-d(){
+    display: inline-block;
+    &:not(:last-child){
+        margin-right: $measure*4;
+    }
+}

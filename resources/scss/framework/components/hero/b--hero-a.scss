@@ -1,0 +1,98 @@
+.b--hero-a {
+  position: relative;
+  overflow: hidden;
+  &__back-items {
+    @include make-layer-absolute();
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media all and ($viewport-type: $tabletp) {
+      display: block;
+    }
+    &__media {
+      display: block;
+      min-height: 100%;
+      min-width: 100%;
+      object-fit: cover;
+      object-position: center left;
+    }
+  }
+  &__front-items {
+    position: relative;
+    padding: $measure * 15 0;
+    background-color: rgba(map-get($color-options, a), 0.6);
+    @media all and ($viewport-type: $tabletp) {
+      padding: $measure * 11 0;
+    }
+    &__bd {
+      position: relative;
+      @include make-bt-a();
+      &__title {
+        @include make-font-b(300);
+        color: map-get($color-options, f);
+        margin-bottom: $measure * 4;
+        @media all and ($viewport-type: $tabletp) {
+          margin-bottom: $measure * 3;
+        }
+        @media all and ($viewport-type: $mobile) {
+          text-align: center;
+        }
+      }
+      &__subtitle {
+        @include make-font-d(300);
+        color: map-get($color-options, f);
+        @include make-bt-a();
+        @media all and ($viewport-type: $mobile) {
+          text-align: center;
+        }
+      }
+      &__content {
+        @include make-font-e(300);
+        color: map-get($color-options, f);
+        @media all and ($viewport-type: $mobile) {
+          text-align: center;
+        }
+      }
+    }
+    &__ft {
+      @media all and ($viewport-type: $tabletp) {
+        @include make-col(8);
+        @include make-offset(0);
+        padding-left: 0px !important;
+      }
+      @media all and ($viewport-type: $mobile) {
+        @include make-col(10);
+        @include make-offset(1);
+        padding-left: 1rem !important;
+      }
+      &__item {
+        @include make-hli-b();
+        list-style: none;
+        // display: inline-block;
+        @media all and ($viewport-type: $tabletp) {
+          //   @include make-li-d();
+          text-align: center;
+          &:not(:last-child) {
+            margin-right: 0px;
+          }
+        }
+        &__btn {
+          @include make-btn-a($colortext: a, $colorbg: b);
+          &:hover,
+          &:focus {
+            @include make-btn-interaction($colorhover: d);
+          }
+        }
+        &:last-child & {
+          &__btn {
+            @include make-btn-interaction($colorhover: c);
+            &:hover,
+            &:focus {
+              @include make-btn-interaction($colorhover: e);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@mixin make-label-a($colorlabel) {
+  @include make-font-f(300);
+  margin-bottom: $measure;
+  display: block;
+  color: map-get($color-options, $colorlabel);
+}
+
+@mixin make-label-b($colorlabel, $top, $left) {
+  @include make-font-f(300);
+  display: block;
+  color: map-get($color-options, $colorlabel);
+  position: absolute;
+  top: $top;
+  left: $left;
+  transition: all $time-a ease-in-out;
+}

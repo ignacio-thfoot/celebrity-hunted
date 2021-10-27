@@ -1,0 +1,27 @@
+@mixin headings() {
+  h2 {
+    @include make-font-b(300);
+    padding-top: $measure;
+    margin-bottom: $measure * 3;
+  }
+  h3 {
+    @include make-font-d(300);
+    padding-top: $measure;
+    margin-bottom: $measure * 3;
+  }
+  h4 {
+    @include make-font-c(300);
+    margin-bottom: $measure * 3;
+  }
+}
+
+@mixin headings-color($_color-a) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $_color-a;
+  }
+}

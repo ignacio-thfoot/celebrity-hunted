@@ -1,0 +1,17 @@
+@mixin wp-block-image() {
+  .wp-block-image {
+    margin: $measure * 5 0;
+    figcaption {
+      @include make-font-f(300);
+      text-align: left;
+    }
+  }
+}
+
+@mixin wp-block-image-color($_color-a) {
+  .wp-block-image {
+    figcaption {
+      color: $_color-a;
+    }
+  }
+}

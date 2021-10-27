@@ -1,0 +1,56 @@
+@mixin lists() {
+  ul,
+  ol {
+    margin-bottom: $measure * 3;
+    li {
+      margin-bottom: $measure * 2;
+      @include make-font-e(300);
+      padding-left: $measure * 3;
+    }
+  }
+  ul {
+    @include make-font-e(300);
+    list-style-type: disc;
+    margin-left: $measure * 4;
+    @media all and ($viewport-type: $mobile) {
+      margin-left: $measure * 3;
+    }
+    li {
+      position: relative;
+      padding-left: 0px;
+      //Nested ul
+      ul {
+        margin-top: $measure;
+        margin-bottom: $measure;
+        margin-left: $measure * 3;
+        @media all and ($viewport-type: $mobile) {
+          margin-left: $measure * 4;
+        }
+        li {
+          margin-left: 0px;
+          list-style-type: circle;
+        }
+      }
+    }
+  }
+  ol {
+    @include make-font-e(300);
+    margin-left: $measure * 4;
+    list-style-type: decimal;
+    @media all and ($viewport-type: $mobile) {
+      margin-left: $measure * 3;
+    }
+    li {
+      padding-left: 0px;
+    }
+  }
+}
+
+@mixin lists-color($_color-a) {
+  ul,
+  ol {
+    li {
+      color: $_color-a;
+    }
+  }
+}

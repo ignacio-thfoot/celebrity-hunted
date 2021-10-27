@@ -1,0 +1,79 @@
+.b--cta-a {
+  position: relative;
+  display: block;
+  min-height: $measure * 37.5;
+  height: 100%;
+  padding: $measure * 6 $measure * 5;
+  border-radius: $border-radius-b;
+  background-color: map-get($color-options, b);
+  text-decoration: none !important;
+  overflow: hidden;
+  box-shadow: none;
+  transition: all $time-a ease-in-out;
+  @media all and ($viewport-type: $tabletl) {
+    padding: $measure * 5 $measure * 4;
+  }
+  @media all and ($viewport-type: $mobile) {
+    min-height: 0;
+    height: auto;
+    margin-bottom: $measure * 5;
+  }
+  &__back-items {
+    position: absolute;
+    width: 30%;
+    bottom: $measure;
+    right: $measure;
+    @media all and ($viewport-type: $mobile) {
+      display: none;
+    }
+    &__media {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+  &__front-items {
+    position: relative;
+    height: 100%;
+    &__title {
+      @include make-font-c(300);
+      font-weight: bold;
+      color: map-get($color-options, f);
+      padding-bottom: $measure * 7;
+    }
+    &__btn {
+      position: absolute;
+      bottom: 0;
+      display: inline-block;
+      @include make-font-e(300);
+      font-weight: bold;
+      text-decoration: none !important;
+      color: map-get($color-options, f);
+      opacity: 1;
+      transition: all $time-a ease-in-out;
+      // i explorer
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        position: relative;
+      }
+      &__icon {
+        height: $measure * 1.5;
+        padding-left: $measure;
+        path {
+          fill: map-get($color-options, f);
+          transition: all $time-a ease-in-out;
+        }
+        // i explorer
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+          // display: block;
+          position: absolute;
+          bottom: math.div($measure,1.5);
+          right: -70%;
+        }
+      }
+    }
+  }
+  &:hover,
+  &:focus {
+    box-shadow: $shadow-a;
+  }
+}

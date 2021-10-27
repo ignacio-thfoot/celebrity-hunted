@@ -1,0 +1,6 @@
+.b--form-label-a{
+    @include make-font-f(300);
+    margin-bottom: $measure;
+    display: block;
+    color: rgba(map-get($color-options, a),.8);
+}

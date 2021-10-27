@@ -1,0 +1,16 @@
+.b--lazy-a {
+  opacity: 0;
+  &--fade-in {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out 100ms;
+  }
+}
+
+//lazy load for slider
+.lazy-tiny {
+  opacity: 0;
+  &.loaded {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out 100ms;
+  }
+}

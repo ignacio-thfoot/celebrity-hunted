@@ -1,0 +1,8 @@
+.b--message-a {
+  padding: $measure * 5;
+  margin-bottom: $measure * 5;
+  background-color: map-get($color-options, a);
+  @include make-font-e(300);
+  color: map-get($color-options, e);
+  text-align: center;
+}

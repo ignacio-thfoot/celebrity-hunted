@@ -1,0 +1,17 @@
+.b--nav-b {
+  margin-bottom: $measure * 7;
+  @media all and ($viewport-type: $tabletp) {
+    margin-bottom: 0;
+  }
+  &__list-item {
+    @include make-hli-a();
+    &__link {
+      @include make-font-f(300);
+      @include make-link-b($colortext: b);
+      &:hover,
+      &:focus {
+        @include make-link-b-interaction();
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@mixin make-icon-a($border-color){
+    position: relative;
+    display: inline-block;
+    border: 1px solid map-get($color-options, $border-color);
+    width: $measure*4;
+    height: $measure*4;
+    border-radius: 50%;
+    text-decoration: none!important;
+    transition: all $time-a ease-in-out;
+}
+
+@mixin make-icon-a-media($icon-color){
+    width: 100%;
+    height: 100%;
+    path{
+        fill: map-get($color-options, $icon-color);
+        transition: all $time-a ease-in-out;
+    }
+}
+
+@mixin make-icon-a-media-interaction($icon-color){
+    path{
+        fill: rgba(map-get($color-options, $icon-color), .7);
+    }
+}

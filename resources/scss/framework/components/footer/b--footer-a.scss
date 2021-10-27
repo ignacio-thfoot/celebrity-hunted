@@ -1,0 +1,25 @@
+.b--footer-a {
+  padding: $measure * 7 0;
+  background-color: map-get($color-options, a);
+  @media all and ($viewport-type: $tabletp) {
+    padding-top: $measure * 5;
+    padding-bottom: $measure * 5;
+  }
+  &__item-right {
+    text-align: right;
+    @media all and ($viewport-type: $tabletp) {
+      text-align: left;
+    }
+    &__content {
+      @include make-font-f(300);
+      color: map-get($color-options, b);
+      margin-bottom: $measure * 7;
+      @media all and ($viewport-type: $tabletp) {
+        margin-top: $measure * 11;
+      }
+      @media all and ($viewport-type: $mobile) {
+        margin-bottom: $measure * 4;
+      }
+    }
+  }
+}

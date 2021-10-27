@@ -1,0 +1,5 @@
+.b--vlist-a{
+    &__list-item{
+        @include make-vli-a();
+    }
+}

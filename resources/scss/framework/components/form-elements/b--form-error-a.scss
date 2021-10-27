@@ -1,0 +1,9 @@
+.b--form-error-a {
+  display: none !important;
+  color: map-get($color-options, c);
+  margin-top: math.div($measure,2);
+  @include make-font-f(300);
+  &--second {
+    color: map-get($color-options, i);
+  }
+}

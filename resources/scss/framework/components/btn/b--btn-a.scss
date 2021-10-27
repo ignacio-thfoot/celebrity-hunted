@@ -1,0 +1,17 @@
+.b--btn-a{
+    @include make-btn-a($colortext: a, $colorbg: b);
+    &:hover,&:focus{
+        @include make-btn-interaction($colorhover: d);
+    }
+    &__loader{
+        @include make-btn-loader();
+    }
+    &--second{
+        @include make-btn-interaction($colorhover: c);
+        &:hover,&:focus{
+            @include make-btn-interaction($colorhover: e);
+        }
+    }
+}
+
+

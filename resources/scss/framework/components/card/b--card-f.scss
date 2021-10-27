@@ -1,0 +1,32 @@
+.b--card-f {
+  display: block;
+  text-decoration: none;
+  padding: $measure * 8;
+  margin-bottom: $measure * 4;
+  background-color: map-get($color-options, d);
+  transition: background-color $time-a ease-in-out;
+  &__media-wrapper {
+    margin-bottom: $measure * 2;
+    @include make-ar-a(100%);
+    @media all and ($viewport-type: $tabletp) {
+      @include make-ar-a(66%);
+    }
+    &__media {
+      @include make-ar-a-item__img();
+    }
+  }
+  &__bd {
+    &__title {
+      margin-bottom: $measure * 2;
+      @include make-font-d(300);
+      color: map-get($color-options, a);
+    }
+    &__content {
+      @include make-font-e(300);
+      color: map-get($color-options, a);
+    }
+  }
+  &:hover {
+    background-color: rgba(map-get($color-options, d), 0.67);
+  }
+}

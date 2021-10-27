@@ -1,0 +1,30 @@
+.b--form-group-a{
+    //@include make-form-group-a();
+    margin-top: $measure*3;
+    position: relative;
+    padding: 0 $measure*3;
+    @media all and ($viewport-type: $laptop) {
+        padding: 0 $measure;
+    }
+    @media all and ($viewport-type: $tabletl) {
+        padding: 0
+    }
+    @media all and ($viewport-type: $mobile) {
+        margin-top: $measure*2;
+        padding: 0;
+    }
+    &__loader{ 
+        position: absolute; 
+        top: 50%;
+        right: calc(-#{$measure}*5 - 32px);
+        transform: translateY(-50%);
+        margin-bottom: 80px!important;
+        @media all and ($viewport-type: $tabletp) {
+            position: relative;
+            top: auto;
+            right: auto;
+            transform: none;
+            margin: 16px 0;
+        }
+    }
+}

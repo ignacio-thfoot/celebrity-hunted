@@ -1,0 +1,287 @@
+.b--form-hubspot-b {
+  .hbspt-form {
+    .hs-form {
+      fieldset {
+        width: 100%;
+        max-width: none;
+        .hs-form-field {
+          width: 100%;
+          @include make-form-group-b();
+          &:focus-within label{
+            top: 0;
+          }
+          label {
+            @include make-label-b(
+              $colorlabel: d,
+              $top: $measure*3.5,
+              $left: $measure*2
+              );
+          }
+          .input {
+            position: relative;
+            margin-right: 0;
+            .hs-input {
+              @include make-input-b(
+                $colortext: a,
+                $colorborder: a,
+                $padding: $measure $measure * 2 $measure * 1.5,
+                $fontSize: 1rem
+              );
+              &:focus{
+                @include make-input-b-focus-interaction(
+                  $colorborder: a
+                );
+              }
+              &:not(:placeholder-shown) {
+                @include make-input-b-placeholder-interaction(
+                  $colorbg: f
+                );
+              }
+
+              &.error {
+                  border-bottom: 2px solid map-get($color-options, c);
+                & ~ .b--form-error-a {
+                  display: block !important;
+                }
+              }
+            }
+            textarea.hs-input {
+              min-height: $measure * 15;
+              display: block;
+            }
+            // checkbox+radio
+            .inputs-list{
+              label{
+                position: relative;
+                top: auto;
+                left: auto;
+                min-height: $measure*3;
+                  input{
+                      position: absolute;
+                      opacity: 0;
+                      cursor: pointer;
+                      height: $measure*3;
+                      width: $measure*3;
+                      left:0; top:0;
+                      z-index: 1;
+                  }
+                  span{
+                      position: relative;
+                      padding-left: $measure*5;
+                      &::before{
+                          content: "";
+                          width: $measure*3;
+                          height: $measure*3;
+                          display: block;
+                          outline: 1px solid rgba(map-get($color-options, a), .2);
+                          position: absolute;
+                          top: 50%;
+                          left: 0;
+                          transform: translateY(-50%);
+                          pointer-events: none;
+                      }
+                      &::after{
+                          content: "";
+                          position: absolute;
+                          opacity: 0;
+                          transition: .3s;
+                          left: math.div($measure,2);
+                          top: 50%;
+                          transform: translateY(-50%);
+                          width: $measure*2;
+                          height: $measure*2;
+                          background:map-get($color-options, b);
+                      }
+                  }
+                  input:focus ~ span::before{
+                      outline: 1px solid rgba(map-get($color-options, a), 1);
+                  }
+                  input:checked ~ span::after{
+                      opacity: 1 !important;
+                  }
+                  .hs-form-required{
+                      padding-left: 0;
+                      &::before{
+                          content: none;
+                      }
+                      &::after{
+                          content: none;
+                      }
+                  }
+              }
+              //radio
+              .hs-form-radio{
+                  label{
+                      span{
+                          &::before{
+                              border-radius: 50%;
+                          }
+                          &::after{
+                              border-radius: 50%;
+                          }
+                      }
+                  }
+              }
+          }
+          }
+          .hs-error-msgs {
+            li {
+              label.hs-error-msg {
+                position: relative;
+                top: auto;
+                left: auto;
+                color: map-get($color-options, c);
+                margin-top: math.div($measure,2);
+                @include make-font-f(300);
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+        .hs-fieldtype-select {
+          .input {
+            // explorer
+            @media all and (-ms-high-contrast: none),
+              (-ms-high-contrast: active) {
+              /* Remove IE arrow */
+              select::-ms-expand {
+                display: none !important;
+              }
+            }
+            &::after {
+              content: "";
+              height: $measure;
+              width: $measure * 2;
+              position: absolute;
+              right: $measure * 2;
+              top: 50%;
+              transform: translateY(-50%);
+              //   background-image: url("./../../img/dropdown.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-position: center right;
+              pointer-events: none;
+            }
+            .hs-input {
+              &:not(:placeholder-shown) {
+                border-bottom: 2px solid rgba(map-get($color-options, a), .2);
+              }
+              &:focus{
+                border-bottom: 2px solid map-get($color-options, a);
+              }
+            }
+          }
+        }
+        .hs-fieldtype-checkbox{
+          &:focus-within label{
+            top: auto;
+          }
+          label{
+            position: relative;
+            top: auto;
+            left: auto;
+            margin-bottom: $measure*2;
+          }
+        }
+        .hs-fieldtype-file{
+          &:focus-within label{
+            top: auto;
+          }
+          label{
+            position: relative;
+            top: auto;
+            left: auto;
+          }
+          .input{
+            input{
+              cursor: pointer;
+              position: relative;
+              -webkit-padding-before: 0 !important;
+              -webkit-padding-after: 0 !important;
+              -webkit-padding-start: 0 !important;
+              // border: 1px solid rgba(map-get($color-options, a), 0.2);
+              width: 100%;
+              height: 41px;
+              color: rgba(map-get($color-options, b), 0.5);
+              padding: $measure;
+              background-color: map-get($color-options, a);
+              transition: color $time-a ease-in-out;
+              &::-webkit-file-upload-button {
+                cursor: pointer;
+                height: 100%;
+                padding: math.div($measure,2) $measure * 6;
+                appearance: none;
+                border: none;
+                background-color: map-get($color-options, a);
+                color: map-get($color-options, f);
+                @include make-font-f(300);
+                transition: opacity $time-a ease-in-out;
+              }
+              &:hover {
+                &::-webkit-file-upload-button{
+                  opacity: .8;
+                }
+              }
+            }
+          }
+        }
+      }
+      .form-columns-2 {
+        .hs-form-field {
+          width: 50%;
+          @media all and ($viewport-type: $tabletp) {
+            width: 100%;
+          }
+          &:first-child {
+            padding-right: 1rem;
+            @media all and ($viewport-type: $tabletp) {
+              padding-right: 0;
+            }
+          }
+          &:last-child {
+            label {
+              left: $measure*4;
+            }
+            padding-left: 1rem;
+            @media all and ($viewport-type: $tabletp) {
+              padding-left: 0;
+            }
+          }
+
+        }
+      }
+      .hs_error_rollup {
+        .hs-error-msgs {
+          li {
+            label.hs-main-font-element {
+              position: relative;
+              top: auto;
+              left: auto;
+              color: map-get($color-options, c);
+              margin-bottom: math.div($measure,2);
+              @include make-font-f(300);
+              display: block;
+            }
+          }
+        }
+      }
+      .hs-recaptcha {
+        margin-bottom: $measure * 4;
+        @media all and ($viewport-type: $tabletp) {
+          margin-bottom: $measure * 3;
+        }
+      }
+      .hs-submit {
+        .actions {
+          .hs-button {
+            @include make-btn-a($colortext: a, $colorbg: b);
+            &:hover,
+            &:focus {
+              @include make-btn-interaction($colorhover: d);
+            }
+          }
+        }
+      }
+    }
+  }
+}

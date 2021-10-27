@@ -1,0 +1,46 @@
+.b--spinner-a{
+    position: relative;
+    display: inline-block;
+	height: $measure*4;
+    width: $measure*4;
+    &__artwork{
+        display: block;
+        position: absolute;
+        top: 0; left: 0;
+        bottom: 0; right: 0;
+        margin: auto;
+        height: $measure*4;
+        width: $measure*4;
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0; left: 0;
+            bottom: 0; right: 0;
+            margin: auto;
+            height: $measure*4;
+            width: $measure*4;
+            border: 3px solid transparent;
+            border-top: 3px solid map-get($color-options, a);;
+            border-radius: 50%;
+            animation: spinner 1.5s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+        }
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0; left: 0;
+            bottom: 0; right: 0;
+            margin: auto;
+            height: $measure*4;
+            width: $measure*4;
+            border: 3px solid rgba(map-get($color-options, c), .3);
+            border-radius: 50%;
+        }
+    }
+}
+
+@keyframes spinner {
+	0%   { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}

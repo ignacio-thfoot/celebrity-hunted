@@ -1,0 +1,13 @@
+.b--suggestions-a {
+    position: absolute;
+    width: 100%;
+    background: map-get($color-options, f);
+    padding: $measure*2;
+    border-radius: 5px;
+    border: 1px solid rgba(map-get($color-options, a), .2);
+    &__title {
+        @include make-font-d(300);
+        color: rgba(map-get($color-options, a), .6);
+        margin-bottom: $measure*3;
+    }
+}

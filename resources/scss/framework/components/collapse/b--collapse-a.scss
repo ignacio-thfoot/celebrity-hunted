@@ -1,0 +1,9 @@
+.b--collapse-a {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height $time-b cubic-bezier(0, 1, 0, 1);
+    &--is-active{
+        max-height: 99em;
+        transition: max-height $time-c ease-in-out;
+    }
+}
