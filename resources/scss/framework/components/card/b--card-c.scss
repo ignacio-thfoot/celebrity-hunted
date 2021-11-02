@@ -119,6 +119,7 @@
         color: map-get($color-options, f);
         letter-spacing: 7px;
         margin-top: $measure*4;
+        line-height: 35px;
         text-transform: initial;
         a {
           color: inherit;
@@ -127,11 +128,12 @@
         @media all and ($viewport-type: $tabletp) {
           margin-top: $measure*8;
           font-size: 1.5rem;
+          line-height: 40px;
         }
         @media all and ($viewport-type: $mobile) {
           margin-top: $measure*5;
           font-size: .7rem;
-          line-height: 20px;
+          line-height: 25px;
         }
       }
       &__contentLong {

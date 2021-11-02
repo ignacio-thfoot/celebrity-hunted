@@ -129,8 +129,8 @@
                 <div class="b--card-c__front-items__ft">
                     <div class="f--row">
                         <div class="f--col-12 text-center">
-                            <a class="addthis_button_facebook" addthis:url="https://celebrity-hunted.fr/?score=1" ><img src="img/FB.png" alt="Share" class="b--card-c__front-items__ft__social at-icon-wrapper at-share-btn at-svc-facebook"></a>
-                            <a class="addthis_button_twitter" addthis:url="https://celebrity-hunted.fr/?score=1"><img src="img/TWITTER.png" alt="Share" class="b--card-c__front-items__ft__social at-icon-wrapper at-share-btn at-svc-twitter"></a>
+                            <a class="addthis_button_facebook" addthis:url="https://celebrity-hunted.fr/"><img src="img/FB.png" alt="Share" class="b--card-c__front-items__ft__social at-icon-wrapper at-share-btn at-svc-facebook"></a>
+                            <a class="addthis_button_twitter" addthis:url="https://celebrity-hunted.fr/"><img src="img/TWITTER.png" alt="Share" class="b--card-c__front-items__ft__social at-icon-wrapper at-share-btn at-svc-twitter"></a>
                             <!-- Go to www.addthis.com/dashboard to customize your tools -->
                             <!-- <div class="addthis_inline_share_toolbox"></div> -->
                         </div>
@@ -158,8 +158,8 @@
                     <p class="b--card-c__front-items__bd__content" data-text="thanks_text"></p>
                 </div>
                 <div class="b--card-c__front-items__ft">
-                <a class="addthis_button_facebook" data-description="THIS IS FOR FACEBOOK"><img src="img/FB.png" alt="Share" class="b--card-c__front-items__ft__social at-icon-wrapper at-share-btn at-svc-facebook"></a>
-                <a class="addthis_button_twitter" data-description="THIS IS FOR TWITTER"><img src="img/TWITTER.png" alt="Share" class="b--card-c__front-items__ft__social at-icon-wrapper at-share-btn at-svc-twitter"></a>
+                <a class="addthis_button_facebook"><img src="img/FB.png" alt="Share" class="b--card-c__front-items__ft__social at-icon-wrapper at-share-btn at-svc-facebook"></a>
+                <a class="addthis_button_twitter"><img src="img/TWITTER.png" alt="Share" class="b--card-c__front-items__ft__social at-icon-wrapper at-share-btn at-svc-twitter"></a>
                 </div>
             </div>
             <a href="#" class="b--card-c__media-wrapper">
@@ -199,6 +199,7 @@
                         <div class="b--video-a__video">
                             <iframe src="https://www.youtube.com/embed/eUFmbd0R6SE?enablejsapi=1&version=3&playerapiid=ytplayer" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
+                        <p class="b--card-c__front-items__bd__content f--mt-0" data-text="trailer_text"></p>
                     </div>
                 </div>
             </div>

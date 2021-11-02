@@ -28,7 +28,7 @@
         "button_start": "Commencer la<br />traque",
         "button_start_disclaimer" : "[ Le jeu se lancera en plein écran ] ",
         "win_title" : "Félicitations",
-        "win_text" : "Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />RETROUVEZ <a target='_blank' href='https://www.youtube.com/watch?v=eUFmbd0R6SE'>CELEBRITY HUNTED SUR PRIME VIDÉO</a> DÈS À PRÉSENT !.",
+        "win_text" : "Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />RETROUVEZ <a target='_blank' href='https://www.primevideo.com/detail/0PRC9SRVND6BKWI45B0C0RTKYR/'>CELEBRITY HUNTED SUR PRIME VIDÉO</a> DÈS À PRÉSENT !.",
         "already_signed_text" : "Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />Vous êtes déjà inscrit au jeu concours. Le tirage au sort aura lieu très bientôt !",
         "cookies_text" : "Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant à naviguer sur ce site, vous acceptez nos cookies.",
         "cookies_accept" : "Accepter",
@@ -43,6 +43,7 @@
         "error_title" : "Désolé",
         "error_text" : "Chaque joueur ne peut s’inscrire qu’une au jeu concours et vous vous êtes déjà inscrit.<br /><br />Le tirage au sort aura lieu très bientôt !",
         "trailer_title" : "La bande annonce",
+        "trailer_text" : "RETROUVEZ <a target='_blank' href='https://www.primevideo.com/detail/0PRC9SRVND6BKWI45B0C0RTKYR/'>CELEBRITY HUNTED SUR PRIME VIDÉO</a><br/>DÈS À PRÉSENT !.",
         "rotate_text" : "Ce site est optimisé pour le mode portrait. Veuillez s'il vous plaît tourner votre appareil."
     },
     "teams" : {

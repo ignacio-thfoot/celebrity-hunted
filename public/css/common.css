@@ -7220,6 +7220,7 @@ pre.code-jquery code {
   color: #ffffff;
   letter-spacing: 7px;
   margin-top: 2rem;
+  line-height: 35px;
   text-transform: initial;
 }
 .b--card-c__front-items__bd__content a {
@@ -7230,13 +7231,14 @@ pre.code-jquery code {
   .b--card-c__front-items__bd__content {
     margin-top: 4rem;
     font-size: 1.5rem;
+    line-height: 40px;
   }
 }
 @media all and (max-width: 600px) {
   .b--card-c__front-items__bd__content {
     margin-top: 2.5rem;
     font-size: 0.7rem;
-    line-height: 20px;
+    line-height: 25px;
   }
 }
 .b--card-c__front-items__bd__contentLong {
@@ -8172,7 +8174,7 @@ pre.code-jquery code {
   clear: both;
   width: 700px;
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 43.25%;
   height: 0;
   margin: 0 auto;
 }
@@ -8181,6 +8183,7 @@ pre.code-jquery code {
     margin-top: 2.5rem;
     width: unset;
     height: unset;
+    padding-bottom: 56.25%;
   }
 }
 .b--video-a__video iframe {
