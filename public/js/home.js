@@ -2338,13 +2338,11 @@ var Home = /*#__PURE__*/function () {
       }); //check rotate
 
       if (this.mobileCheck() == true) {
-        var orientation = screen.orientation !== undefined ? screen.orientation.angle : window.orientation;
-
-        if (orientation == 90) {
+        if (!window.matchMedia("(orientation: portrait)").matches) {
           this.rotate.classList.add("b--rotate-a--is-visible");
         }
 
-        window.addEventListener('orientationchange', this.checkOrientationChange.bind(this));
+        window.addEventListener('resize', this.checkOrientationChange.bind(this));
       } // //social
 
 
@@ -2367,11 +2365,13 @@ var Home = /*#__PURE__*/function () {
       }); // background sound and toggle mute
 
       document.addEventListener("mute", function () {
-        if (window.audio.volume == _this2.audioVolume) {
-          window.audio.volume = 0;
+        if (!window.audio.paused) {
+          // window.audio.volume = 0;
+          window.audio.pause();
           _this2.isMuted = true;
         } else {
-          window.audio.volume = _this2.audioVolume;
+          // window.audio.volume = this.audioVolume;
+          window.audio.play();
           _this2.isMuted = false;
         }
       });
@@ -2387,7 +2387,11 @@ var Home = /*#__PURE__*/function () {
   }, {
     key: "showTrailer",
     value: function showTrailer() {
-      if (!this.isMuted) window.audio.volume = 0;
+      if (!this.isMuted) {
+        // window.audio.volume = 0;
+        window.audio.pause();
+      }
+
       this.openModal("modal-trailer");
       this.closeModal("modal-trailer");
     }
@@ -2469,9 +2473,9 @@ var Home = /*#__PURE__*/function () {
   }, {
     key: "checkOrientationChange",
     value: function checkOrientationChange() {
-      var screenOrientation = screen.orientation.angle;
+      console.log("resize");
 
-      if (screenOrientation == 0) {
+      if (window.matchMedia("(orientation: portrait)").matches) {
         this.rotate.classList.remove("b--rotate-a--is-visible");
       } else {
         this.rotate.classList.add("b--rotate-a--is-visible");
@@ -2645,7 +2649,10 @@ var Home = /*#__PURE__*/function () {
           $('.b--video-a__video iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'); //bring back background audio
 
           if (id == 'modal-trailer') {
-            if (!_this6.isMuted) window.audio.volume = _this6.audioVolume;
+            if (!_this6.isMuted) {
+              // window.audio.volume = this.audioVolume;
+              window.audio.play();
+            }
           }
         });
       }); // close modal on Bakcdrop Click
@@ -2668,7 +2675,10 @@ var Home = /*#__PURE__*/function () {
           $('.b--video-a__video iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'); //bring back background audio
 
           if (id == 'modal-trailer') {
-            if (!_this6.isMuted) window.audio.volume = _this6.audioVolume;
+            if (!_this6.isMuted) {
+              // window.audio.volume = this.audioVolume;
+              window.audio.play();
+            }
           }
         });
       });
@@ -3819,7 +3829,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Applications/XAMPP/xamp
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"text":{"welcome_title":"Bienvenue","welcome_text":"Retrouve sur l’image au moins une équipe et tente de remporter un chèque de 1000€.","button_start":"Commencer la<br />traque","button_start_disclaimer":"[ Le jeu se lancera en plein écran ] ","win_title":"Félicitations","win_text":"Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}. Retrouve maintenant les autres équipes !<br /><br />Tentez de gagner un chèque de 1000€ en vous inscrivant au tirage au sort.","already_signed_text":"Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />Vous êtes déjà inscrit au jeu concours. Le tirage au sort aura lieu très bientôt !","cookies_text":"Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant à naviguer sur ce site, vous acceptez nos cookies.","cookies_accept":"Accepter","cookies_refuse":"Refuser","thanks_title":"Merci","thanks_text":"Vous êtes bien inscrit au jeu concours.<br /><br />Partagez ce jeu et augmentez vos chances de gagner !","welcome_more":"en savoir plus","help_title":"Le jeu concours","help_text":"Pour participer, zoome à l’intérieur de l’image jusqu’à ce que tu trouves au moins un des duos en fuite.<br /><br />Une fois trouvé, clique sur eux pour t’inscrire au tirage au sort en indiquant ton mail pour tenter de gagner un chèque de 1000€.<br /><br />Augmente tes chances de gagner en partageant ton score sur les réseaux sociaux.<br /><br />Deux gagnants seront tirés au sort le 29/10/2021 puis le 02/11/2021.","policy_button_text":"Politique de confidentialité et règlement du jeu concours","policy_button_text_mobile":"Réglement et conditions générales","error_title":"Désolé","error_text":"Chaque joueur ne peut s’inscrire qu’une au jeu concours et vous vous êtes déjà inscrit.<br /><br />Le tirage au sort aura lieu très bientôt !","trailer_title":"La bande annonce","rotate_text":"Ce site est optimisé pour le mode portrait. Veuillez s\'il vous plaît tourner votre appareil."},"post":{"welcome_title":"Bienvenue","welcome_text":"RETROUVE SUR L’IMAGE AU MOINS UNE TEAM.","button_start":"Commencer la<br />traque","button_start_disclaimer":"[ Le jeu se lancera en plein écran ] ","win_title":"Félicitations","win_text":"Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />RETROUVEZ  CELEBRITY HUNTED SUR PRIME VIDÉO DÈS À PRÉSENT !.","already_signed_text":"Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />Vous êtes déjà inscrit au jeu concours. Le tirage au sort aura lieu très bientôt !","cookies_text":"Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant à naviguer sur ce site, vous acceptez nos cookies.","cookies_accept":"Accepter","cookies_refuse":"Refuser","thanks_title":"Merci","thanks_text":"Vous êtes bien inscrit au jeu concours.<br /><br />Partagez ce jeu et augmentez vos chances de gagner !","welcome_more":"en savoir plus","help_title":"Le jeu","help_text":"Pour participer, zoome à l’intérieur de l’image jusqu’à ce que tu trouves au moins un des duos en fuite.<br /><br />Une fois trouvé, clique sur eux pour t’inscrire au tirage au sort en indiquant ton mail pour tenter de gagner un chèque de 1000€.<br /><br />Augmente tes chances de gagner en partageant ton score sur les réseaux sociaux.<br /><br />Deux gagnants seront tirés au sort le 29/10/2021 puis le 02/11/2021.","policy_button_text":"Politique de confidentialité et règlement du jeu concours","policy_button_text_mobile":"Réglement et conditions générales","error_title":"Désolé","error_text":"Chaque joueur ne peut s’inscrire qu’une au jeu concours et vous vous êtes déjà inscrit.<br /><br />Le tirage au sort aura lieu très bientôt !","trailer_title":"La bande annonce","rotate_text":"Ce site est optimisé pour le mode portrait. Veuillez s\'il vous plaît tourner votre appareil."},"teams":{"team4":"Ramzy et Franck","team3":"Dadju et Darcy","team2":"Seb la Frite et Squeezie","team1":"Florent et Laure Manaudou"},"share":{"title":"Partage ton score et challenge tes amis à le battre !","desc":"#CelebrityHunted : J’ai retrouvé {team_name} en {time}. Toi aussi participe pour battre mon record !"}}');
+module.exports = JSON.parse('{"text":{"welcome_title":"Bienvenue","welcome_text":"Retrouve sur l’image au moins une équipe et tente de remporter un chèque de 1000€.","button_start":"Commencer la<br />traque","button_start_disclaimer":"[ Le jeu se lancera en plein écran ] ","win_title":"Félicitations","win_text":"Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}. Retrouve maintenant les autres équipes !<br /><br />Tentez de gagner un chèque de 1000€ en vous inscrivant au tirage au sort.","already_signed_text":"Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />Vous êtes déjà inscrit au jeu concours. Le tirage au sort aura lieu très bientôt !","cookies_text":"Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant à naviguer sur ce site, vous acceptez nos cookies.","cookies_accept":"Accepter","cookies_refuse":"Refuser","thanks_title":"Merci","thanks_text":"Vous êtes bien inscrit au jeu concours.<br /><br />Partagez ce jeu et augmentez vos chances de gagner !","welcome_more":"en savoir plus","help_title":"Le jeu concours","help_text":"Pour participer, zoome à l’intérieur de l’image jusqu’à ce que tu trouves au moins un des duos en fuite.<br /><br />Une fois trouvé, clique sur eux pour t’inscrire au tirage au sort en indiquant ton mail pour tenter de gagner un chèque de 1000€.<br /><br />Augmente tes chances de gagner en partageant ton score sur les réseaux sociaux.<br /><br />Deux gagnants seront tirés au sort le 29/10/2021 puis le 02/11/2021.","policy_button_text":"Politique de confidentialité et règlement du jeu concours","policy_button_text_mobile":"Réglement et conditions générales","error_title":"Désolé","error_text":"Chaque joueur ne peut s’inscrire qu’une au jeu concours et vous vous êtes déjà inscrit.<br /><br />Le tirage au sort aura lieu très bientôt !","trailer_title":"La bande annonce","rotate_text":"Ce site est optimisé pour le mode portrait. Veuillez s\'il vous plaît tourner votre appareil."},"post":{"welcome_title":"Bienvenue","welcome_text":"Retrouve sur l\'image au moins une team.","button_start":"Commencer la<br />traque","button_start_disclaimer":"[ Le jeu se lancera en plein écran ] ","win_title":"Félicitations","win_text":"Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />RETROUVEZ <a target=\'_blank\' href=\'https://www.youtube.com/watch?v=eUFmbd0R6SE\'>CELEBRITY HUNTED SUR PRIME VIDÉO</a> DÈS À PRÉSENT !.","already_signed_text":"Vous avez trouvé {team_name} en {time}. Le temps moyen est de {average}.<br /><br />Vous êtes déjà inscrit au jeu concours. Le tirage au sort aura lieu très bientôt !","cookies_text":"Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. En continuant à naviguer sur ce site, vous acceptez nos cookies.","cookies_accept":"Accepter","cookies_refuse":"Refuser","thanks_title":"Merci","thanks_text":"Vous êtes bien inscrit au jeu concours.<br /><br />Partagez ce jeu et augmentez vos chances de gagner !","welcome_more":"en savoir plus","help_title":"Le jeu","help_text":"Pour jouer, zoome à l’intérieur de l’image jusqu’à ce que tu trouves au moins un des duos en fuite.<br /><br />Une fois trouvé, clique sur eux pour connaître ton score.","policy_button_text":"Politique de confidentialité","policy_button_text_mobile":"Réglement et conditions générales","error_title":"Désolé","error_text":"Chaque joueur ne peut s’inscrire qu’une au jeu concours et vous vous êtes déjà inscrit.<br /><br />Le tirage au sort aura lieu très bientôt !","trailer_title":"La bande annonce","rotate_text":"Ce site est optimisé pour le mode portrait. Veuillez s\'il vous plaît tourner votre appareil."},"teams":{"team4":"Ramzy et Franck","team3":"Dadju et Darcy","team2":"Seb la Frite et Squeezie","team1":"Florent et Laure Manaudou"},"share":{"title":"Partage ton score et challenge tes amis à le battre !","desc":"#CelebrityHunted : J’ai retrouvé {team_name} en {time}. Toi aussi participe pour battre mon record !"}}');
 
 /***/ })
 

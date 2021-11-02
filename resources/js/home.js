@@ -271,11 +271,10 @@ class Home {
 
         //check rotate
         if(this.mobileCheck() == true){
-            var orientation = (screen.orientation !== undefined) ? screen.orientation.angle : window.orientation;
-            if(orientation == 90){
+            if(!window.matchMedia("(orientation: portrait)").matches){
                 this.rotate.classList.add("b--rotate-a--is-visible");
             }
-            window.addEventListener('orientationchange', this.checkOrientationChange.bind(this));
+            window.addEventListener('resize', this.checkOrientationChange.bind(this));
         }
 
         // //social
@@ -298,11 +297,13 @@ class Home {
 
         // background sound and toggle mute
         document.addEventListener("mute", () => {
-            if(window.audio.volume == this.audioVolume) {
-                window.audio.volume = 0;
+            if(!window.audio.paused) {
+                // window.audio.volume = 0;
+                window.audio.pause();
                 this.isMuted = true;
             } else {
-                window.audio.volume = this.audioVolume;
+                // window.audio.volume = this.audioVolume;
+                window.audio.play();
                 this.isMuted = false;
             }
         });
@@ -316,7 +317,10 @@ class Home {
     }
 
     showTrailer() {
-        if(!this.isMuted) window.audio.volume = 0;
+        if(!this.isMuted){ 
+            // window.audio.volume = 0;
+            window.audio.pause();
+        }
         this.openModal("modal-trailer");
         this.closeModal("modal-trailer");
     }
@@ -383,8 +387,8 @@ class Home {
     }
 
     checkOrientationChange(){
-        let screenOrientation = screen.orientation.angle;
-        if(screenOrientation == 0){
+        console.log("resize");
+        if(window.matchMedia("(orientation: portrait)").matches){
             this.rotate.classList.remove("b--rotate-a--is-visible")
         } else {
             this.rotate.classList.add("b--rotate-a--is-visible")
@@ -555,7 +559,10 @@ class Home {
                 $('.b--video-a__video iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
                 //bring back background audio
                 if(id == 'modal-trailer') {
-                    if(!this.isMuted) window.audio.volume = this.audioVolume;
+                    if(!this.isMuted){
+                        // window.audio.volume = this.audioVolume;
+                        window.audio.play();
+                    }
                 }
             });
         });
@@ -574,7 +581,10 @@ class Home {
                 $('.b--video-a__video iframe')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
                 //bring back background audio
                 if(id == 'modal-trailer') {
-                    if(!this.isMuted) window.audio.volume = this.audioVolume;
+                    if(!this.isMuted){
+                        // window.audio.volume = this.audioVolume;
+                        window.audio.play();
+                    }
                 }
             });
         });

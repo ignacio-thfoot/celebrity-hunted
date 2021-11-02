@@ -216,7 +216,7 @@
             <div class="b--card-c__front-items">
                 <div class="b--card-c__front-items__bd">
                     <h3 class="b--card-c__front-items__bd__title" data-text="help_title"></h3>
-                    <p class="b--card-c__front-items__bd__contentLong" data-text="help_text"></p>
+                    <p class="b--card-c__front-items__bd__content" data-text="help_text"></p>
                 </div>
                 <div class="b--card-c__front-items__ft">
                     <a href="data/apv-celebrity-hunted-cgu-reglement.pdf" target="_blank" class="b--card-c__front-items__ft__btn" data-text="policy_button_text"></a>

@@ -7222,6 +7222,10 @@ pre.code-jquery code {
   margin-top: 2rem;
   text-transform: initial;
 }
+.b--card-c__front-items__bd__content a {
+  color: inherit;
+  text-underline-offset: 0.3em;
+}
 @media all and (max-width: 992px) {
   .b--card-c__front-items__bd__content {
     margin-top: 4rem;

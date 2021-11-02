@@ -6,6 +6,8 @@ require('laravel-mix-serve');
 mix.setPublicPath('./public');
 del('public/css/*.css');
 del('public/js/*.js');
+del('public/data/*');
+mix.copy('resources/data/*', 'public/data')
 mix.js('resources/js/home.js', 'public/js').vue();
 mix.js('resources/js/post.js', 'public/js').vue();
 mix.sass('resources/scss/entries/common.scss', 'public/css');

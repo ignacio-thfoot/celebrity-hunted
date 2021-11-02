@@ -17,7 +17,7 @@ use Session;
 */
 
 Route::get('/', function () {    
-    return view('home');    
+    return view('post');    
 });
 
 Route::get('/framework', function() {
